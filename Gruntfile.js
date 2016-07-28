@@ -40,6 +40,27 @@ module.exports = function (grunt) {
         }
       }
     },
+    run: {
+      options: {
+      },
+      submodulesUpdate: {
+        cmd: 'git',
+        args: [
+          'submodule',
+          'update',
+          '--init'
+        ]
+      }
+    },
+    copy: {
+      prebuild: {
+        files: [
+          // Copy resources from git submodules, node_modules, or bower components
+          // This copy command replaces the symlink currently in place
+          {expand: true, cwd: 'submodules/patternfly-core/tests/pages/_includes/widgets', src: ['**'], dest: 'source/_includes/widgets'},
+        ]
+      }
+    },
     csscount: {
       source: {
         src: [
@@ -141,7 +162,13 @@ module.exports = function (grunt) {
     'uglify'
   ]);
 
+  grunt.registerTask('prebuild', [
+    'run:submodulesUpdate',
+    'copy:prebuild'
+  ])
+
   grunt.registerTask('build', [
+    'prebuild',
     'less',
     'cssmin',
     //'csscount',
