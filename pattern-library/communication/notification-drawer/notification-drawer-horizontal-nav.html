@@ -44,7 +44,7 @@
   <script src="/patternfly-org/components/clipboard/dist/clipboard.min.js"></script>
   <script src="/patternfly-org/components/patternfly/dist/js/patternfly.min.js"></script>
   
-  <script src="/patternfly-org/components/jquery-match-height/jquery.jquery-match-height-min.js"></script>
+  <script src="/patternfly-org/components/matchHeight/jquery.matchHeight-min.js"></script>
   <script src="/patternfly-org/assets/js/patternfly-site.min.js"></script>
   
 </head>
@@ -1494,11 +1494,11 @@
 </div>
 <script>
   $(document).ready(function() {
-    // jquery-match-height the contents of each .card-pf and then the .card-pf itself
-    $(".row-cards-pf > [class*='col'] > .card-pf .card-pf-title").jquery-match-height();
-    $(".row-cards-pf > [class*='col'] > .card-pf > .card-pf-body").jquery-match-height();
-    $(".row-cards-pf > [class*='col'] > .card-pf > .card-pf-footer").jquery-match-height();
-    $(".row-cards-pf > [class*='col'] > .card-pf").jquery-match-height();
+    // matchHeight the contents of each .card-pf and then the .card-pf itself
+    $(".row-cards-pf > [class*='col'] > .card-pf .card-pf-title").matchHeight();
+    $(".row-cards-pf > [class*='col'] > .card-pf > .card-pf-body").matchHeight();
+    $(".row-cards-pf > [class*='col'] > .card-pf > .card-pf-footer").matchHeight();
+    $(".row-cards-pf > [class*='col'] > .card-pf").matchHeight();
 
     // initialize tooltips
     $('[data-toggle="tooltip"]').tooltip();
