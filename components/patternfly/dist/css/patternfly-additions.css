@@ -2961,10 +2961,13 @@ fieldset[disabled] .combobox-container .input-group-addon.active {
   -webkit-font-smoothing: antialiased;
 }
 .pficon-middleware:before {
-  content: "\e917";
+  content: "\e92a";
 }
 .pficon-add-circle-o:before {
   content: "\e61b";
+}
+.pficon-arrow:before {
+  content: "\e906";
 }
 .pficon-build:before {
   content: "\e902";
@@ -2973,19 +2976,22 @@ fieldset[disabled] .combobox-container .input-group-addon.active {
   content: "\e800";
 }
 .pficon-bundle:before {
-  content: "\e918";
+  content: "\e902";
 }
 .pficon-blueprint:before {
-  content: "\e915";
+  content: "\e90c";
+}
+.pficon-chat:before {
+  content: "\e90a";
 }
 .pficon-close:before {
-  content: "\e60b";
+  content: "\e607";
 }
 .pficon-cloud-security:before {
-  content: "\e903";
+  content: "\e91c";
 }
 .pficon-cloud-tenant:before {
-  content: "\e904";
+  content: "\e91d";
 }
 .pficon-cluster:before {
   content: "\e620";
@@ -2994,10 +3000,10 @@ fieldset[disabled] .combobox-container .input-group-addon.active {
   content: "\e621";
 }
 .pficon-cpu:before {
-  content: "\e905";
+  content: "\e900";
 }
 .pficon-degraded:before {
-  content: "\e91b";
+  content: "\e92e";
 }
 .pficon-delete:before {
   content: "\e611";
@@ -3009,11 +3015,11 @@ fieldset[disabled] .combobox-container .input-group-addon.active {
   content: "\e60a";
 }
 .pficon-enterprise:before {
-  content: "\e906";
+  content: "\e91a";
 }
 .pficon-error-circle-o:before {
   color: #cc0000;
-  content: "\e61d";
+  content: "\e90f";
 }
 .pficon-export:before {
   content: "\e616";
@@ -3023,7 +3029,7 @@ fieldset[disabled] .combobox-container .input-group-addon.active {
   content: "\e603";
 }
 .pficon-flavor:before {
-  content: "\e907";
+  content: "\e91b";
 }
 .pficon-folder-close:before {
   content: "\e607";
@@ -3032,7 +3038,7 @@ fieldset[disabled] .combobox-container .input-group-addon.active {
   content: "\e606";
 }
 .pficon-help:before {
-  content: "\e605";
+  content: "\e909";
 }
 .pficon-history:before {
   content: "\e617";
@@ -3047,13 +3053,22 @@ fieldset[disabled] .combobox-container .input-group-addon.active {
   content: "\e615";
 }
 .pficon-info:before {
-  content: "\e604";
+  content: "\e911";
+}
+.pficon-key:before {
+  content: "\e930";
+}
+.pficon-locked:before {
+  content: "\e92b";
+}
+.pficon-unlocked:before {
+  content: "\e928";
 }
 .pficon-memory:before {
-  content: "\e908";
+  content: "\e919";
 }
 .pficon-network:before {
-  content: "\e909";
+  content: "\e918";
 }
 .pficon-ok:before {
   color: #3f9c35;
@@ -3063,38 +3078,41 @@ fieldset[disabled] .combobox-container .input-group-addon.active {
   content: "\e612";
 }
 .pficon-private:before {
-  content: "\e914";
+  content: "\e903";
 }
 .pficon-project:before {
-  content: "\e622";
+  content: "\e90e";
 }
 .pficon-rebalance:before {
-  content: "\e91c";
+  content: "\e92f";
 }
 .pficon-refresh:before,
 .pficon-restart:before {
-  content: "\e613";
+  content: "\e617";
 }
 .pficon-regions:before {
-  content: "\e90a";
+  content: "\e91e";
 }
 .pficon-registry:before {
-  content: "\e623";
+  content: "\e913";
+}
+.pficon-remove:before {
+  content: "\e909";
 }
 .pficon-replicator:before {
   content: "\e624";
 }
 .pficon-repository:before {
-  content: "\e90b";
+  content: "\e91f";
 }
 .pficon-resource-pool:before {
-  content: "\e90c";
+  content: "\e920";
 }
 .pficon-resources-almost-empty:before {
   content: "\e91d";
 }
 .pficon-resources-almost-full:before {
-  content: "\e912";
+  content: "\e925";
 }
 .pficon-resources-full:before {
   content: "\e913";
@@ -3111,11 +3129,14 @@ fieldset[disabled] .combobox-container .input-group-addon.active {
 .pficon-screen:before {
   content: "\e600";
 }
+.pficon-search:before {
+  content: "\e90b";
+}
 .pficon-server:before {
-  content: "\e90d";
+  content: "\e921";
 }
 .pficon-server-group:before {
-  content: "\e91a";
+  content: "\e92d";
 }
 .pficon-service:before {
   content: "\e61e";
@@ -3123,17 +3144,23 @@ fieldset[disabled] .combobox-container .input-group-addon.active {
 .pficon-settings:before {
   content: "\e610";
 }
+.pficon-spinner:before {
+  content: "\e932";
+}
+.pficon-spinner2:before {
+  content: "\e931";
+}
 .pficon-storage-domain:before {
-  content: "\e90e";
+  content: "\e901";
 }
 .pficon-tenant:before {
   content: "\e916";
 }
 .pficon-thumb-tack-o:before {
-  content: "\e609";
+  content: "\e927";
 }
 .pficon-topology:before {
-  content: "\e608";
+  content: "\e904";
 }
 .pficon-trend-down:before {
   content: "\e900";
@@ -3142,23 +3169,23 @@ fieldset[disabled] .combobox-container .input-group-addon.active {
   content: "\e901";
 }
 .pficon-user:before {
-  content: "\e60e";
+  content: "\e90d";
 }
 .pficon-users:before {
-  content: "\e60f";
+  content: "\e914";
 }
 .pficon-virtual-machine:before {
-  content: "\e90f";
+  content: "\e922";
 }
 .pficon-volume:before {
-  content: "\e910";
+  content: "\e923";
 }
 .pficon-warning-triangle-o:before {
   color: #ec7a08;
-  content: "\e61c";
+  content: "\e912";
 }
 .pficon-zone:before {
-  content: "\e911";
+  content: "\e924";
 }
 .navbar-nav > li > .dropdown-menu.infotip {
   border-top-width: 1px !important;
@@ -5428,6 +5455,20 @@ table.dataTable th:active {
   border-top: 1px solid #d1d1d1;
   min-height: 40px;
   line-height: 40px;
+}
+.table-view-pf-colvis-menu > li {
+  padding: 5px 10px;
+}
+.table-view-pf-colvis-menu > li:hover {
+  background-color: #def3ff;
+}
+.table-view-pf-colvis-menu > li > input {
+  margin-top: 0;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.table-view-pf-colvis-menu > li > label {
+  margin-bottom: 0;
 }
 .table-view-pf-actions {
   background-color: #f1f1f1;
