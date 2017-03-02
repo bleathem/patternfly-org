@@ -3017,6 +3017,9 @@ fieldset[disabled] .combobox-container .input-group-addon.active {
 .pficon-enterprise:before {
   content: "\e906";
 }
+.pficon-equalizer:before {
+  content: "\e906";
+}
 .pficon-error-circle-o:before {
   color: #cc0000;
   content: "\e926";
