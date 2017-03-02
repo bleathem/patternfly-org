@@ -2960,9 +2960,6 @@ fieldset[disabled] .combobox-container .input-group-addon.active {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
-.pficon-middleware:before {
-  content: "\e917";
-}
 .pficon-add-circle-o:before {
   content: "\e61b";
 }
@@ -3069,6 +3066,9 @@ fieldset[disabled] .combobox-container .input-group-addon.active {
 }
 .pficon-memory:before {
   content: "\e908";
+}
+.pficon-middleware:before {
+  content: "\e917";
 }
 .pficon-network:before {
   content: "\e909";
