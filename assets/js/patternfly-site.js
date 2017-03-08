@@ -26,27 +26,31 @@ jQuery( document ).ready(function() {
   });
   // Enable nested tabs to remember location on refresh
   jQuery(function(){
-    if(window.location.hash == '') {
-      window.location.hash = window.location.hash + '#_';
-    }
     var hash = window.location.hash.split('#')[1];
-    var prefix = '_';
     var hpieces = hash.split('/');
     for (var i=0;i<hpieces.length;i++) {
-      var domelid = hpieces[i].replace(prefix,'');
+      var domelid = hpieces[i];
       if (domelid) {
-        var domitem = $('a[href=#' + domelid + '][data-toggle=tab]');
-        if (domitem.length > 0) {
-          domitem.tab('show');
+        if (domelid === 'api') {  // a hack, I can't find where the "api" location is being set
+          history.pushState("", document.title, window.location.pathname + window.location.search);
+        } else {
+          var domitem = $('a[href=\\#' + domelid + '][data-toggle=tab]');
+          if (domitem.length > 0) {
+            domitem.tab('show');
+          } else { // invalid location hash
+            $('a[href=\\#overview][data-toggle=tab]').tab('show');
+            history.pushState("", document.title, window.location.pathname + window.location.search);
+          }
         }
       }
     }
     $('.nav-tabs-pattern a, .nav-tabs-code a').on('shown.bs.tab', function (e) {
-      if ($(this).hasClass('nested')) {
+      if ($(e.target).hasClass('nested')) {
         var nested = window.location.hash.split('/');
-        window.location.hash = nested[0] + '/' + e.target.hash.split('#')[1];
+        window.location.hash = nested[1] + '/' + e.target.hash.split('#')[1];
       } else {
-        window.location.hash = e.target.hash.replace('#', '#' + prefix);
+        window.location.hash = e.target.hash;
+        $(window).scrollTop(0);
       }
     });
   });
