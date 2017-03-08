@@ -31,16 +31,12 @@ jQuery( document ).ready(function() {
     for (var i=0;i<hpieces.length;i++) {
       var domelid = hpieces[i];
       if (domelid) {
-        if (domelid === 'api') {  // a hack, I can't find where the "api" location is being set
-          history.pushState("", document.title, window.location.pathname + window.location.search);
-        } else {
-          var domitem = $('a[href=\\#' + domelid + '][data-toggle=tab]');
-          if (domitem.length > 0) {
+        var domitem = $('a[href=\\#' + domelid + '][data-toggle=tab]');
+        if (domitem.length > 0) {
             domitem.tab('show');
-          } else { // invalid location hash
-            $('a[href=\\#overview][data-toggle=tab]').tab('show');
-            history.pushState("", document.title, window.location.pathname + window.location.search);
-          }
+        } else { // invalid location hash
+          $('a[href=\\#overview][data-toggle=tab]').tab('show');
+          history.pushState("", document.title, window.location.pathname + window.location.search);
         }
       }
     }
