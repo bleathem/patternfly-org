@@ -34,9 +34,13 @@ jQuery( document ).ready(function() {
         var domitem = $('a[href=\\#' + domelid + '][data-toggle=tab]');
         if (domitem.length > 0) {
             domitem.tab('show');
-        } else { // invalid location hash
+        } else { // invalid location hash, ignore it
           $('a[href=\\#overview][data-toggle=tab]').tab('show');
-          history.pushState("", document.title, window.location.pathname + window.location.search);
+          if ('pushState' in history) {
+            history.pushState('', document.title, window.location.pathname + window.location.search);
+          } else {
+            window.location.hash = '';
+          }
         }
       }
     }
