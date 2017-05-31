@@ -237,6 +237,9 @@
       <a href="/patternfly-org/pattern-library/communication/toast-notifications">Toast Notifications</a>
     </li>
     <li >
+      <a href="/patternfly-org/pattern-library/communication/tour">Tour</a>
+    </li>
+    <li >
       <a href="/patternfly-org/pattern-library/communication/wizard">Wizard</a>
     </li>
   </ul>
@@ -333,6 +336,12 @@
   <ul class="collapse "
       id="forms-and-controls-secondary">
     <li >
+      <a href="/patternfly-org/pattern-library/forms-and-controls/buttons-on-forms">Buttons On Forms</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/pattern-library/forms-and-controls/data-input">Data Input</a>
+    </li>
+    <li >
       <a href="/patternfly-org/pattern-library/forms-and-controls/datepicker">Datepicker</a>
     </li>
     <li >
@@ -345,6 +354,9 @@
       <a href="/patternfly-org/pattern-library/forms-and-controls/expand-collapse-section">Expand Collapse Section</a>
     </li>
     <li >
+      <a href="/patternfly-org/pattern-library/forms-and-controls/field-labeling">Field Labeling</a>
+    </li>
+    <li >
       <a href="/patternfly-org/pattern-library/forms-and-controls/field-level-help">Field Level Help</a>
     </li>
     <li >
@@ -352,9 +364,6 @@
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/forms-and-controls/find">Find</a>
-    </li>
-    <li >
-      <a href="/patternfly-org/pattern-library/forms-and-controls/form-field-layouts">Form Field Layouts</a>
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/forms-and-controls/forms">Forms</a>
@@ -370,6 +379,9 @@
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/forms-and-controls/progressive-disclosure">Progressive Disclosure</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/pattern-library/forms-and-controls/sort">Sort</a>
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/forms-and-controls/timepicker">Timepicker</a>
@@ -567,9 +579,7 @@
           
           <h1 id="table-view">Table View</h1>
 
-<h2 id="overview">Overview</h2>
-
-<p>The table view organizes data into rows (of items) and columns (of item attributes). Tables make structured data easy to scan, compare, sort, and analyze. Tables can be embedded into other design patterns. Tables are familiar to users and often the correct choice for structured data, but be careful not to overuse tables. Here are some examples of when not to use a table:</p>
+<p>Table View organizes data into rows (of items) and columns (of item attributes). Tables make structured data easy to scan, compare, sort, and analyze. Tables can be embedded into other design patterns. Tables are familiar to users and often the correct choice for structured data, but be careful not to overuse tables. Here are some examples of when not to use a table:</p>
 
 <p>The table pattern should <strong>NOT</strong> be used if:</p>
 
@@ -577,8 +587,6 @@
   <li>Users need to find patterns within a data set. Consider a line chart or a bar chart.</li>
   <li>Users need to browse the data set without knowing exactly what to look for. Consider using a <a href="/pattern-library/content-views/list-view/#/api">List View</a>.</li>
 </ul>
-
-<h2 id="default-table">Default Table</h2>
 
 <p><img src="img/table-overview.png" alt="Default Table" /></p>
 
@@ -600,18 +608,14 @@
   </li>
   <li>
     <p><strong>Sorting:</strong> Organize data by sorting columns. All columns are sortable, simply click on the column header to sort via info found in that column.</p>
+
+    <p>Active column will be highlighted with a blue line above the column and blue text. The carat indicates the direction of the sort, in this case from ascending order alphabetically.</p>
   </li>
-</ol>
+  <li>
+    <p><strong>Select Row(s):</strong> Click on the checkbox to select multiple rows in order to perform bulk actions on those rows simultaneously.</p>
 
-<p>Active column will be highlighted with a blue line above the column and blue text. The carat indicates the direction of the sort, in this case from ascending order alphabetically.</p>
-
-<ol>
-  <li><strong>Select Row(s):</strong> Click on the checkbox to select multiple rows in order to perform bulk actions on those rows simultaneously.</li>
-</ol>
-
-<p>Selecting a checkbox activates and highlights the row. This highlight is more prominent than the highlight for hovering over a row.</p>
-
-<ol>
+    <p>Selecting a checkbox activates and highlights the row. This highlight is more prominent than the highlight for hovering over a row.</p>
+  </li>
   <li>
     <p><strong>Hover State:</strong> When the user hovers over a row, that row will be lightly highlighted and outlined. This helps the user to isolate the row, especially when clicking on items in the row.</p>
   </li>
@@ -642,14 +646,6 @@
   <li>
     <p><strong>Bulk Item Actions:</strong> Bulk item action buttons are activated when multiple rows are selected. Some actions are available as both a table action and a bulk item action. The number of rows selected is shown near the table action buttons.</p>
   </li>
-</ol>
-
-<h2 id="empty-state">Empty State</h2>
-
-<p><img src="img/empty-state-callout.png" alt="Table view empty state" /></p>
-
-<ol>
-  <li><strong>Empty State:</strong> If no items exist in the table, display the empty state pattern. Simple filter feature will be disabled within the data toolbar in this state. However, table actions will remain enabled.</li>
 </ol>
 
 <h2 id="column-visibility">Column Visibility</h2>
@@ -700,7 +696,12 @@
 <h2 id="additional-notes-about-behavior">Additional Notes about Behavior</h2>
 
 <ul>
-  <li><strong>Pagination:</strong> Table view supports pagination. See <a href="https://github.com/patternfly/patternfly-design/tree/master/pattern-library/navigation/pagination/design">Pagination</a> for more details.</li>
+  <li>
+    <p><strong>Pagination:</strong> Table view supports pagination. See <a href="/pattern-library/navigation/pagination/">Pagination</a> for more details.</p>
+  </li>
+  <li>
+    <p><strong>Empty State:</strong> If no items exist in the table, display the <a href="/pattern-library/communication/empty-state/">Empty State</a> pattern. If there are no items to display as the result of a null filter result, see the <a href="/pattern-library/forms-and-controls/filter/">Filter</a> pattern for more information about how to display this.</p>
+  </li>
 </ul>
 
           

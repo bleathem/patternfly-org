@@ -237,6 +237,9 @@
       <a href="/patternfly-org/pattern-library/communication/toast-notifications">Toast Notifications</a>
     </li>
     <li >
+      <a href="/patternfly-org/pattern-library/communication/tour">Tour</a>
+    </li>
+    <li >
       <a href="/patternfly-org/pattern-library/communication/wizard">Wizard</a>
     </li>
   </ul>
@@ -333,6 +336,12 @@
   <ul class="collapse "
       id="forms-and-controls-secondary">
     <li >
+      <a href="/patternfly-org/pattern-library/forms-and-controls/buttons-on-forms">Buttons On Forms</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/pattern-library/forms-and-controls/data-input">Data Input</a>
+    </li>
+    <li >
       <a href="/patternfly-org/pattern-library/forms-and-controls/datepicker">Datepicker</a>
     </li>
     <li >
@@ -345,6 +354,9 @@
       <a href="/patternfly-org/pattern-library/forms-and-controls/expand-collapse-section">Expand Collapse Section</a>
     </li>
     <li >
+      <a href="/patternfly-org/pattern-library/forms-and-controls/field-labeling">Field Labeling</a>
+    </li>
+    <li >
       <a href="/patternfly-org/pattern-library/forms-and-controls/field-level-help">Field Level Help</a>
     </li>
     <li >
@@ -352,9 +364,6 @@
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/forms-and-controls/find">Find</a>
-    </li>
-    <li >
-      <a href="/patternfly-org/pattern-library/forms-and-controls/form-field-layouts">Form Field Layouts</a>
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/forms-and-controls/forms">Forms</a>
@@ -370,6 +379,9 @@
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/forms-and-controls/progressive-disclosure">Progressive Disclosure</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/pattern-library/forms-and-controls/sort">Sort</a>
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/forms-and-controls/timepicker">Timepicker</a>
@@ -621,13 +633,21 @@
 <p><img src="img/expanded.png" alt="Image of Expanded Notification Drawer" /></p>
 
 <h2 id="notification-drawer--responsive-state">Notification Drawer | Responsive State</h2>
-<p>This is how the notification drawer looks on small screens. Once a user selects “Notifications” within a small screen’s vertical navigation menu, the notification drawer appears in full-width, with a Back Link above it.</p>
+<p>This is how the notification drawer looks on small screens. The icon of notification drawer is exposed on the navigation bar and the drawer will take over the whole screen width.</p>
 
 <p><img src="img/navigation-drawer-responsive-callout.png" alt="navigation-vertical-notifications-responsive-callout" /></p>
 
 <ol>
-  <li><strong>Back Link</strong>: Clicking the back link restores the primary-level vertical navigation menu.</li>
-  <li><strong>Notification Drawer</strong>: The notification drawer takes the entire screen’s width when on small screens.</li>
+  <li><strong>Icon - no new events</strong>: No fill indicates no new events.</li>
+  <li><strong>Icon - new events</strong>: When new or unread notifications are present, the icon will change to be full.</li>
+  <li><strong>Icon - drawer open</strong>: When clicking on the icon, the notification drawer will be open and the icon change to be full and blue (#0088ce). Clicking on the icon again will close the drawer.</li>
+  <li><strong>Drawer Title</strong>: Title of Drawer.</li>
+  <li><strong>Accordion</strong>: Only one notification tab may be opened at a given time - maximizing drawer space. Italicized text will indicate number of new events. Clicking on the title will expand accordion. When there are no new notifications, all the accordions are default to be collapsed.</li>
+  <li><strong>Row</strong>: Example content shows relevant icon to draw attention to event severity or object type. New/unread notifications are shown in bold.</li>
+  <li><strong>Complex Events</strong>:  Individual rows may include additional information in complex events. User can tap on the event and full contents will show. If the event was unread, it will be marked as read at the same time. Tapping on the event again will collapse it. Tapping on another event will also lead to collapse it because only one event may be expanded at a given time.</li>
+  <li><strong>Mark All Read</strong>: Clicking “Mark All Read” changes all visible unread rows (bold row type) to read (regular row type). After clicking “Mark All Read”, the button will be hidden.</li>
+  <li><strong>Row Actions</strong>: Clicking on the <a href="/pattern-library/widgets/#kebabs">Kabob</a> menu will reveal a drop down containing actions for that item.</li>
+  <li><strong>Loading More</strong>: User can scroll up and down within an accordion to view more events. It will load 10 events at a time by default. When scrolling to the bottom of the list, user can pull up to load more events.</li>
 </ol>
 
           
@@ -1407,9 +1427,6 @@
     &lt;/a&gt;
   &lt;/div&gt;
   &lt;nav class=&quot;collapse navbar-collapse&quot;&gt;
-    &lt;ul class=&quot;nav navbar-nav&quot;&gt;
-      &lt;li&gt;&lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;nav-item-iconic nav-item-iconic-new-window&quot;&gt;&lt;span title=&quot;Launch&quot; class=&quot;fa fa-external-link&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
     &lt;ul class=&quot;nav navbar-nav navbar-right navbar-iconic&quot;&gt;
       &lt;li class=&quot;dropdown&quot;&gt;
         &lt;a class=&quot;dropdown-toggle nav-item-iconic&quot; id=&quot;notifications&quot; data-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;true&quot;&gt;
@@ -1456,8 +1473,7 @@
 &lt;/nav&gt; &lt;!--/.navbar--&gt;
 
 
-&lt;div class=&quot;nav-pf-vertical
-     
+&lt;div class=&quot;nav-pf-vertical nav-pf-vertical-with-sub-menus
      
      
      
@@ -1502,7 +1518,61 @@
         &lt;span class=&quot;list-group-item-value&quot;&gt;Lorem&lt;/span&gt;
       &lt;/a&gt;
     &lt;/li&gt;
+
+    &lt;li class=&quot;list-group-item secondary-nav-item-pf mobile-nav-item-pf visible-xs-block&quot; data-target=&quot;#amet-secondary&quot;&gt;
+      &lt;a&gt;
+        &lt;span class=&quot;pficon pficon-user&quot; data-toggle=&quot;tooltip&quot; title=&quot;&quot; data-original-title=&quot;User&quot;&gt;&lt;/span&gt;
+        &lt;span class=&quot;list-group-item-value&quot;&gt;User&lt;/span&gt;
+      &lt;/a&gt;
+      &lt;div id=&quot;user-secondary&quot; class=&quot;nav-pf-secondary-nav&quot;&gt;
+        &lt;div class=&quot;nav-item-pf-header&quot;&gt;
+          &lt;a class=&quot;secondary-collapse-toggle-pf&quot; data-toggle=&quot;collapse-secondary-nav&quot;&gt;&lt;/a&gt;
+          &lt;span&gt;User&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;ul class=&quot;list-group&quot;&gt;
+          &lt;li class=&quot;list-group-item&quot;&gt;
+            &lt;a&gt;
+              &lt;span class=&quot;list-group-item-value&quot;&gt;Preferences&lt;/span&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+
+          &lt;li class=&quot;list-group-item&quot;&gt;
+            &lt;a&gt;
+              &lt;span class=&quot;list-group-item-value&quot;&gt;Logout&lt;/span&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+
+    &lt;li class=&quot;list-group-item secondary-nav-item-pf mobile-nav-item-pf visible-xs-block&quot; data-target=&quot;#amet-secondary&quot;&gt;
+      &lt;a&gt;
+        &lt;span class=&quot;pficon pficon-help&quot; data-toggle=&quot;tooltip&quot; title=&quot;&quot; data-original-title=&quot;Amet&quot;&gt;&lt;/span&gt;
+        &lt;span class=&quot;list-group-item-value&quot;&gt;Help&lt;/span&gt;
+      &lt;/a&gt;
+      &lt;div id=&quot;help-secondary&quot; class=&quot;nav-pf-secondary-nav&quot;&gt;
+        &lt;div class=&quot;nav-item-pf-header&quot;&gt;
+          &lt;a class=&quot;secondary-collapse-toggle-pf&quot; data-toggle=&quot;collapse-secondary-nav&quot;&gt;&lt;/a&gt;
+          &lt;span&gt;Help&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;ul class=&quot;list-group&quot;&gt;
+          &lt;li class=&quot;list-group-item&quot;&gt;
+            &lt;a&gt;
+              &lt;span class=&quot;list-group-item-value&quot;&gt;Help&lt;/span&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;list-group-item&quot;&gt;
+            &lt;a&gt;
+              &lt;span class=&quot;list-group-item-value&quot;&gt;About&lt;/span&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+
   &lt;/ul&gt;
+
 &lt;/div&gt;
 &lt;div class=&quot;container-fluid container-cards-pf container-pf-nav-pf-vertical
      

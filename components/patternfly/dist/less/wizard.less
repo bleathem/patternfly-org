@@ -112,9 +112,7 @@
 .wizard-pf-steps-indicator {
   font-size: ceil((@font-size-base * 1.3333));
   display: inline-block;
-  @supports(display: flex) {
-    display: flex;
-  }
+  display: flex;
   height: 120px;
   justify-content: space-around;
   list-style: none;
@@ -178,7 +176,7 @@
     font-size: @font-size-base;
     font-weight: 700;
     height: 25px;
-    left: calc(50% - 13px);
+    left: ~"calc(50% - 13px)";
     line-height: 22px;
     position: absolute;
     top: 27px;
