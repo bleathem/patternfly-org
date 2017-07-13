@@ -513,6 +513,9 @@ pf-topology {
 .toast-pf .dropdown-menu > li > a {
   cursor: pointer;
 }
+.list-group-item-header.list-group-item-not-selectable {
+  cursor: inherit;
+}
 .pf-table-view-selected-label {
   float: right;
   line-height: 40px;
@@ -1016,4 +1019,10 @@ table.dataTable tbody td {
 }
 .subtabs .nav-tabs-pf li {
   font-size: 14px;
+}
+.content-view-pf-pagination .form-group {
+  align-items: center;
+}
+.content-view-pf-pagination .form-group .per-page-label {
+  padding-left: 10px;
 }
