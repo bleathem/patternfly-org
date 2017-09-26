@@ -55,12 +55,29 @@
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/grunt-scripts/angular-bootstrap-prettify.js"></script>
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/grunt-scripts/lodash.min.js"></script>
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/grunt-scripts/angular-patternfly.js"></script>
-  <script src="/patternfly-org/components/angular-patternfly/dist/docs/grunt-scripts/patternfly.js"></script>
+  <script src="/patternfly-org/components/patternfly/dist/js/patternfly.js"></script>
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/js/angular-bootstrap.js"></script>
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/js/docs-setup.js"></script>
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/js/docs.js"></script>
   <script src="/patternfly-org/ngdocs/formatForPFsite.js"></script>
-  <script src="/patternfly-org///cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script><script src="/patternfly-org///cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script><script src="/patternfly-org/components/angular-patternfly/dist/docs/grunt-scripts/angular-drag-and-drop-lists.js"></script>
+  
+    
+      
+      
+        <script src="//cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script>
+      
+    
+      
+      
+        <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+      
+    
+      
+      
+        <script src="/patternfly-org/components/angular-patternfly/dist/docs/grunt-scripts/angular-drag-and-drop-lists.js"></script>
+      
+    
+  
   <script src="/patternfly-org/assets/js/patternfly-site.min.js"></script>
   
 </head>
@@ -225,7 +242,13 @@
       <a href="/patternfly-org/pattern-library/communication/about-modal">About Modal</a>
     </li>
     <li >
+      <a href="/patternfly-org/pattern-library/communication/comments">Comments</a>
+    </li>
+    <li >
       <a href="/patternfly-org/pattern-library/communication/empty-state">Empty State</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/pattern-library/communication/experimental-features">Experimental Features</a>
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/communication/inline-notifications">Inline Notifications</a>
@@ -265,6 +288,9 @@
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/content-views/table-view">Table View</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/pattern-library/content-views/tree-list-view">Tree List View</a>
     </li>
   </ul>
 </li>
@@ -366,16 +392,13 @@
       <a href="/patternfly-org/pattern-library/forms-and-controls/find">Find</a>
     </li>
     <li >
-      <a href="/patternfly-org/pattern-library/forms-and-controls/forms">Forms</a>
-    </li>
-    <li >
       <a href="/patternfly-org/pattern-library/forms-and-controls/inline-edit">Inline Edit</a>
     </li>
     <li >
-      <a href="/patternfly-org/pattern-library/forms-and-controls/input-controls">Input Controls</a>
+      <a href="/patternfly-org/pattern-library/forms-and-controls/language-selector">Language Selector</a>
     </li>
     <li >
-      <a href="/patternfly-org/pattern-library/forms-and-controls/language-selector">Language Selector</a>
+      <a href="/patternfly-org/pattern-library/forms-and-controls/modal-overlay">Modal Overlay</a>
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/forms-and-controls/progressive-disclosure">Progressive Disclosure</a>
@@ -403,6 +426,9 @@
       id="navigation-secondary">
     <li >
       <a href="/patternfly-org/pattern-library/navigation/breadcrumbs">Breadcrumbs</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/pattern-library/navigation/context-selector">Context Selector</a>
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/navigation/guidelines">Guidelines</a>
@@ -646,6 +672,9 @@
     </ul>
   </li>
   <li>
+    <p><strong>Disabled Row</strong> (optional): Rows that are currently not available will be disabled. The cursor should appear visually disabled when user hovers over the row.</p>
+  </li>
+  <li>
     <p><strong>Multi-Selection via Checkboxes</strong> (optional): If multi-selection is supported, checkboxes appear on the left. Actions in the Data Toolbar apply to the selected items.</p>
   </li>
   <li>
@@ -846,10 +875,10 @@
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu &quot; aria-labelledby=&quot;dropdownKebab&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -927,10 +956,10 @@
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight9&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -981,10 +1010,10 @@
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight10&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -1035,10 +1064,10 @@
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight11&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -1089,10 +1118,10 @@
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight12&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -1143,10 +1172,10 @@
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight13&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -1197,10 +1226,10 @@
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight14&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -1300,10 +1329,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight9">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -1348,12 +1377,74 @@
       </div>
       <div class="row">
         <div class="col-md-3">
-          <div id="utilizationDonutChart1" class="example-donut-chart-utilization"></div>
+          <div id="utilizationDonutChart11" class="example-donut-chart-utilization"></div>
+
+<div class="pct-donut-chart-pf example-donut-chart-utilization">
+  <span class="pct-donut-chart-pf-chart">
+    <span id="utilizationDonutChart12"></span>
+  </span>
+  <span class="pct-donut-chart-pf-label">
+    60 MHz of 100 MHz used
+  </span>
+</div>
+
+<div class="example-donut-chart-utilization">
+  <span class="pct-donut-chart-pf pct-donut-chart-pf-left">
+    <span class="pct-donut-chart-pf-chart">
+      <span id="utilizationDonutChart13"></span>
+    </span>
+    <span class="pct-donut-chart-pf-label text-right">
+      60 MHz of 100 MHz used
+    </span>
+  </span>
+</div>
+
+<div class="example-donut-chart-utilization">
+  <span class="pct-donut-chart-pf pct-donut-chart-pf-right">
+    <span class="pct-donut-chart-pf-chart">
+      <span id="utilizationDonutChart14"></span>
+    </span>
+    <span class="pct-donut-chart-pf-label text-left">
+      60 MHz of 100 MHz
+    </span>
+  </span>
+</div>
+
 <script>
   var c3ChartDefaults = $().c3ChartDefaults();
-  var utilizationDonutChartConfig = c3ChartDefaults.getDefaultDonutConfig('A');
-  utilizationDonutChartConfig.bindto = '#utilizationDonutChart1';
-  utilizationDonutChartConfig.data = {
+
+  // Donut configuration 1
+  var donutConfig1 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig1.bindto = '#utilizationDonutChart11';
+  donutConfig1.data = {
+    type: "donut",
+    columns: [
+      ["Used", 60],
+      ["Available", 40],
+    ],
+    groups: [
+      ["used", "available"]
+    ],
+    order: null
+  };
+  donutConfig1.size = {
+    width: 180,
+    height: 180
+  };
+
+  donutConfig1.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig1);
+  $().pfSetDonutChartTitle("#utilizationDonutChart11", "60", "MHz Used");
+
+  // Donut configuration 2
+  var donutConfig2 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig2.bindto = '#utilizationDonutChart12';
+  donutConfig2.data = {
     type: "donut",
     columns: [
       ["Used", 60],
@@ -1364,16 +1455,71 @@
     ],
     order: null
   };
-  utilizationDonutChartConfig.size = {
-    width: 200,
-    height: 171
+  donutConfig2.size = {
+    width: 180,
+    height: 180
   };
 
-  utilizationDonutChartConfig.tooltip = {
+  donutConfig2.tooltip = {
     contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
   };
-  var utilizationDonutChart = c3.generate(utilizationDonutChartConfig);
-  $().pfSetDonutChartTitle("#utilizationDonutChart1", "60", "MHz Used");
+
+  c3.generate(donutConfig2);
+  $().pfSetDonutChartTitle("#utilizationDonutChart12", "60", "MHz Used");
+
+  // Donut configuration 3
+  var donutConfig3 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig3.bindto = '#utilizationDonutChart13';
+  donutConfig3.data = {
+    type: "donut",
+    columns: [
+      ["Used", 60],
+      ["Available", 40]
+    ],
+    groups: [
+      ["used", "available"]
+    ],
+    order: null
+  };
+  donutConfig3.size = {
+    width: 140,
+    height: 140
+  };
+
+  donutConfig3.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig3);
+  $().pfSetDonutChartTitle("#utilizationDonutChart13", "60", "MHz Used");
+
+  // Donut configuration 4
+  var donutConfig4 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig4.bindto = '#utilizationDonutChart14';
+  donutConfig4.data = {
+    type: "donut",
+    columns: [
+      ["Used", 60],
+      ["Available", 40]
+    ],
+    groups: [
+      ["used", "available"]
+    ],
+    order: null
+  };
+  donutConfig4.size = {
+    width: 140,
+    height: 140
+  };
+
+  donutConfig4.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig4);
+  $().pfSetDonutChartTitle("#utilizationDonutChart14", "60", "MHz Used");
 </script>
 
         </div>
@@ -1418,10 +1564,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight10">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -1466,12 +1612,74 @@
       </div>
       <div class="row">
         <div class="col-md-3">
-          <div id="utilizationDonutChart2" class="example-donut-chart-utilization"></div>
+          <div id="utilizationDonutChart21" class="example-donut-chart-utilization"></div>
+
+<div class="pct-donut-chart-pf example-donut-chart-utilization">
+  <span class="pct-donut-chart-pf-chart">
+    <span id="utilizationDonutChart22"></span>
+  </span>
+  <span class="pct-donut-chart-pf-label">
+    60 MHz of 100 MHz used
+  </span>
+</div>
+
+<div class="example-donut-chart-utilization">
+  <span class="pct-donut-chart-pf pct-donut-chart-pf-left">
+    <span class="pct-donut-chart-pf-chart">
+      <span id="utilizationDonutChart23"></span>
+    </span>
+    <span class="pct-donut-chart-pf-label text-right">
+      60 MHz of 100 MHz used
+    </span>
+  </span>
+</div>
+
+<div class="example-donut-chart-utilization">
+  <span class="pct-donut-chart-pf pct-donut-chart-pf-right">
+    <span class="pct-donut-chart-pf-chart">
+      <span id="utilizationDonutChart24"></span>
+    </span>
+    <span class="pct-donut-chart-pf-label text-left">
+      60 MHz of 100 MHz
+    </span>
+  </span>
+</div>
+
 <script>
   var c3ChartDefaults = $().c3ChartDefaults();
-  var utilizationDonutChartConfig = c3ChartDefaults.getDefaultDonutConfig('A');
-  utilizationDonutChartConfig.bindto = '#utilizationDonutChart2';
-  utilizationDonutChartConfig.data = {
+
+  // Donut configuration 1
+  var donutConfig1 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig1.bindto = '#utilizationDonutChart21';
+  donutConfig1.data = {
+    type: "donut",
+    columns: [
+      ["Used", 60],
+      ["Available", 40],
+    ],
+    groups: [
+      ["used", "available"]
+    ],
+    order: null
+  };
+  donutConfig1.size = {
+    width: 180,
+    height: 180
+  };
+
+  donutConfig1.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig1);
+  $().pfSetDonutChartTitle("#utilizationDonutChart21", "60", "MHz Used");
+
+  // Donut configuration 2
+  var donutConfig2 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig2.bindto = '#utilizationDonutChart22';
+  donutConfig2.data = {
     type: "donut",
     columns: [
       ["Used", 60],
@@ -1482,16 +1690,71 @@
     ],
     order: null
   };
-  utilizationDonutChartConfig.size = {
-    width: 200,
-    height: 171
+  donutConfig2.size = {
+    width: 180,
+    height: 180
   };
 
-  utilizationDonutChartConfig.tooltip = {
+  donutConfig2.tooltip = {
     contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
   };
-  var utilizationDonutChart = c3.generate(utilizationDonutChartConfig);
-  $().pfSetDonutChartTitle("#utilizationDonutChart2", "60", "MHz Used");
+
+  c3.generate(donutConfig2);
+  $().pfSetDonutChartTitle("#utilizationDonutChart22", "60", "MHz Used");
+
+  // Donut configuration 3
+  var donutConfig3 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig3.bindto = '#utilizationDonutChart23';
+  donutConfig3.data = {
+    type: "donut",
+    columns: [
+      ["Used", 60],
+      ["Available", 40]
+    ],
+    groups: [
+      ["used", "available"]
+    ],
+    order: null
+  };
+  donutConfig3.size = {
+    width: 140,
+    height: 140
+  };
+
+  donutConfig3.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig3);
+  $().pfSetDonutChartTitle("#utilizationDonutChart23", "60", "MHz Used");
+
+  // Donut configuration 4
+  var donutConfig4 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig4.bindto = '#utilizationDonutChart24';
+  donutConfig4.data = {
+    type: "donut",
+    columns: [
+      ["Used", 60],
+      ["Available", 40]
+    ],
+    groups: [
+      ["used", "available"]
+    ],
+    order: null
+  };
+  donutConfig4.size = {
+    width: 140,
+    height: 140
+  };
+
+  donutConfig4.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig4);
+  $().pfSetDonutChartTitle("#utilizationDonutChart24", "60", "MHz Used");
 </script>
 
         </div>
@@ -1536,10 +1799,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight11">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -1584,12 +1847,74 @@
       </div>
       <div class="row">
         <div class="col-md-3">
-          <div id="utilizationDonutChart3" class="example-donut-chart-utilization"></div>
+          <div id="utilizationDonutChart31" class="example-donut-chart-utilization"></div>
+
+<div class="pct-donut-chart-pf example-donut-chart-utilization">
+  <span class="pct-donut-chart-pf-chart">
+    <span id="utilizationDonutChart32"></span>
+  </span>
+  <span class="pct-donut-chart-pf-label">
+    60 MHz of 100 MHz used
+  </span>
+</div>
+
+<div class="example-donut-chart-utilization">
+  <span class="pct-donut-chart-pf pct-donut-chart-pf-left">
+    <span class="pct-donut-chart-pf-chart">
+      <span id="utilizationDonutChart33"></span>
+    </span>
+    <span class="pct-donut-chart-pf-label text-right">
+      60 MHz of 100 MHz used
+    </span>
+  </span>
+</div>
+
+<div class="example-donut-chart-utilization">
+  <span class="pct-donut-chart-pf pct-donut-chart-pf-right">
+    <span class="pct-donut-chart-pf-chart">
+      <span id="utilizationDonutChart34"></span>
+    </span>
+    <span class="pct-donut-chart-pf-label text-left">
+      60 MHz of 100 MHz
+    </span>
+  </span>
+</div>
+
 <script>
   var c3ChartDefaults = $().c3ChartDefaults();
-  var utilizationDonutChartConfig = c3ChartDefaults.getDefaultDonutConfig('A');
-  utilizationDonutChartConfig.bindto = '#utilizationDonutChart3';
-  utilizationDonutChartConfig.data = {
+
+  // Donut configuration 1
+  var donutConfig1 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig1.bindto = '#utilizationDonutChart31';
+  donutConfig1.data = {
+    type: "donut",
+    columns: [
+      ["Used", 60],
+      ["Available", 40],
+    ],
+    groups: [
+      ["used", "available"]
+    ],
+    order: null
+  };
+  donutConfig1.size = {
+    width: 180,
+    height: 180
+  };
+
+  donutConfig1.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig1);
+  $().pfSetDonutChartTitle("#utilizationDonutChart31", "60", "MHz Used");
+
+  // Donut configuration 2
+  var donutConfig2 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig2.bindto = '#utilizationDonutChart32';
+  donutConfig2.data = {
     type: "donut",
     columns: [
       ["Used", 60],
@@ -1600,16 +1925,71 @@
     ],
     order: null
   };
-  utilizationDonutChartConfig.size = {
-    width: 200,
-    height: 171
+  donutConfig2.size = {
+    width: 180,
+    height: 180
   };
 
-  utilizationDonutChartConfig.tooltip = {
+  donutConfig2.tooltip = {
     contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
   };
-  var utilizationDonutChart = c3.generate(utilizationDonutChartConfig);
-  $().pfSetDonutChartTitle("#utilizationDonutChart3", "60", "MHz Used");
+
+  c3.generate(donutConfig2);
+  $().pfSetDonutChartTitle("#utilizationDonutChart32", "60", "MHz Used");
+
+  // Donut configuration 3
+  var donutConfig3 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig3.bindto = '#utilizationDonutChart33';
+  donutConfig3.data = {
+    type: "donut",
+    columns: [
+      ["Used", 60],
+      ["Available", 40]
+    ],
+    groups: [
+      ["used", "available"]
+    ],
+    order: null
+  };
+  donutConfig3.size = {
+    width: 140,
+    height: 140
+  };
+
+  donutConfig3.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig3);
+  $().pfSetDonutChartTitle("#utilizationDonutChart33", "60", "MHz Used");
+
+  // Donut configuration 4
+  var donutConfig4 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig4.bindto = '#utilizationDonutChart34';
+  donutConfig4.data = {
+    type: "donut",
+    columns: [
+      ["Used", 60],
+      ["Available", 40]
+    ],
+    groups: [
+      ["used", "available"]
+    ],
+    order: null
+  };
+  donutConfig4.size = {
+    width: 140,
+    height: 140
+  };
+
+  donutConfig4.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig4);
+  $().pfSetDonutChartTitle("#utilizationDonutChart34", "60", "MHz Used");
 </script>
 
         </div>
@@ -1654,10 +2034,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight12">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -1702,12 +2082,74 @@
       </div>
       <div class="row">
         <div class="col-md-3">
-          <div id="utilizationDonutChart4" class="example-donut-chart-utilization"></div>
+          <div id="utilizationDonutChart41" class="example-donut-chart-utilization"></div>
+
+<div class="pct-donut-chart-pf example-donut-chart-utilization">
+  <span class="pct-donut-chart-pf-chart">
+    <span id="utilizationDonutChart42"></span>
+  </span>
+  <span class="pct-donut-chart-pf-label">
+    60 MHz of 100 MHz used
+  </span>
+</div>
+
+<div class="example-donut-chart-utilization">
+  <span class="pct-donut-chart-pf pct-donut-chart-pf-left">
+    <span class="pct-donut-chart-pf-chart">
+      <span id="utilizationDonutChart43"></span>
+    </span>
+    <span class="pct-donut-chart-pf-label text-right">
+      60 MHz of 100 MHz used
+    </span>
+  </span>
+</div>
+
+<div class="example-donut-chart-utilization">
+  <span class="pct-donut-chart-pf pct-donut-chart-pf-right">
+    <span class="pct-donut-chart-pf-chart">
+      <span id="utilizationDonutChart44"></span>
+    </span>
+    <span class="pct-donut-chart-pf-label text-left">
+      60 MHz of 100 MHz
+    </span>
+  </span>
+</div>
+
 <script>
   var c3ChartDefaults = $().c3ChartDefaults();
-  var utilizationDonutChartConfig = c3ChartDefaults.getDefaultDonutConfig('A');
-  utilizationDonutChartConfig.bindto = '#utilizationDonutChart4';
-  utilizationDonutChartConfig.data = {
+
+  // Donut configuration 1
+  var donutConfig1 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig1.bindto = '#utilizationDonutChart41';
+  donutConfig1.data = {
+    type: "donut",
+    columns: [
+      ["Used", 60],
+      ["Available", 40],
+    ],
+    groups: [
+      ["used", "available"]
+    ],
+    order: null
+  };
+  donutConfig1.size = {
+    width: 180,
+    height: 180
+  };
+
+  donutConfig1.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig1);
+  $().pfSetDonutChartTitle("#utilizationDonutChart41", "60", "MHz Used");
+
+  // Donut configuration 2
+  var donutConfig2 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig2.bindto = '#utilizationDonutChart42';
+  donutConfig2.data = {
     type: "donut",
     columns: [
       ["Used", 60],
@@ -1718,16 +2160,71 @@
     ],
     order: null
   };
-  utilizationDonutChartConfig.size = {
-    width: 200,
-    height: 171
+  donutConfig2.size = {
+    width: 180,
+    height: 180
   };
 
-  utilizationDonutChartConfig.tooltip = {
+  donutConfig2.tooltip = {
     contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
   };
-  var utilizationDonutChart = c3.generate(utilizationDonutChartConfig);
-  $().pfSetDonutChartTitle("#utilizationDonutChart4", "60", "MHz Used");
+
+  c3.generate(donutConfig2);
+  $().pfSetDonutChartTitle("#utilizationDonutChart42", "60", "MHz Used");
+
+  // Donut configuration 3
+  var donutConfig3 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig3.bindto = '#utilizationDonutChart43';
+  donutConfig3.data = {
+    type: "donut",
+    columns: [
+      ["Used", 60],
+      ["Available", 40]
+    ],
+    groups: [
+      ["used", "available"]
+    ],
+    order: null
+  };
+  donutConfig3.size = {
+    width: 140,
+    height: 140
+  };
+
+  donutConfig3.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig3);
+  $().pfSetDonutChartTitle("#utilizationDonutChart43", "60", "MHz Used");
+
+  // Donut configuration 4
+  var donutConfig4 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig4.bindto = '#utilizationDonutChart44';
+  donutConfig4.data = {
+    type: "donut",
+    columns: [
+      ["Used", 60],
+      ["Available", 40]
+    ],
+    groups: [
+      ["used", "available"]
+    ],
+    order: null
+  };
+  donutConfig4.size = {
+    width: 140,
+    height: 140
+  };
+
+  donutConfig4.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig4);
+  $().pfSetDonutChartTitle("#utilizationDonutChart44", "60", "MHz Used");
 </script>
 
         </div>
@@ -1772,10 +2269,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight13">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -1820,12 +2317,74 @@
       </div>
       <div class="row">
         <div class="col-md-3">
-          <div id="utilizationDonutChart5" class="example-donut-chart-utilization"></div>
+          <div id="utilizationDonutChart51" class="example-donut-chart-utilization"></div>
+
+<div class="pct-donut-chart-pf example-donut-chart-utilization">
+  <span class="pct-donut-chart-pf-chart">
+    <span id="utilizationDonutChart52"></span>
+  </span>
+  <span class="pct-donut-chart-pf-label">
+    60 MHz of 100 MHz used
+  </span>
+</div>
+
+<div class="example-donut-chart-utilization">
+  <span class="pct-donut-chart-pf pct-donut-chart-pf-left">
+    <span class="pct-donut-chart-pf-chart">
+      <span id="utilizationDonutChart53"></span>
+    </span>
+    <span class="pct-donut-chart-pf-label text-right">
+      60 MHz of 100 MHz used
+    </span>
+  </span>
+</div>
+
+<div class="example-donut-chart-utilization">
+  <span class="pct-donut-chart-pf pct-donut-chart-pf-right">
+    <span class="pct-donut-chart-pf-chart">
+      <span id="utilizationDonutChart54"></span>
+    </span>
+    <span class="pct-donut-chart-pf-label text-left">
+      60 MHz of 100 MHz
+    </span>
+  </span>
+</div>
+
 <script>
   var c3ChartDefaults = $().c3ChartDefaults();
-  var utilizationDonutChartConfig = c3ChartDefaults.getDefaultDonutConfig('A');
-  utilizationDonutChartConfig.bindto = '#utilizationDonutChart5';
-  utilizationDonutChartConfig.data = {
+
+  // Donut configuration 1
+  var donutConfig1 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig1.bindto = '#utilizationDonutChart51';
+  donutConfig1.data = {
+    type: "donut",
+    columns: [
+      ["Used", 60],
+      ["Available", 40],
+    ],
+    groups: [
+      ["used", "available"]
+    ],
+    order: null
+  };
+  donutConfig1.size = {
+    width: 180,
+    height: 180
+  };
+
+  donutConfig1.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig1);
+  $().pfSetDonutChartTitle("#utilizationDonutChart51", "60", "MHz Used");
+
+  // Donut configuration 2
+  var donutConfig2 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig2.bindto = '#utilizationDonutChart52';
+  donutConfig2.data = {
     type: "donut",
     columns: [
       ["Used", 60],
@@ -1836,16 +2395,71 @@
     ],
     order: null
   };
-  utilizationDonutChartConfig.size = {
-    width: 200,
-    height: 171
+  donutConfig2.size = {
+    width: 180,
+    height: 180
   };
 
-  utilizationDonutChartConfig.tooltip = {
+  donutConfig2.tooltip = {
     contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
   };
-  var utilizationDonutChart = c3.generate(utilizationDonutChartConfig);
-  $().pfSetDonutChartTitle("#utilizationDonutChart5", "60", "MHz Used");
+
+  c3.generate(donutConfig2);
+  $().pfSetDonutChartTitle("#utilizationDonutChart52", "60", "MHz Used");
+
+  // Donut configuration 3
+  var donutConfig3 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig3.bindto = '#utilizationDonutChart53';
+  donutConfig3.data = {
+    type: "donut",
+    columns: [
+      ["Used", 60],
+      ["Available", 40]
+    ],
+    groups: [
+      ["used", "available"]
+    ],
+    order: null
+  };
+  donutConfig3.size = {
+    width: 140,
+    height: 140
+  };
+
+  donutConfig3.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig3);
+  $().pfSetDonutChartTitle("#utilizationDonutChart53", "60", "MHz Used");
+
+  // Donut configuration 4
+  var donutConfig4 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig4.bindto = '#utilizationDonutChart54';
+  donutConfig4.data = {
+    type: "donut",
+    columns: [
+      ["Used", 60],
+      ["Available", 40]
+    ],
+    groups: [
+      ["used", "available"]
+    ],
+    order: null
+  };
+  donutConfig4.size = {
+    width: 140,
+    height: 140
+  };
+
+  donutConfig4.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig4);
+  $().pfSetDonutChartTitle("#utilizationDonutChart54", "60", "MHz Used");
 </script>
 
         </div>
@@ -1890,10 +2504,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight14">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -1938,12 +2552,74 @@
       </div>
       <div class="row">
         <div class="col-md-3">
-          <div id="utilizationDonutChart6" class="example-donut-chart-utilization"></div>
+          <div id="utilizationDonutChart61" class="example-donut-chart-utilization"></div>
+
+<div class="pct-donut-chart-pf example-donut-chart-utilization">
+  <span class="pct-donut-chart-pf-chart">
+    <span id="utilizationDonutChart62"></span>
+  </span>
+  <span class="pct-donut-chart-pf-label">
+    60 MHz of 100 MHz used
+  </span>
+</div>
+
+<div class="example-donut-chart-utilization">
+  <span class="pct-donut-chart-pf pct-donut-chart-pf-left">
+    <span class="pct-donut-chart-pf-chart">
+      <span id="utilizationDonutChart63"></span>
+    </span>
+    <span class="pct-donut-chart-pf-label text-right">
+      60 MHz of 100 MHz used
+    </span>
+  </span>
+</div>
+
+<div class="example-donut-chart-utilization">
+  <span class="pct-donut-chart-pf pct-donut-chart-pf-right">
+    <span class="pct-donut-chart-pf-chart">
+      <span id="utilizationDonutChart64"></span>
+    </span>
+    <span class="pct-donut-chart-pf-label text-left">
+      60 MHz of 100 MHz
+    </span>
+  </span>
+</div>
+
 <script>
   var c3ChartDefaults = $().c3ChartDefaults();
-  var utilizationDonutChartConfig = c3ChartDefaults.getDefaultDonutConfig('A');
-  utilizationDonutChartConfig.bindto = '#utilizationDonutChart6';
-  utilizationDonutChartConfig.data = {
+
+  // Donut configuration 1
+  var donutConfig1 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig1.bindto = '#utilizationDonutChart61';
+  donutConfig1.data = {
+    type: "donut",
+    columns: [
+      ["Used", 60],
+      ["Available", 40],
+    ],
+    groups: [
+      ["used", "available"]
+    ],
+    order: null
+  };
+  donutConfig1.size = {
+    width: 180,
+    height: 180
+  };
+
+  donutConfig1.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig1);
+  $().pfSetDonutChartTitle("#utilizationDonutChart61", "60", "MHz Used");
+
+  // Donut configuration 2
+  var donutConfig2 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig2.bindto = '#utilizationDonutChart62';
+  donutConfig2.data = {
     type: "donut",
     columns: [
       ["Used", 60],
@@ -1954,16 +2630,71 @@
     ],
     order: null
   };
-  utilizationDonutChartConfig.size = {
-    width: 200,
-    height: 171
+  donutConfig2.size = {
+    width: 180,
+    height: 180
   };
 
-  utilizationDonutChartConfig.tooltip = {
+  donutConfig2.tooltip = {
     contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
   };
-  var utilizationDonutChart = c3.generate(utilizationDonutChartConfig);
-  $().pfSetDonutChartTitle("#utilizationDonutChart6", "60", "MHz Used");
+
+  c3.generate(donutConfig2);
+  $().pfSetDonutChartTitle("#utilizationDonutChart62", "60", "MHz Used");
+
+  // Donut configuration 3
+  var donutConfig3 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig3.bindto = '#utilizationDonutChart63';
+  donutConfig3.data = {
+    type: "donut",
+    columns: [
+      ["Used", 60],
+      ["Available", 40]
+    ],
+    groups: [
+      ["used", "available"]
+    ],
+    order: null
+  };
+  donutConfig3.size = {
+    width: 140,
+    height: 140
+  };
+
+  donutConfig3.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig3);
+  $().pfSetDonutChartTitle("#utilizationDonutChart63", "60", "MHz Used");
+
+  // Donut configuration 4
+  var donutConfig4 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig4.bindto = '#utilizationDonutChart64';
+  donutConfig4.data = {
+    type: "donut",
+    columns: [
+      ["Used", 60],
+      ["Available", 40]
+    ],
+    groups: [
+      ["used", "available"]
+    ],
+    order: null
+  };
+  donutConfig4.size = {
+    width: 140,
+    height: 140
+  };
+
+  donutConfig4.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig4);
+  $().pfSetDonutChartTitle("#utilizationDonutChart64", "60", "MHz Used");
 </script>
 
         </div>
@@ -2055,10 +2786,10 @@
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight9&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -2103,12 +2834,74 @@
       &lt;/div&gt;
       &lt;div class=&quot;row&quot;&gt;
         &lt;div class=&quot;col-md-3&quot;&gt;
-          &lt;div id=&quot;utilizationDonutChart1&quot; class=&quot;example-donut-chart-utilization&quot;&gt;&lt;/div&gt;
+          &lt;div id=&quot;utilizationDonutChart11&quot; class=&quot;example-donut-chart-utilization&quot;&gt;&lt;/div&gt;
+
+&lt;div class=&quot;pct-donut-chart-pf example-donut-chart-utilization&quot;&gt;
+  &lt;span class=&quot;pct-donut-chart-pf-chart&quot;&gt;
+    &lt;span id=&quot;utilizationDonutChart12&quot;&gt;&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class=&quot;pct-donut-chart-pf-label&quot;&gt;
+    60 MHz of 100 MHz used
+  &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;example-donut-chart-utilization&quot;&gt;
+  &lt;span class=&quot;pct-donut-chart-pf pct-donut-chart-pf-left&quot;&gt;
+    &lt;span class=&quot;pct-donut-chart-pf-chart&quot;&gt;
+      &lt;span id=&quot;utilizationDonutChart13&quot;&gt;&lt;/span&gt;
+    &lt;/span&gt;
+    &lt;span class=&quot;pct-donut-chart-pf-label text-right&quot;&gt;
+      60 MHz of 100 MHz used
+    &lt;/span&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;example-donut-chart-utilization&quot;&gt;
+  &lt;span class=&quot;pct-donut-chart-pf pct-donut-chart-pf-right&quot;&gt;
+    &lt;span class=&quot;pct-donut-chart-pf-chart&quot;&gt;
+      &lt;span id=&quot;utilizationDonutChart14&quot;&gt;&lt;/span&gt;
+    &lt;/span&gt;
+    &lt;span class=&quot;pct-donut-chart-pf-label text-left&quot;&gt;
+      60 MHz of 100 MHz
+    &lt;/span&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+
 &lt;script&gt;
   var c3ChartDefaults = $().c3ChartDefaults();
-  var utilizationDonutChartConfig = c3ChartDefaults.getDefaultDonutConfig('A');
-  utilizationDonutChartConfig.bindto = '#utilizationDonutChart1';
-  utilizationDonutChartConfig.data = {
+
+  // Donut configuration 1
+  var donutConfig1 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig1.bindto = '#utilizationDonutChart11';
+  donutConfig1.data = {
+    type: &quot;donut&quot;,
+    columns: [
+      [&quot;Used&quot;, 60],
+      [&quot;Available&quot;, 40],
+    ],
+    groups: [
+      [&quot;used&quot;, &quot;available&quot;]
+    ],
+    order: null
+  };
+  donutConfig1.size = {
+    width: 180,
+    height: 180
+  };
+
+  donutConfig1.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig1);
+  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart11&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
+
+  // Donut configuration 2
+  var donutConfig2 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig2.bindto = '#utilizationDonutChart12';
+  donutConfig2.data = {
     type: &quot;donut&quot;,
     columns: [
       [&quot;Used&quot;, 60],
@@ -2119,16 +2912,71 @@
     ],
     order: null
   };
-  utilizationDonutChartConfig.size = {
-    width: 200,
-    height: 171
+  donutConfig2.size = {
+    width: 180,
+    height: 180
   };
 
-  utilizationDonutChartConfig.tooltip = {
+  donutConfig2.tooltip = {
     contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
   };
-  var utilizationDonutChart = c3.generate(utilizationDonutChartConfig);
-  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart1&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
+
+  c3.generate(donutConfig2);
+  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart12&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
+
+  // Donut configuration 3
+  var donutConfig3 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig3.bindto = '#utilizationDonutChart13';
+  donutConfig3.data = {
+    type: &quot;donut&quot;,
+    columns: [
+      [&quot;Used&quot;, 60],
+      [&quot;Available&quot;, 40]
+    ],
+    groups: [
+      [&quot;used&quot;, &quot;available&quot;]
+    ],
+    order: null
+  };
+  donutConfig3.size = {
+    width: 140,
+    height: 140
+  };
+
+  donutConfig3.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig3);
+  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart13&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
+
+  // Donut configuration 4
+  var donutConfig4 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig4.bindto = '#utilizationDonutChart14';
+  donutConfig4.data = {
+    type: &quot;donut&quot;,
+    columns: [
+      [&quot;Used&quot;, 60],
+      [&quot;Available&quot;, 40]
+    ],
+    groups: [
+      [&quot;used&quot;, &quot;available&quot;]
+    ],
+    order: null
+  };
+  donutConfig4.size = {
+    width: 140,
+    height: 140
+  };
+
+  donutConfig4.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig4);
+  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart14&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
 &lt;/script&gt;
 
         &lt;/div&gt;
@@ -2173,10 +3021,10 @@
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight10&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -2221,12 +3069,74 @@
       &lt;/div&gt;
       &lt;div class=&quot;row&quot;&gt;
         &lt;div class=&quot;col-md-3&quot;&gt;
-          &lt;div id=&quot;utilizationDonutChart2&quot; class=&quot;example-donut-chart-utilization&quot;&gt;&lt;/div&gt;
+          &lt;div id=&quot;utilizationDonutChart21&quot; class=&quot;example-donut-chart-utilization&quot;&gt;&lt;/div&gt;
+
+&lt;div class=&quot;pct-donut-chart-pf example-donut-chart-utilization&quot;&gt;
+  &lt;span class=&quot;pct-donut-chart-pf-chart&quot;&gt;
+    &lt;span id=&quot;utilizationDonutChart22&quot;&gt;&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class=&quot;pct-donut-chart-pf-label&quot;&gt;
+    60 MHz of 100 MHz used
+  &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;example-donut-chart-utilization&quot;&gt;
+  &lt;span class=&quot;pct-donut-chart-pf pct-donut-chart-pf-left&quot;&gt;
+    &lt;span class=&quot;pct-donut-chart-pf-chart&quot;&gt;
+      &lt;span id=&quot;utilizationDonutChart23&quot;&gt;&lt;/span&gt;
+    &lt;/span&gt;
+    &lt;span class=&quot;pct-donut-chart-pf-label text-right&quot;&gt;
+      60 MHz of 100 MHz used
+    &lt;/span&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;example-donut-chart-utilization&quot;&gt;
+  &lt;span class=&quot;pct-donut-chart-pf pct-donut-chart-pf-right&quot;&gt;
+    &lt;span class=&quot;pct-donut-chart-pf-chart&quot;&gt;
+      &lt;span id=&quot;utilizationDonutChart24&quot;&gt;&lt;/span&gt;
+    &lt;/span&gt;
+    &lt;span class=&quot;pct-donut-chart-pf-label text-left&quot;&gt;
+      60 MHz of 100 MHz
+    &lt;/span&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+
 &lt;script&gt;
   var c3ChartDefaults = $().c3ChartDefaults();
-  var utilizationDonutChartConfig = c3ChartDefaults.getDefaultDonutConfig('A');
-  utilizationDonutChartConfig.bindto = '#utilizationDonutChart2';
-  utilizationDonutChartConfig.data = {
+
+  // Donut configuration 1
+  var donutConfig1 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig1.bindto = '#utilizationDonutChart21';
+  donutConfig1.data = {
+    type: &quot;donut&quot;,
+    columns: [
+      [&quot;Used&quot;, 60],
+      [&quot;Available&quot;, 40],
+    ],
+    groups: [
+      [&quot;used&quot;, &quot;available&quot;]
+    ],
+    order: null
+  };
+  donutConfig1.size = {
+    width: 180,
+    height: 180
+  };
+
+  donutConfig1.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig1);
+  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart21&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
+
+  // Donut configuration 2
+  var donutConfig2 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig2.bindto = '#utilizationDonutChart22';
+  donutConfig2.data = {
     type: &quot;donut&quot;,
     columns: [
       [&quot;Used&quot;, 60],
@@ -2237,16 +3147,71 @@
     ],
     order: null
   };
-  utilizationDonutChartConfig.size = {
-    width: 200,
-    height: 171
+  donutConfig2.size = {
+    width: 180,
+    height: 180
   };
 
-  utilizationDonutChartConfig.tooltip = {
+  donutConfig2.tooltip = {
     contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
   };
-  var utilizationDonutChart = c3.generate(utilizationDonutChartConfig);
-  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart2&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
+
+  c3.generate(donutConfig2);
+  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart22&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
+
+  // Donut configuration 3
+  var donutConfig3 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig3.bindto = '#utilizationDonutChart23';
+  donutConfig3.data = {
+    type: &quot;donut&quot;,
+    columns: [
+      [&quot;Used&quot;, 60],
+      [&quot;Available&quot;, 40]
+    ],
+    groups: [
+      [&quot;used&quot;, &quot;available&quot;]
+    ],
+    order: null
+  };
+  donutConfig3.size = {
+    width: 140,
+    height: 140
+  };
+
+  donutConfig3.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig3);
+  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart23&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
+
+  // Donut configuration 4
+  var donutConfig4 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig4.bindto = '#utilizationDonutChart24';
+  donutConfig4.data = {
+    type: &quot;donut&quot;,
+    columns: [
+      [&quot;Used&quot;, 60],
+      [&quot;Available&quot;, 40]
+    ],
+    groups: [
+      [&quot;used&quot;, &quot;available&quot;]
+    ],
+    order: null
+  };
+  donutConfig4.size = {
+    width: 140,
+    height: 140
+  };
+
+  donutConfig4.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig4);
+  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart24&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
 &lt;/script&gt;
 
         &lt;/div&gt;
@@ -2291,10 +3256,10 @@
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight11&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -2339,12 +3304,74 @@
       &lt;/div&gt;
       &lt;div class=&quot;row&quot;&gt;
         &lt;div class=&quot;col-md-3&quot;&gt;
-          &lt;div id=&quot;utilizationDonutChart3&quot; class=&quot;example-donut-chart-utilization&quot;&gt;&lt;/div&gt;
+          &lt;div id=&quot;utilizationDonutChart31&quot; class=&quot;example-donut-chart-utilization&quot;&gt;&lt;/div&gt;
+
+&lt;div class=&quot;pct-donut-chart-pf example-donut-chart-utilization&quot;&gt;
+  &lt;span class=&quot;pct-donut-chart-pf-chart&quot;&gt;
+    &lt;span id=&quot;utilizationDonutChart32&quot;&gt;&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class=&quot;pct-donut-chart-pf-label&quot;&gt;
+    60 MHz of 100 MHz used
+  &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;example-donut-chart-utilization&quot;&gt;
+  &lt;span class=&quot;pct-donut-chart-pf pct-donut-chart-pf-left&quot;&gt;
+    &lt;span class=&quot;pct-donut-chart-pf-chart&quot;&gt;
+      &lt;span id=&quot;utilizationDonutChart33&quot;&gt;&lt;/span&gt;
+    &lt;/span&gt;
+    &lt;span class=&quot;pct-donut-chart-pf-label text-right&quot;&gt;
+      60 MHz of 100 MHz used
+    &lt;/span&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;example-donut-chart-utilization&quot;&gt;
+  &lt;span class=&quot;pct-donut-chart-pf pct-donut-chart-pf-right&quot;&gt;
+    &lt;span class=&quot;pct-donut-chart-pf-chart&quot;&gt;
+      &lt;span id=&quot;utilizationDonutChart34&quot;&gt;&lt;/span&gt;
+    &lt;/span&gt;
+    &lt;span class=&quot;pct-donut-chart-pf-label text-left&quot;&gt;
+      60 MHz of 100 MHz
+    &lt;/span&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+
 &lt;script&gt;
   var c3ChartDefaults = $().c3ChartDefaults();
-  var utilizationDonutChartConfig = c3ChartDefaults.getDefaultDonutConfig('A');
-  utilizationDonutChartConfig.bindto = '#utilizationDonutChart3';
-  utilizationDonutChartConfig.data = {
+
+  // Donut configuration 1
+  var donutConfig1 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig1.bindto = '#utilizationDonutChart31';
+  donutConfig1.data = {
+    type: &quot;donut&quot;,
+    columns: [
+      [&quot;Used&quot;, 60],
+      [&quot;Available&quot;, 40],
+    ],
+    groups: [
+      [&quot;used&quot;, &quot;available&quot;]
+    ],
+    order: null
+  };
+  donutConfig1.size = {
+    width: 180,
+    height: 180
+  };
+
+  donutConfig1.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig1);
+  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart31&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
+
+  // Donut configuration 2
+  var donutConfig2 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig2.bindto = '#utilizationDonutChart32';
+  donutConfig2.data = {
     type: &quot;donut&quot;,
     columns: [
       [&quot;Used&quot;, 60],
@@ -2355,16 +3382,71 @@
     ],
     order: null
   };
-  utilizationDonutChartConfig.size = {
-    width: 200,
-    height: 171
+  donutConfig2.size = {
+    width: 180,
+    height: 180
   };
 
-  utilizationDonutChartConfig.tooltip = {
+  donutConfig2.tooltip = {
     contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
   };
-  var utilizationDonutChart = c3.generate(utilizationDonutChartConfig);
-  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart3&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
+
+  c3.generate(donutConfig2);
+  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart32&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
+
+  // Donut configuration 3
+  var donutConfig3 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig3.bindto = '#utilizationDonutChart33';
+  donutConfig3.data = {
+    type: &quot;donut&quot;,
+    columns: [
+      [&quot;Used&quot;, 60],
+      [&quot;Available&quot;, 40]
+    ],
+    groups: [
+      [&quot;used&quot;, &quot;available&quot;]
+    ],
+    order: null
+  };
+  donutConfig3.size = {
+    width: 140,
+    height: 140
+  };
+
+  donutConfig3.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig3);
+  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart33&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
+
+  // Donut configuration 4
+  var donutConfig4 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig4.bindto = '#utilizationDonutChart34';
+  donutConfig4.data = {
+    type: &quot;donut&quot;,
+    columns: [
+      [&quot;Used&quot;, 60],
+      [&quot;Available&quot;, 40]
+    ],
+    groups: [
+      [&quot;used&quot;, &quot;available&quot;]
+    ],
+    order: null
+  };
+  donutConfig4.size = {
+    width: 140,
+    height: 140
+  };
+
+  donutConfig4.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig4);
+  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart34&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
 &lt;/script&gt;
 
         &lt;/div&gt;
@@ -2409,10 +3491,10 @@
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight12&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -2457,12 +3539,74 @@
       &lt;/div&gt;
       &lt;div class=&quot;row&quot;&gt;
         &lt;div class=&quot;col-md-3&quot;&gt;
-          &lt;div id=&quot;utilizationDonutChart4&quot; class=&quot;example-donut-chart-utilization&quot;&gt;&lt;/div&gt;
+          &lt;div id=&quot;utilizationDonutChart41&quot; class=&quot;example-donut-chart-utilization&quot;&gt;&lt;/div&gt;
+
+&lt;div class=&quot;pct-donut-chart-pf example-donut-chart-utilization&quot;&gt;
+  &lt;span class=&quot;pct-donut-chart-pf-chart&quot;&gt;
+    &lt;span id=&quot;utilizationDonutChart42&quot;&gt;&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class=&quot;pct-donut-chart-pf-label&quot;&gt;
+    60 MHz of 100 MHz used
+  &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;example-donut-chart-utilization&quot;&gt;
+  &lt;span class=&quot;pct-donut-chart-pf pct-donut-chart-pf-left&quot;&gt;
+    &lt;span class=&quot;pct-donut-chart-pf-chart&quot;&gt;
+      &lt;span id=&quot;utilizationDonutChart43&quot;&gt;&lt;/span&gt;
+    &lt;/span&gt;
+    &lt;span class=&quot;pct-donut-chart-pf-label text-right&quot;&gt;
+      60 MHz of 100 MHz used
+    &lt;/span&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;example-donut-chart-utilization&quot;&gt;
+  &lt;span class=&quot;pct-donut-chart-pf pct-donut-chart-pf-right&quot;&gt;
+    &lt;span class=&quot;pct-donut-chart-pf-chart&quot;&gt;
+      &lt;span id=&quot;utilizationDonutChart44&quot;&gt;&lt;/span&gt;
+    &lt;/span&gt;
+    &lt;span class=&quot;pct-donut-chart-pf-label text-left&quot;&gt;
+      60 MHz of 100 MHz
+    &lt;/span&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+
 &lt;script&gt;
   var c3ChartDefaults = $().c3ChartDefaults();
-  var utilizationDonutChartConfig = c3ChartDefaults.getDefaultDonutConfig('A');
-  utilizationDonutChartConfig.bindto = '#utilizationDonutChart4';
-  utilizationDonutChartConfig.data = {
+
+  // Donut configuration 1
+  var donutConfig1 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig1.bindto = '#utilizationDonutChart41';
+  donutConfig1.data = {
+    type: &quot;donut&quot;,
+    columns: [
+      [&quot;Used&quot;, 60],
+      [&quot;Available&quot;, 40],
+    ],
+    groups: [
+      [&quot;used&quot;, &quot;available&quot;]
+    ],
+    order: null
+  };
+  donutConfig1.size = {
+    width: 180,
+    height: 180
+  };
+
+  donutConfig1.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig1);
+  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart41&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
+
+  // Donut configuration 2
+  var donutConfig2 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig2.bindto = '#utilizationDonutChart42';
+  donutConfig2.data = {
     type: &quot;donut&quot;,
     columns: [
       [&quot;Used&quot;, 60],
@@ -2473,16 +3617,71 @@
     ],
     order: null
   };
-  utilizationDonutChartConfig.size = {
-    width: 200,
-    height: 171
+  donutConfig2.size = {
+    width: 180,
+    height: 180
   };
 
-  utilizationDonutChartConfig.tooltip = {
+  donutConfig2.tooltip = {
     contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
   };
-  var utilizationDonutChart = c3.generate(utilizationDonutChartConfig);
-  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart4&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
+
+  c3.generate(donutConfig2);
+  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart42&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
+
+  // Donut configuration 3
+  var donutConfig3 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig3.bindto = '#utilizationDonutChart43';
+  donutConfig3.data = {
+    type: &quot;donut&quot;,
+    columns: [
+      [&quot;Used&quot;, 60],
+      [&quot;Available&quot;, 40]
+    ],
+    groups: [
+      [&quot;used&quot;, &quot;available&quot;]
+    ],
+    order: null
+  };
+  donutConfig3.size = {
+    width: 140,
+    height: 140
+  };
+
+  donutConfig3.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig3);
+  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart43&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
+
+  // Donut configuration 4
+  var donutConfig4 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig4.bindto = '#utilizationDonutChart44';
+  donutConfig4.data = {
+    type: &quot;donut&quot;,
+    columns: [
+      [&quot;Used&quot;, 60],
+      [&quot;Available&quot;, 40]
+    ],
+    groups: [
+      [&quot;used&quot;, &quot;available&quot;]
+    ],
+    order: null
+  };
+  donutConfig4.size = {
+    width: 140,
+    height: 140
+  };
+
+  donutConfig4.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig4);
+  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart44&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
 &lt;/script&gt;
 
         &lt;/div&gt;
@@ -2527,10 +3726,10 @@
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight13&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -2575,12 +3774,74 @@
       &lt;/div&gt;
       &lt;div class=&quot;row&quot;&gt;
         &lt;div class=&quot;col-md-3&quot;&gt;
-          &lt;div id=&quot;utilizationDonutChart5&quot; class=&quot;example-donut-chart-utilization&quot;&gt;&lt;/div&gt;
+          &lt;div id=&quot;utilizationDonutChart51&quot; class=&quot;example-donut-chart-utilization&quot;&gt;&lt;/div&gt;
+
+&lt;div class=&quot;pct-donut-chart-pf example-donut-chart-utilization&quot;&gt;
+  &lt;span class=&quot;pct-donut-chart-pf-chart&quot;&gt;
+    &lt;span id=&quot;utilizationDonutChart52&quot;&gt;&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class=&quot;pct-donut-chart-pf-label&quot;&gt;
+    60 MHz of 100 MHz used
+  &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;example-donut-chart-utilization&quot;&gt;
+  &lt;span class=&quot;pct-donut-chart-pf pct-donut-chart-pf-left&quot;&gt;
+    &lt;span class=&quot;pct-donut-chart-pf-chart&quot;&gt;
+      &lt;span id=&quot;utilizationDonutChart53&quot;&gt;&lt;/span&gt;
+    &lt;/span&gt;
+    &lt;span class=&quot;pct-donut-chart-pf-label text-right&quot;&gt;
+      60 MHz of 100 MHz used
+    &lt;/span&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;example-donut-chart-utilization&quot;&gt;
+  &lt;span class=&quot;pct-donut-chart-pf pct-donut-chart-pf-right&quot;&gt;
+    &lt;span class=&quot;pct-donut-chart-pf-chart&quot;&gt;
+      &lt;span id=&quot;utilizationDonutChart54&quot;&gt;&lt;/span&gt;
+    &lt;/span&gt;
+    &lt;span class=&quot;pct-donut-chart-pf-label text-left&quot;&gt;
+      60 MHz of 100 MHz
+    &lt;/span&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+
 &lt;script&gt;
   var c3ChartDefaults = $().c3ChartDefaults();
-  var utilizationDonutChartConfig = c3ChartDefaults.getDefaultDonutConfig('A');
-  utilizationDonutChartConfig.bindto = '#utilizationDonutChart5';
-  utilizationDonutChartConfig.data = {
+
+  // Donut configuration 1
+  var donutConfig1 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig1.bindto = '#utilizationDonutChart51';
+  donutConfig1.data = {
+    type: &quot;donut&quot;,
+    columns: [
+      [&quot;Used&quot;, 60],
+      [&quot;Available&quot;, 40],
+    ],
+    groups: [
+      [&quot;used&quot;, &quot;available&quot;]
+    ],
+    order: null
+  };
+  donutConfig1.size = {
+    width: 180,
+    height: 180
+  };
+
+  donutConfig1.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig1);
+  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart51&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
+
+  // Donut configuration 2
+  var donutConfig2 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig2.bindto = '#utilizationDonutChart52';
+  donutConfig2.data = {
     type: &quot;donut&quot;,
     columns: [
       [&quot;Used&quot;, 60],
@@ -2591,16 +3852,71 @@
     ],
     order: null
   };
-  utilizationDonutChartConfig.size = {
-    width: 200,
-    height: 171
+  donutConfig2.size = {
+    width: 180,
+    height: 180
   };
 
-  utilizationDonutChartConfig.tooltip = {
+  donutConfig2.tooltip = {
     contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
   };
-  var utilizationDonutChart = c3.generate(utilizationDonutChartConfig);
-  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart5&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
+
+  c3.generate(donutConfig2);
+  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart52&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
+
+  // Donut configuration 3
+  var donutConfig3 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig3.bindto = '#utilizationDonutChart53';
+  donutConfig3.data = {
+    type: &quot;donut&quot;,
+    columns: [
+      [&quot;Used&quot;, 60],
+      [&quot;Available&quot;, 40]
+    ],
+    groups: [
+      [&quot;used&quot;, &quot;available&quot;]
+    ],
+    order: null
+  };
+  donutConfig3.size = {
+    width: 140,
+    height: 140
+  };
+
+  donutConfig3.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig3);
+  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart53&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
+
+  // Donut configuration 4
+  var donutConfig4 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig4.bindto = '#utilizationDonutChart54';
+  donutConfig4.data = {
+    type: &quot;donut&quot;,
+    columns: [
+      [&quot;Used&quot;, 60],
+      [&quot;Available&quot;, 40]
+    ],
+    groups: [
+      [&quot;used&quot;, &quot;available&quot;]
+    ],
+    order: null
+  };
+  donutConfig4.size = {
+    width: 140,
+    height: 140
+  };
+
+  donutConfig4.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig4);
+  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart54&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
 &lt;/script&gt;
 
         &lt;/div&gt;
@@ -2645,10 +3961,10 @@
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight14&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -2693,12 +4009,74 @@
       &lt;/div&gt;
       &lt;div class=&quot;row&quot;&gt;
         &lt;div class=&quot;col-md-3&quot;&gt;
-          &lt;div id=&quot;utilizationDonutChart6&quot; class=&quot;example-donut-chart-utilization&quot;&gt;&lt;/div&gt;
+          &lt;div id=&quot;utilizationDonutChart61&quot; class=&quot;example-donut-chart-utilization&quot;&gt;&lt;/div&gt;
+
+&lt;div class=&quot;pct-donut-chart-pf example-donut-chart-utilization&quot;&gt;
+  &lt;span class=&quot;pct-donut-chart-pf-chart&quot;&gt;
+    &lt;span id=&quot;utilizationDonutChart62&quot;&gt;&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class=&quot;pct-donut-chart-pf-label&quot;&gt;
+    60 MHz of 100 MHz used
+  &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;example-donut-chart-utilization&quot;&gt;
+  &lt;span class=&quot;pct-donut-chart-pf pct-donut-chart-pf-left&quot;&gt;
+    &lt;span class=&quot;pct-donut-chart-pf-chart&quot;&gt;
+      &lt;span id=&quot;utilizationDonutChart63&quot;&gt;&lt;/span&gt;
+    &lt;/span&gt;
+    &lt;span class=&quot;pct-donut-chart-pf-label text-right&quot;&gt;
+      60 MHz of 100 MHz used
+    &lt;/span&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;example-donut-chart-utilization&quot;&gt;
+  &lt;span class=&quot;pct-donut-chart-pf pct-donut-chart-pf-right&quot;&gt;
+    &lt;span class=&quot;pct-donut-chart-pf-chart&quot;&gt;
+      &lt;span id=&quot;utilizationDonutChart64&quot;&gt;&lt;/span&gt;
+    &lt;/span&gt;
+    &lt;span class=&quot;pct-donut-chart-pf-label text-left&quot;&gt;
+      60 MHz of 100 MHz
+    &lt;/span&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+
 &lt;script&gt;
   var c3ChartDefaults = $().c3ChartDefaults();
-  var utilizationDonutChartConfig = c3ChartDefaults.getDefaultDonutConfig('A');
-  utilizationDonutChartConfig.bindto = '#utilizationDonutChart6';
-  utilizationDonutChartConfig.data = {
+
+  // Donut configuration 1
+  var donutConfig1 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig1.bindto = '#utilizationDonutChart61';
+  donutConfig1.data = {
+    type: &quot;donut&quot;,
+    columns: [
+      [&quot;Used&quot;, 60],
+      [&quot;Available&quot;, 40],
+    ],
+    groups: [
+      [&quot;used&quot;, &quot;available&quot;]
+    ],
+    order: null
+  };
+  donutConfig1.size = {
+    width: 180,
+    height: 180
+  };
+
+  donutConfig1.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig1);
+  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart61&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
+
+  // Donut configuration 2
+  var donutConfig2 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig2.bindto = '#utilizationDonutChart62';
+  donutConfig2.data = {
     type: &quot;donut&quot;,
     columns: [
       [&quot;Used&quot;, 60],
@@ -2709,16 +4087,71 @@
     ],
     order: null
   };
-  utilizationDonutChartConfig.size = {
-    width: 200,
-    height: 171
+  donutConfig2.size = {
+    width: 180,
+    height: 180
   };
 
-  utilizationDonutChartConfig.tooltip = {
+  donutConfig2.tooltip = {
     contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
   };
-  var utilizationDonutChart = c3.generate(utilizationDonutChartConfig);
-  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart6&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
+
+  c3.generate(donutConfig2);
+  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart62&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
+
+  // Donut configuration 3
+  var donutConfig3 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig3.bindto = '#utilizationDonutChart63';
+  donutConfig3.data = {
+    type: &quot;donut&quot;,
+    columns: [
+      [&quot;Used&quot;, 60],
+      [&quot;Available&quot;, 40]
+    ],
+    groups: [
+      [&quot;used&quot;, &quot;available&quot;]
+    ],
+    order: null
+  };
+  donutConfig3.size = {
+    width: 140,
+    height: 140
+  };
+
+  donutConfig3.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig3);
+  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart63&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
+
+  // Donut configuration 4
+  var donutConfig4 = c3ChartDefaults.getDefaultDonutConfig('A');
+
+  donutConfig4.bindto = '#utilizationDonutChart64';
+  donutConfig4.data = {
+    type: &quot;donut&quot;,
+    columns: [
+      [&quot;Used&quot;, 60],
+      [&quot;Available&quot;, 40]
+    ],
+    groups: [
+      [&quot;used&quot;, &quot;available&quot;]
+    ],
+    order: null
+  };
+  donutConfig4.size = {
+    width: 140,
+    height: 140
+  };
+
+  donutConfig4.tooltip = {
+    contents: $().pfGetUtilizationDonutTooltipContentsFn('MHz')
+  };
+
+  c3.generate(donutConfig4);
+  $().pfSetDonutChartTitle(&quot;#utilizationDonutChart64&quot;, &quot;60&quot;, &quot;MHz Used&quot;);
 &lt;/script&gt;
 
         &lt;/div&gt;
@@ -2806,10 +4239,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight1">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -3040,10 +4473,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight2">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -3274,10 +4707,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight3">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -3508,10 +4941,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight4">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -3742,10 +5175,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight5">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -3976,10 +5409,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight6">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -4278,10 +5711,10 @@
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight1&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -4512,10 +5945,10 @@
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight2&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -4746,10 +6179,10 @@
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight3&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -4980,10 +6413,10 @@
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight4&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -5214,10 +6647,10 @@
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight5&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -5448,10 +6881,10 @@
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight6&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -5750,10 +7183,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -5825,10 +7258,10 @@
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -5898,10 +7331,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight15">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -6042,10 +7475,10 @@
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight15&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -6186,10 +7619,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight2">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -6250,10 +7683,10 @@
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight2&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -6318,10 +7751,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight3">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -6384,10 +7817,10 @@
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight3&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -6804,10 +8237,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight4">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -6875,10 +8308,10 @@
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight4&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -6932,7 +8365,7 @@
             <div role="tabpanel" class="tab-pane nested" id="angular">
               <div ng-app="docsApp" ng-controller="DocsController" class="content">
                 
-                  <div ng-include src="'/patternfly-org/components/angular-patternfly/dist/docs/partials/api/patternfly.views.directive.pfListView.html'"></div>
+                  <div ng-include src="'/patternfly-org/components/angular-patternfly/dist/docs/partials/api/patternfly.views.component.pfListView.html'"></div>
                 
                 <!-- % include  % -->
               </div>

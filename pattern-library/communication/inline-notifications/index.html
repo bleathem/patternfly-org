@@ -55,7 +55,7 @@
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/grunt-scripts/angular-bootstrap-prettify.js"></script>
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/grunt-scripts/lodash.min.js"></script>
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/grunt-scripts/angular-patternfly.js"></script>
-  <script src="/patternfly-org/components/angular-patternfly/dist/docs/grunt-scripts/patternfly.js"></script>
+  <script src="/patternfly-org/components/patternfly/dist/js/patternfly.js"></script>
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/js/angular-bootstrap.js"></script>
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/js/docs-setup.js"></script>
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/js/docs.js"></script>
@@ -225,7 +225,13 @@
       <a href="/patternfly-org/pattern-library/communication/about-modal">About Modal</a>
     </li>
     <li >
+      <a href="/patternfly-org/pattern-library/communication/comments">Comments</a>
+    </li>
+    <li >
       <a href="/patternfly-org/pattern-library/communication/empty-state">Empty State</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/pattern-library/communication/experimental-features">Experimental Features</a>
     </li>
     <li  class="active">
       <a href="/patternfly-org/pattern-library/communication/inline-notifications">Inline Notifications</a>
@@ -265,6 +271,9 @@
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/content-views/table-view">Table View</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/pattern-library/content-views/tree-list-view">Tree List View</a>
     </li>
   </ul>
 </li>
@@ -366,16 +375,13 @@
       <a href="/patternfly-org/pattern-library/forms-and-controls/find">Find</a>
     </li>
     <li >
-      <a href="/patternfly-org/pattern-library/forms-and-controls/forms">Forms</a>
-    </li>
-    <li >
       <a href="/patternfly-org/pattern-library/forms-and-controls/inline-edit">Inline Edit</a>
     </li>
     <li >
-      <a href="/patternfly-org/pattern-library/forms-and-controls/input-controls">Input Controls</a>
+      <a href="/patternfly-org/pattern-library/forms-and-controls/language-selector">Language Selector</a>
     </li>
     <li >
-      <a href="/patternfly-org/pattern-library/forms-and-controls/language-selector">Language Selector</a>
+      <a href="/patternfly-org/pattern-library/forms-and-controls/modal-overlay">Modal Overlay</a>
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/forms-and-controls/progressive-disclosure">Progressive Disclosure</a>
@@ -403,6 +409,9 @@
       id="navigation-secondary">
     <li >
       <a href="/patternfly-org/pattern-library/navigation/breadcrumbs">Breadcrumbs</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/pattern-library/navigation/context-selector">Context Selector</a>
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/navigation/guidelines">Guidelines</a>
@@ -761,7 +770,7 @@
             <div role="tabpanel" class="tab-pane nested" id="angular">
               <div ng-app="docsApp" ng-controller="DocsController" class="content">
                 
-                  <div ng-include src="'/patternfly-org/components/angular-patternfly/dist/docs/partials/api/patternfly.notification.directive.pfInlineNotification.html'"></div>
+                  <div ng-include src="'/patternfly-org/components/angular-patternfly/dist/docs/partials/api/patternfly.notification.component.pfInlineNotification.html'"></div>
                 
                 <!-- % include  % -->
               </div>

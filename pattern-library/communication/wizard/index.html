@@ -55,7 +55,7 @@
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/grunt-scripts/angular-bootstrap-prettify.js"></script>
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/grunt-scripts/lodash.min.js"></script>
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/grunt-scripts/angular-patternfly.js"></script>
-  <script src="/patternfly-org/components/angular-patternfly/dist/docs/grunt-scripts/patternfly.js"></script>
+  <script src="/patternfly-org/components/patternfly/dist/js/patternfly.js"></script>
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/js/angular-bootstrap.js"></script>
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/js/docs-setup.js"></script>
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/js/docs.js"></script>
@@ -225,7 +225,13 @@
       <a href="/patternfly-org/pattern-library/communication/about-modal">About Modal</a>
     </li>
     <li >
+      <a href="/patternfly-org/pattern-library/communication/comments">Comments</a>
+    </li>
+    <li >
       <a href="/patternfly-org/pattern-library/communication/empty-state">Empty State</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/pattern-library/communication/experimental-features">Experimental Features</a>
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/communication/inline-notifications">Inline Notifications</a>
@@ -265,6 +271,9 @@
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/content-views/table-view">Table View</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/pattern-library/content-views/tree-list-view">Tree List View</a>
     </li>
   </ul>
 </li>
@@ -366,16 +375,13 @@
       <a href="/patternfly-org/pattern-library/forms-and-controls/find">Find</a>
     </li>
     <li >
-      <a href="/patternfly-org/pattern-library/forms-and-controls/forms">Forms</a>
-    </li>
-    <li >
       <a href="/patternfly-org/pattern-library/forms-and-controls/inline-edit">Inline Edit</a>
     </li>
     <li >
-      <a href="/patternfly-org/pattern-library/forms-and-controls/input-controls">Input Controls</a>
+      <a href="/patternfly-org/pattern-library/forms-and-controls/language-selector">Language Selector</a>
     </li>
     <li >
-      <a href="/patternfly-org/pattern-library/forms-and-controls/language-selector">Language Selector</a>
+      <a href="/patternfly-org/pattern-library/forms-and-controls/modal-overlay">Modal Overlay</a>
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/forms-and-controls/progressive-disclosure">Progressive Disclosure</a>
@@ -403,6 +409,9 @@
       id="navigation-secondary">
     <li >
       <a href="/patternfly-org/pattern-library/navigation/breadcrumbs">Breadcrumbs</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/pattern-library/navigation/context-selector">Context Selector</a>
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/navigation/guidelines">Guidelines</a>
@@ -582,9 +591,16 @@
           
           <h1 id="wizard">Wizard</h1>
 
-<p>Wizards should be used when the user needs to go through a sequential set of steps to complete a task. A wizard is a good way to break a complex task into sub-tasks that can be more readily understood and completed. More complex wizards can have branching which takes the user to a different step depending on their settings/answers to previous questions.</p>
+<p>Wizards should be used when the user needs to go through a sequential set of steps to complete a task. A wizard is a good way to break a complex task into sub-tasks that can be more readily understood and completed. More complex wizards can have branching which takes the user to a different step depending on their settings/answers to previous questions. Wizards may appear as a modal, or be embedded in a page.</p>
 
+<h2 id="modal-wizard">Modal Wizard</h2>
 <p><img src="img/wizard-flow-example.png" alt="Wizard example image" /></p>
+
+<h2 id="embedded-wizard">Embedded Wizard</h2>
+<p><img src="img/embedded-wizard.png" alt="Embedded wizard example" /></p>
+
+<h2 id="wizard-mobile-view">Wizard Mobile View</h2>
+<p><img src="img/responsive-wizard.png" alt="Responsive wizard example" /></p>
 
         </div>
         <div role="tabpanel" class="tab-pane" id="design">
@@ -611,6 +627,8 @@
   <li><strong>Button Bar:</strong> The button bar provides the appropriate action buttons, these are usually a combination of Cancel, Back, Next and Finish. The exact wording on the Finish button can be adjusted to be more reflective of the completion action appropriate to what the user will be doing. The Back button should always be enabled except for the first step. The Next button should become enabled once all required information has been entered for the current step and/or sub-step. The Next button will move the user through any sub-steps before it moves the user to the next main step. The Back button will also behave the same way. In some cases the completion action button will close the dialog, in others, it views progress in the wizard, and ends up changing the label of that button.
 In the example above, the back button is disabled since this shows the first sub step within the first step.</li>
 </ol>
+
+<p><strong>Usage Note:</strong> Main step and sub-step names should be kept as short and descriptive as possible. Preferably only one or two words.</p>
 
 <h2 id="next-step">Next Step</h2>
 
@@ -640,19 +658,69 @@ In the example above, the back button is disabled since this shows the first sub
   <li><strong>Completion Button:</strong> The wording on the completion button can change once processing of the content in the wizard is complete. This may be Close or some other word that makes sense for the particular use case. If the user has the option to go back and make alterations and resubmit the process, then the Back button should be enabled.</li>
 </ol>
 
-<h3 id="whats-not-covered-in-the-current-design-but-will-be-covered-in-future-sprints">What’s not covered in the current design but will be covered in future sprints:</h3>
+<h2 id="embedded-wizard">Embedded Wizard</h2>
 
-<p>The following functionality is not covered in this pattern:</p>
+<p>Embedded wizards should be used when the user must fill out the wizard in order to take any further action in the application. Examples of this include…</p>
+<ul>
+  <li>A new user sign up flow</li>
+  <li>A checkout flow that concludes interaction with the application when finished</li>
+  <li>A system setup flow that takes place before the user can enter the application</li>
+</ul>
+
+<p>Modal wizards should be used when the task is non-necessary or is one of several possible actions that the user could take. Examples of this include…</p>
+<ul>
+  <li>Purchasing add-ons for an already running system</li>
+  <li>Making a new project when the user already has several</li>
+  <li>As an administrator, creating one of several user profiles for use by other people</li>
+</ul>
+
+<p><img src="img/embedded-wizard-callout.png" alt="Embedded wizard" /></p>
+
+<p><strong>Differences from Modal Wizards</strong> Embedded wizards follow the same guidelines as modal wizards, with a few exceptions.</p>
+<ol>
+  <li><strong>Button Bar:</strong> In an embedded wizard, the action buttons are placed in the bottom left corner as they would be in a <a href="/pattern-library/forms-and-controls/buttons-on-forms/#full-page-forms">Full Page Form</a>. The button bar should be fixed to the bottom of wizard page.</li>
+  <li><strong>Breadcrumbs:</strong> If the user has come from somewhere where they may want to return, such as the main body of an application rather than an external site or login page, breadcrumbs should be available above the wizard title</li>
+</ol>
+
+<h2 id="responsive-states">Responsive States</h2>
+
+<h3 id="mobile-wizard">Mobile Wizard</h3>
+<p><img src="img/responsive-wizard-callout1.png" alt="Collapsed responsive wizard" /></p>
+
+<ol>
+  <li><strong>Current Main Step:</strong> The currently active main step is displayed at the top of the form along with the step number</li>
+  <li><strong>Current Sub-step</strong> (Optional)<strong>:</strong> If the current main step has sub-steps, the name of the sub-step appears next to it at the top of the page. If the main and sub-step names are long enough that <a href="/styles/terminology-and-wording/#truncation">truncation</a> is required, the sub-step name should be truncated before the main step name unless the sub-step name is critical to filling in the form.</li>
+  <li><strong>Steps Dropdown:</strong> Clicking on this dropdown reveals all steps in the wizard and enables users to switch between them if applicable</li>
+  <li><strong>Button Bar:</strong> Wizard actions are available on the button bar, which is fixed at the bottom of the page for embedded wizards and modals wizards except for in smaller screen sizes, which requires the user to scroll the page for the button bar.</li>
+</ol>
+
+<p><img src="img/responsive-wizard-callout2.png" alt="Expanded responsive wizard" /></p>
+
+<ol>
+  <li><strong>Main Steps:</strong> Main wizard steps are shown vertically when the steps dropdown is expanded. Clicking on a different step will display its sub-steps, or switch to it if it does not have any sub-steps.</li>
+  <li><strong>Sub-steps for the Selected Main Step</strong> (Optional)<strong>:</strong> Clicking on a sub-step will switch to that sub-step. The current sub-step is highlighted.</li>
+</ol>
+
+<h3 id="simplified-mobile-wizard">Simplified Mobile Wizard</h3>
+<p>If an application does not require the ability to switch between or view all steps from mobile devices, a simplified version of the wizard without a dropdown can be used instead.</p>
+
+<p><img src="img/responsive-wizard-callout3.png" alt="Simplified responsive wizard" /></p>
+
+<ol>
+  <li><strong>Current Main Step:</strong> The currently active main step is displayed at the top of the form along with the step number</li>
+  <li><strong>Current Sub-step</strong> (Optional)<strong>:</strong> If the current main step has sub-steps, the name of the sub-step appears next to it at the top of the page.</li>
+</ol>
+
+<h3 id="whats-not-covered-in-the-current-design">What’s not covered in the current design</h3>
+
+<p>The following functionality is not covered in this pattern but will be covered in future iterations:</p>
 
 <ol>
   <li>In certain cases, the wizard will need to show step by step progress. This functionality is not covered.</li>
   <li>In some cases, it may be advantageous to the user to be able to jump to the review page without having completed previous steps.</li>
   <li>For more complex and time-consuming tasks, a wizard can have an optional save to let the user leave the wizard and return later. Some considerations for this feature are auto-saving and what happens if a session times out.</li>
   <li>For more complex wizards, there may be more steps or text than can be shown on the screen at one time. This pattern does not address the scalability of the main step bar.</li>
-  <li>Wizards can be shown in modal dialogs or embedded on the main page. This pattern only address modal dialog implementations. Embedded wizards may need different design considerations such as location of buttons on the button bar and how Back and Next might work.</li>
 </ol>
-
-<p>These requirements will be added to the pattern at a later date.</p>
 
           
         </div>
@@ -682,14 +750,30 @@ In the example above, the back button is disabled since this shows the first sub
       <div class="modal-body wizard-pf-body clearfix">
         <div class="wizard-pf-steps hidden">
           <ul class="wizard-pf-steps-indicator">
+
             <li class="wizard-pf-step active" data-tabgroup="1">
-              <a><span class="wizard-pf-step-number">1</span><span class="wizard-pf-step-title">First Step</span></a>
+              <a><span class="wizard-pf-step-number">1</span><span class="wizard-pf-step-title">First Step</span>
+                <span class="wizard-pf-step-title-substep active">details</span>
+                <span class="wizard-pf-step-title-substep">settings</span>
+              </a>
             </li>
+
             <li class="wizard-pf-step" data-tabgroup="2">
-              <a><span class="wizard-pf-step-number">2</span><span class="wizard-pf-step-title">Second Step</span></a>
+              <a>
+                <span class="wizard-pf-step-number">2</span>
+                <span class="wizard-pf-step-title">Second Step</span>
+                <span class="wizard-pf-step-title-substep">details</span>
+                <span class="wizard-pf-step-title-substep">settings</span>
+              </a>
             </li>
+
             <li class="wizard-pf-step" data-tabgroup="3">
-              <a><span class="wizard-pf-step-number">3</span><span class="wizard-pf-step-title">Review</span></a>
+              <a>
+                <span class="wizard-pf-step-number">3</span>
+                <span class="wizard-pf-step-title">Review</span>
+                <span class="wizard-pf-step-title-substep">summary</span>
+                <span class="wizard-pf-step-title-substep">progress</span>
+              </a>
             </li>
           </ul>
         </div>
@@ -961,8 +1045,7 @@ In the example above, the back button is disabled since this shows the first sub
 
       // open modal
       $(self.modal).modal('show');
-      // adjust height of contents row (while steps and sidebar are hidden and loading message displays)
-      self.updateWizardLayout();
+
 
       // assign data attribute to all tabs
       $(self.modal + " .wizard-pf-sidebar .list-group-item").each(function() {
@@ -975,6 +1058,19 @@ In the example above, the back button is disabled since this shows the first sub
           // set the value equal to the index of the tab group
           $(this).attr("data-tabgroup", ($(this).index() +1));
       });
+
+      // assign data attribute to all step indicator steps
+      $(self.modal + " .wizard-pf-steps-indicator  .wizard-pf-step").each(function() {
+        // set the value equal to the index of the tab group
+        $(this).attr("data-tabgroup", ($(this).index() +1));
+      });
+      // assign data attribute to all step indicator substeps
+      $(self.modal + " .wizard-pf-steps-indicator .wizard-pf-step-title-substep").each(function() {
+        // set the first digit (i.e. n.0) equal to the index of the parent tab group
+        // set the second digit (i.e. 0.n) equal to the index of the tab within the tab group
+        $(this).attr("data-tab", ($(this).parent().parent().index() + 1 + (($(this).index() - 2)/10 + .1)));
+      });
+
 
       // create array of all tabs, using the data attribute, and determine the last tab
       self.tabs = $(self.modal + " .wizard-pf-sidebar .list-group-item" ).map(function()
@@ -999,8 +1095,7 @@ In the example above, the back button is disabled since this shows the first sub
       $(self.modal + " .wizard-pf-sidebar .list-group-item.active").removeClass("active");
       // apply active class to new current tab and associated contents
       self.updateActiveTab();
-      // adjust height of contents row (while steps and sidebar and tab contents are visible)
-      self.updateWizardLayout();
+
       self.updateWizardFooterDisplay();
 
       //initialize click listeners
@@ -1011,9 +1106,7 @@ In the example above, the back button is disabled since this shows the first sub
       self.finishBtnClick();
       self.cancelBtnClick();
 
-      $( window ).resize(function() {
-        self.updateWizardLayout();
-      });
+
     };
 
     // update which tab group is active
@@ -1027,6 +1120,11 @@ In the example above, the back button is disabled since this shows the first sub
     // update which tab is active
     this.updateActiveTab = function() {
       $(self.modal + " .list-group-item[data-tab='" + self.currentTab + "']").addClass("active");
+
+      // Update steps indicator to handle mobile mode
+      $(self.modal + " .wizard-pf-steps-indicator .wizard-pf-step-title-substep").removeClass("active");
+      $(self.modal + " .wizard-pf-steps-indicator .wizard-pf-step-title-substep[data-tab='" + self.currentTab + "']").addClass("active");
+
       self.updateVisibleContents();
     };
 
@@ -1062,20 +1160,12 @@ In the example above, the back button is disabled since this shows the first sub
 
     // update display state of buttons in the footer
     this.updateWizardFooterDisplay = function() {
-      $(self.modal + " .wizard-pf-footer .disabled").removeClass("disabled")
+      $(self.modal + " .wizard-pf-footer .disabled").removeClass("disabled");
       self.updateBackBtnDisplay();
       self.updateNextBtnDisplay();
     };
 
-    // adjust layout of panels in wizard
-    this.updateWizardLayout = function() {
-      var top = ($(self.modal + " .modal-header").outerHeight() + $(self.modal + " .wizard-pf-steps").outerHeight()) + "px",
-          bottom = $(self.modal + " .modal-footer").outerHeight() + "px",
-          sidebarwidth = $(self.modal + " .wizard-pf-sidebar").outerWidth() + "px";
-      $(self.modal + " .wizard-pf-row").css("top", top);
-      $(self.modal + " .wizard-pf-row").css("bottom", bottom);
-      $(self.modal + " .wizard-pf-main").css("margin-left", sidebarwidth);
-    };
+
 
     // when the user clicks a step, then the tab group for that step is displayed
     this.tabGroupSelect = function() {
@@ -1225,6 +1315,7 @@ In the example above, the back button is disabled since this shows the first sub
   };
 
 </script>
+
 <p class="reference-markup"><a class="collapse-toggle" data-toggle="collapse" aria-expanded="true" aria-controls="markup-1" href="#markup-1">Reference Markup</a></p>
 <div class="collapse in" id="markup-1">
   <pre class="prettyprint">&lt;button class=&quot;btn btn-default wizard-pf-open wizard-pf-complete&quot; data-target=&quot;#complete&quot;&gt;Launch wizard&lt;/button&gt;
@@ -1239,14 +1330,30 @@ In the example above, the back button is disabled since this shows the first sub
       &lt;div class=&quot;modal-body wizard-pf-body clearfix&quot;&gt;
         &lt;div class=&quot;wizard-pf-steps hidden&quot;&gt;
           &lt;ul class=&quot;wizard-pf-steps-indicator&quot;&gt;
+
             &lt;li class=&quot;wizard-pf-step active&quot; data-tabgroup=&quot;1&quot;&gt;
-              &lt;a&gt;&lt;span class=&quot;wizard-pf-step-number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;wizard-pf-step-title&quot;&gt;First Step&lt;/span&gt;&lt;/a&gt;
+              &lt;a&gt;&lt;span class=&quot;wizard-pf-step-number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;wizard-pf-step-title&quot;&gt;First Step&lt;/span&gt;
+                &lt;span class=&quot;wizard-pf-step-title-substep active&quot;&gt;details&lt;/span&gt;
+                &lt;span class=&quot;wizard-pf-step-title-substep&quot;&gt;settings&lt;/span&gt;
+              &lt;/a&gt;
             &lt;/li&gt;
+
             &lt;li class=&quot;wizard-pf-step&quot; data-tabgroup=&quot;2&quot;&gt;
-              &lt;a&gt;&lt;span class=&quot;wizard-pf-step-number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;wizard-pf-step-title&quot;&gt;Second Step&lt;/span&gt;&lt;/a&gt;
+              &lt;a&gt;
+                &lt;span class=&quot;wizard-pf-step-number&quot;&gt;2&lt;/span&gt;
+                &lt;span class=&quot;wizard-pf-step-title&quot;&gt;Second Step&lt;/span&gt;
+                &lt;span class=&quot;wizard-pf-step-title-substep&quot;&gt;details&lt;/span&gt;
+                &lt;span class=&quot;wizard-pf-step-title-substep&quot;&gt;settings&lt;/span&gt;
+              &lt;/a&gt;
             &lt;/li&gt;
+
             &lt;li class=&quot;wizard-pf-step&quot; data-tabgroup=&quot;3&quot;&gt;
-              &lt;a&gt;&lt;span class=&quot;wizard-pf-step-number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;wizard-pf-step-title&quot;&gt;Review&lt;/span&gt;&lt;/a&gt;
+              &lt;a&gt;
+                &lt;span class=&quot;wizard-pf-step-number&quot;&gt;3&lt;/span&gt;
+                &lt;span class=&quot;wizard-pf-step-title&quot;&gt;Review&lt;/span&gt;
+                &lt;span class=&quot;wizard-pf-step-title-substep&quot;&gt;summary&lt;/span&gt;
+                &lt;span class=&quot;wizard-pf-step-title-substep&quot;&gt;progress&lt;/span&gt;
+              &lt;/a&gt;
             &lt;/li&gt;
           &lt;/ul&gt;
         &lt;/div&gt;
@@ -1518,8 +1625,7 @@ In the example above, the back button is disabled since this shows the first sub
 
       // open modal
       $(self.modal).modal('show');
-      // adjust height of contents row (while steps and sidebar are hidden and loading message displays)
-      self.updateWizardLayout();
+
 
       // assign data attribute to all tabs
       $(self.modal + &quot; .wizard-pf-sidebar .list-group-item&quot;).each(function() {
@@ -1532,6 +1638,19 @@ In the example above, the back button is disabled since this shows the first sub
           // set the value equal to the index of the tab group
           $(this).attr(&quot;data-tabgroup&quot;, ($(this).index() +1));
       });
+
+      // assign data attribute to all step indicator steps
+      $(self.modal + &quot; .wizard-pf-steps-indicator  .wizard-pf-step&quot;).each(function() {
+        // set the value equal to the index of the tab group
+        $(this).attr(&quot;data-tabgroup&quot;, ($(this).index() +1));
+      });
+      // assign data attribute to all step indicator substeps
+      $(self.modal + &quot; .wizard-pf-steps-indicator .wizard-pf-step-title-substep&quot;).each(function() {
+        // set the first digit (i.e. n.0) equal to the index of the parent tab group
+        // set the second digit (i.e. 0.n) equal to the index of the tab within the tab group
+        $(this).attr(&quot;data-tab&quot;, ($(this).parent().parent().index() + 1 + (($(this).index() - 2)/10 + .1)));
+      });
+
 
       // create array of all tabs, using the data attribute, and determine the last tab
       self.tabs = $(self.modal + &quot; .wizard-pf-sidebar .list-group-item&quot; ).map(function()
@@ -1556,8 +1675,7 @@ In the example above, the back button is disabled since this shows the first sub
       $(self.modal + &quot; .wizard-pf-sidebar .list-group-item.active&quot;).removeClass(&quot;active&quot;);
       // apply active class to new current tab and associated contents
       self.updateActiveTab();
-      // adjust height of contents row (while steps and sidebar and tab contents are visible)
-      self.updateWizardLayout();
+
       self.updateWizardFooterDisplay();
 
       //initialize click listeners
@@ -1568,9 +1686,7 @@ In the example above, the back button is disabled since this shows the first sub
       self.finishBtnClick();
       self.cancelBtnClick();
 
-      $( window ).resize(function() {
-        self.updateWizardLayout();
-      });
+
     };
 
     // update which tab group is active
@@ -1584,6 +1700,11 @@ In the example above, the back button is disabled since this shows the first sub
     // update which tab is active
     this.updateActiveTab = function() {
       $(self.modal + &quot; .list-group-item[data-tab='&quot; + self.currentTab + &quot;']&quot;).addClass(&quot;active&quot;);
+
+      // Update steps indicator to handle mobile mode
+      $(self.modal + &quot; .wizard-pf-steps-indicator .wizard-pf-step-title-substep&quot;).removeClass(&quot;active&quot;);
+      $(self.modal + &quot; .wizard-pf-steps-indicator .wizard-pf-step-title-substep[data-tab='&quot; + self.currentTab + &quot;']&quot;).addClass(&quot;active&quot;);
+
       self.updateVisibleContents();
     };
 
@@ -1619,20 +1740,12 @@ In the example above, the back button is disabled since this shows the first sub
 
     // update display state of buttons in the footer
     this.updateWizardFooterDisplay = function() {
-      $(self.modal + &quot; .wizard-pf-footer .disabled&quot;).removeClass(&quot;disabled&quot;)
+      $(self.modal + &quot; .wizard-pf-footer .disabled&quot;).removeClass(&quot;disabled&quot;);
       self.updateBackBtnDisplay();
       self.updateNextBtnDisplay();
     };
 
-    // adjust layout of panels in wizard
-    this.updateWizardLayout = function() {
-      var top = ($(self.modal + &quot; .modal-header&quot;).outerHeight() + $(self.modal + &quot; .wizard-pf-steps&quot;).outerHeight()) + &quot;px&quot;,
-          bottom = $(self.modal + &quot; .modal-footer&quot;).outerHeight() + &quot;px&quot;,
-          sidebarwidth = $(self.modal + &quot; .wizard-pf-sidebar&quot;).outerWidth() + &quot;px&quot;;
-      $(self.modal + &quot; .wizard-pf-row&quot;).css(&quot;top&quot;, top);
-      $(self.modal + &quot; .wizard-pf-row&quot;).css(&quot;bottom&quot;, bottom);
-      $(self.modal + &quot; .wizard-pf-main&quot;).css(&quot;margin-left&quot;, sidebarwidth);
-    };
+
 
     // when the user clicks a step, then the tab group for that step is displayed
     this.tabGroupSelect = function() {
@@ -1781,7 +1894,8 @@ In the example above, the back button is disabled since this shows the first sub
 
   };
 
-&lt;/script&gt;</pre>
+&lt;/script&gt;
+</pre>
 </div>
 </div>
 <div role="tabpanel" class="tab-pane nested" id="angular">
@@ -1794,7 +1908,7 @@ In the example above, the back button is disabled since this shows the first sub
             <div role="tabpanel" class="tab-pane nested" id="angular">
               <div ng-app="docsApp" ng-controller="DocsController" class="content">
                 
-                  <div ng-include src="'/patternfly-org/components/angular-patternfly/dist/docs/partials/api/patternfly.wizard.directive.pfWizard.html'"></div>
+                  <div ng-include src="'/patternfly-org/components/angular-patternfly/dist/docs/partials/api/patternfly.wizard.component.pfWizard.html'"></div>
                 
                 <!-- % include  % -->
               </div>

@@ -55,11 +55,23 @@
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/grunt-scripts/angular-bootstrap-prettify.js"></script>
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/grunt-scripts/lodash.min.js"></script>
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/grunt-scripts/angular-patternfly.js"></script>
-  <script src="/patternfly-org/components/angular-patternfly/dist/docs/grunt-scripts/patternfly.js"></script>
+  <script src="/patternfly-org/components/patternfly/dist/js/patternfly.js"></script>
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/js/angular-bootstrap.js"></script>
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/js/docs-setup.js"></script>
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/js/docs.js"></script>
   <script src="/patternfly-org/ngdocs/formatForPFsite.js"></script>
+  
+    
+      
+      
+        <script src="/patternfly-org/components/angular-patternfly/dist/docs/grunt-scripts/angular-datatables.js"></script>
+      
+    
+      
+      
+        <script src="/patternfly-org/components/angular-patternfly/dist/docs/grunt-scripts/angular-drag-and-drop-lists.js"></script>
+      
+    
   
   <script src="/patternfly-org/assets/js/patternfly-site.min.js"></script>
   
@@ -225,7 +237,13 @@
       <a href="/patternfly-org/pattern-library/communication/about-modal">About Modal</a>
     </li>
     <li >
+      <a href="/patternfly-org/pattern-library/communication/comments">Comments</a>
+    </li>
+    <li >
       <a href="/patternfly-org/pattern-library/communication/empty-state">Empty State</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/pattern-library/communication/experimental-features">Experimental Features</a>
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/communication/inline-notifications">Inline Notifications</a>
@@ -265,6 +283,9 @@
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/content-views/table-view">Table View</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/pattern-library/content-views/tree-list-view">Tree List View</a>
     </li>
   </ul>
 </li>
@@ -366,16 +387,13 @@
       <a href="/patternfly-org/pattern-library/forms-and-controls/find">Find</a>
     </li>
     <li >
-      <a href="/patternfly-org/pattern-library/forms-and-controls/forms">Forms</a>
-    </li>
-    <li >
       <a href="/patternfly-org/pattern-library/forms-and-controls/inline-edit">Inline Edit</a>
     </li>
     <li >
-      <a href="/patternfly-org/pattern-library/forms-and-controls/input-controls">Input Controls</a>
+      <a href="/patternfly-org/pattern-library/forms-and-controls/language-selector">Language Selector</a>
     </li>
     <li >
-      <a href="/patternfly-org/pattern-library/forms-and-controls/language-selector">Language Selector</a>
+      <a href="/patternfly-org/pattern-library/forms-and-controls/modal-overlay">Modal Overlay</a>
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/forms-and-controls/progressive-disclosure">Progressive Disclosure</a>
@@ -403,6 +421,9 @@
       id="navigation-secondary">
     <li >
       <a href="/patternfly-org/pattern-library/navigation/breadcrumbs">Breadcrumbs</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/pattern-library/navigation/context-selector">Context Selector</a>
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/navigation/guidelines">Guidelines</a>
@@ -751,7 +772,7 @@
             <ul class="nav nav-tabs nav-tabs-pf nav-tabs-code" id="tabs-code" role="tablist">
 
   <li role="presentation" class="active"><a class="nested" href="#html-css" aria-controls="html-css" role="tab" data-toggle="tab">HTML/CSS</a></li>
-  <li role="presentation" class="disabled"><a class="nested" aria-controls="angular" role="tab" disabled="disabled" title="AngularJS example is not available at this time">AngularJS</a></li>
+  <li role="presentation"><a class="nested" href="#angular" aria-controls="angular" role="tab" data-toggle="tab">AngularJS</a></li>
 
 </ul>
 
@@ -801,10 +822,10 @@
   </button>
   <ul class="dropdown-menu " aria-labelledby="dropdownKebab">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -911,10 +932,10 @@
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu &quot; aria-labelledby=&quot;dropdownKebab&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -1014,6 +1035,8 @@
             </div>
             <div role="tabpanel" class="tab-pane nested" id="angular">
               <div ng-app="docsApp" ng-controller="DocsController" class="content">
+                
+                  <div ng-include src="'/patternfly-org/components/angular-patternfly/dist/docs/partials/api/patternfly.toolbars.component.pfToolbar.html'"></div>
                 
                 <!-- % include  % -->
               </div>

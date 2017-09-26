@@ -44,7 +44,14 @@
   <script src="/patternfly-org/components/clipboard/dist/clipboard.min.js"></script>
   <script src="/patternfly-org/components/patternfly/dist/js/patternfly.min.js"></script>
   
-  <script src="/patternfly-org/components/jquery-match-height/dist/jquery.matchHeight-min.js"></script>
+  
+    
+      
+      
+        <script src="/patternfly-org/components/jquery-match-height/dist/jquery.matchHeight-min.js"></script>
+      
+    
+  
   <script src="/patternfly-org/assets/js/patternfly-site.min.js"></script>
   
 </head>
@@ -129,7 +136,8 @@
     </ul>
     <div class="drawer-pf hide drawer-pf-notifications-non-clickable">
   <div class="drawer-pf-title">
-    <a class="drawer-pf-toggle-expand"></a>
+    <a class="drawer-pf-toggle-expand fa fa-angle-double-left hidden-xs"></a>
+    <a  class="drawer-pf-close pficon pficon-close"></a>
     <h3 class="text-center">Notifications Drawer</h3>
   </div>
   <div class="panel-group" id="notification-drawer-accordion">
@@ -152,10 +160,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight11">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -176,10 +184,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight21">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -200,16 +208,16 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight31">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
   <span class="pficon pficon-warning-triangle-o pull-left"></span>
   <div class="drawer-pf-notification-content">
-    <span class="drawer-pf-notification-message">Another Event Notification</span>
+    <span class="drawer-pf-notification-message">Another Event Notification that is really long to see how it reacts on smaller screens sizes.</span>
     <div class="drawer-pf-notification-info">
       <span class="date">3/31/16</span>
       <span class="time">12:12:44 PM</span>
@@ -224,15 +232,15 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight41">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
+  <span class="pficon pficon-error-circle-o pull-left"></span>
   <div class="drawer-pf-notification-content">
-    <span class="pficon pficon-error-circle-o pull-left"></span>
     <span class="drawer-pf-notification-message">Another Event Notification</span>
     <div class="drawer-pf-notification-info">
       <span class="date">3/31/16</span>
@@ -242,8 +250,22 @@
 </div>
 
         </div>
+        <div class="blank-slate-pf hidden">
+          <div class="blank-slate-pf-icon">
+            <span class="pficon-info"></span>
+          </div>
+          <h1>There are no notifications to display.</h1>
+        </div>
         <div class="drawer-pf-action">
-          <button class="btn btn-link btn-block">Mark All Read</button>
+          <div class="drawer-pf-action-link" data-toggle="mark-all-read">
+            <button class="btn btn-link">Mark All Read</button>
+          </div>
+          <div class="drawer-pf-action-link" data-toggle="clear-all">
+            <button class="btn btn-link">
+              <span class="pficon pficon-close"></span>
+              Clear All
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -266,10 +288,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight12">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -290,10 +312,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight22">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -314,16 +336,16 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight32">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
   <span class="pficon pficon-warning-triangle-o pull-left"></span>
   <div class="drawer-pf-notification-content">
-    <span class="drawer-pf-notification-message">Another Event Notification</span>
+    <span class="drawer-pf-notification-message">Another Event Notification that is really long to see how it reacts on smaller screens sizes.</span>
     <div class="drawer-pf-notification-info">
       <span class="date">3/31/16</span>
       <span class="time">12:12:44 PM</span>
@@ -338,15 +360,15 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight42">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
+  <span class="pficon pficon-error-circle-o pull-left"></span>
   <div class="drawer-pf-notification-content">
-    <span class="pficon pficon-error-circle-o pull-left"></span>
     <span class="drawer-pf-notification-message">Another Event Notification</span>
     <div class="drawer-pf-notification-info">
       <span class="date">3/31/16</span>
@@ -363,10 +385,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight13">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -387,10 +409,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight23">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -411,16 +433,16 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight33">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
   <span class="pficon pficon-warning-triangle-o pull-left"></span>
   <div class="drawer-pf-notification-content">
-    <span class="drawer-pf-notification-message">Another Event Notification</span>
+    <span class="drawer-pf-notification-message">Another Event Notification that is really long to see how it reacts on smaller screens sizes.</span>
     <div class="drawer-pf-notification-info">
       <span class="date">3/31/16</span>
       <span class="time">12:12:44 PM</span>
@@ -435,15 +457,15 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight43">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
+  <span class="pficon pficon-error-circle-o pull-left"></span>
   <div class="drawer-pf-notification-content">
-    <span class="pficon pficon-error-circle-o pull-left"></span>
     <span class="drawer-pf-notification-message">Another Event Notification</span>
     <div class="drawer-pf-notification-info">
       <span class="date">3/31/16</span>
@@ -460,10 +482,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight14">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -484,10 +506,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight24">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -508,16 +530,16 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight34">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
   <span class="pficon pficon-warning-triangle-o pull-left"></span>
   <div class="drawer-pf-notification-content">
-    <span class="drawer-pf-notification-message">Another Event Notification</span>
+    <span class="drawer-pf-notification-message">Another Event Notification that is really long to see how it reacts on smaller screens sizes.</span>
     <div class="drawer-pf-notification-info">
       <span class="date">3/31/16</span>
       <span class="time">12:12:44 PM</span>
@@ -532,15 +554,15 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight44">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
+  <span class="pficon pficon-error-circle-o pull-left"></span>
   <div class="drawer-pf-notification-content">
-    <span class="pficon pficon-error-circle-o pull-left"></span>
     <span class="drawer-pf-notification-message">Another Event Notification</span>
     <div class="drawer-pf-notification-info">
       <span class="date">3/31/16</span>
@@ -553,8 +575,22 @@
             <span class="spinner spinner-xs spinner-inline"></span> Loading More
           </div>
         </div>
+        <div class="blank-slate-pf hidden">
+          <div class="blank-slate-pf-icon">
+            <span class="pficon-info"></span>
+          </div>
+          <h1>There are no notifications to display.</h1>
+        </div>
         <div class="drawer-pf-action">
-          <button class="btn btn-link btn-block">Mark All Read</button>
+          <div class="drawer-pf-action-link" data-toggle="mark-all-read">
+            <button class="btn btn-link">Mark All Read</button>
+          </div>
+          <div class="drawer-pf-action-link" data-toggle="clear-all">
+            <button class="btn btn-link">
+              <span class="pficon pficon-close"></span>
+              Clear All
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -577,10 +613,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight15">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -601,10 +637,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight25">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -625,16 +661,16 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight35">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
   <span class="pficon pficon-warning-triangle-o pull-left"></span>
   <div class="drawer-pf-notification-content">
-    <span class="drawer-pf-notification-message">Another Event Notification</span>
+    <span class="drawer-pf-notification-message">Another Event Notification that is really long to see how it reacts on smaller screens sizes.</span>
     <div class="drawer-pf-notification-info">
       <span class="date">3/31/16</span>
       <span class="time">12:12:44 PM</span>
@@ -649,15 +685,15 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight45">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
+  <span class="pficon pficon-error-circle-o pull-left"></span>
   <div class="drawer-pf-notification-content">
-    <span class="pficon pficon-error-circle-o pull-left"></span>
     <span class="drawer-pf-notification-message">Another Event Notification</span>
     <div class="drawer-pf-notification-info">
       <span class="date">3/31/16</span>
@@ -674,10 +710,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight16">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -698,10 +734,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight26">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -722,16 +758,16 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight36">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
   <span class="pficon pficon-warning-triangle-o pull-left"></span>
   <div class="drawer-pf-notification-content">
-    <span class="drawer-pf-notification-message">Another Event Notification</span>
+    <span class="drawer-pf-notification-message">Another Event Notification that is really long to see how it reacts on smaller screens sizes.</span>
     <div class="drawer-pf-notification-info">
       <span class="date">3/31/16</span>
       <span class="time">12:12:44 PM</span>
@@ -746,15 +782,15 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight46">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
+  <span class="pficon pficon-error-circle-o pull-left"></span>
   <div class="drawer-pf-notification-content">
-    <span class="pficon pficon-error-circle-o pull-left"></span>
     <span class="drawer-pf-notification-message">Another Event Notification</span>
     <div class="drawer-pf-notification-info">
       <span class="date">3/31/16</span>
@@ -771,10 +807,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight17">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -795,10 +831,10 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight27">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
@@ -819,16 +855,16 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight37">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
   <span class="pficon pficon-warning-triangle-o pull-left"></span>
   <div class="drawer-pf-notification-content">
-    <span class="drawer-pf-notification-message">Another Event Notification</span>
+    <span class="drawer-pf-notification-message">Another Event Notification that is really long to see how it reacts on smaller screens sizes.</span>
     <div class="drawer-pf-notification-info">
       <span class="date">3/31/16</span>
       <span class="time">12:12:44 PM</span>
@@ -843,15 +879,15 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight47">
     <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Another Action</a></li>
+    <li><a href="#">Something Else Here</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#">Separated Link</a></li>
   </ul>
 </div>
 
+  <span class="pficon pficon-error-circle-o pull-left"></span>
   <div class="drawer-pf-notification-content">
-    <span class="pficon pficon-error-circle-o pull-left"></span>
     <span class="drawer-pf-notification-message">Another Event Notification</span>
     <div class="drawer-pf-notification-info">
       <span class="date">3/31/16</span>
@@ -861,8 +897,22 @@
 </div>
 
         </div>
+        <div class="blank-slate-pf hidden">
+          <div class="blank-slate-pf-icon">
+            <span class="pficon-info"></span>
+          </div>
+          <h1>There are no notifications to display.</h1>
+        </div>
         <div class="drawer-pf-action">
-          <button class="btn btn-link btn-block">Mark All Read</button>
+          <div class="drawer-pf-action-link" data-toggle="mark-all-read">
+            <button class="btn btn-link">Mark All Read</button>
+          </div>
+          <div class="drawer-pf-action-link" data-toggle="clear-all">
+            <button class="btn btn-link">
+              <span class="pficon pficon-close"></span>
+              Clear All
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -870,6 +920,9 @@
 </div>
 <script>
   $(document).ready(function() {
+    // Initialize to unread notifications
+    // TODO: add badge for unread notifications
+
     // Show/Hide Notifications Drawer
     $('.drawer-pf-trigger').click(function() {
       var $drawer = $('.drawer-pf');
@@ -889,6 +942,16 @@
       } else {
         $drawer.addClass('hide');
       }
+      // Special case, close navigation menu in mobile mode
+     if ($('.container-pf-nav-pf-vertical').hasClass('hidden-nav')) {
+       $('.nav-pf-vertical').removeClass('show-mobile-nav');
+     }
+    });
+    $('.drawer-pf-close').click(function() {
+      var $drawer = $('.drawer-pf');
+
+      $('.drawer-pf-trigger').removeClass('open');
+      $drawer.addClass('hide');
     });
     $('.drawer-pf-toggle-expand').click(function() {
       var $drawer = $('.drawer-pf');
@@ -903,12 +966,48 @@
       }
     });
 
-    // Mark All Read
+    // Mark All Read / Clear All
     $('.panel-collapse').each(function (index, panel) {
       var $panel = $(panel);
-      $panel.on('click', '.drawer-pf-action .btn', function() {
+      var unreadCount = $panel.find('.drawer-pf-notification.unread').length;
+      $(panel.parentElement).find('.panel-counter').text(unreadCount + ' New Event' + (unreadCount !== 1 ? 's' : ''));
+
+      if ($('.drawer-pf .panel-collapse .unread').length === 0) {
+        // TODO: remove badge for unread indicator
+      }
+
+      $panel.on('click', '.drawer-pf-action [data-toggle="mark-all-read"] .btn', function() {
         $panel.find('.unread').removeClass('unread');
+        $panel.find('.drawer-pf-action [data-toggle="mark-all-read"]').remove();
         $(panel.parentElement).find('.panel-counter').text('0 New Events');
+        if ($('.drawer-pf .panel-collapse .unread').length === 0) {
+          $('.drawer-pf-trigger').removeClass('unread');
+        }
+      });
+      $panel.on('click', '.drawer-pf-action [data-toggle="clear-all"] .btn', function() {
+        $panel.find('.panel-body .drawer-pf-notification').remove();
+        $panel.find('.drawer-pf-action').remove();
+        $panel.find('.blank-slate-pf').removeClass('hidden');
+        $panel.find('.drawer-pf-loading').addClass('hidden');
+        $(panel.parentElement).find('.panel-counter').text('0 New Events');
+        if ($('.drawer-pf .panel-collapse .unread').length === 0) {
+          // TODO: remove badge for unread indicator
+        }
+      });
+
+      $panel.find('.drawer-pf-notification').each(function (index, notification) {
+        var $notification = $(notification);
+        $notification.on('click', '.drawer-pf-notification-content', function() {
+          $notification.removeClass('unread');
+          var unreadCount = $panel.find('.drawer-pf-notification.unread').length;
+          $(panel.parentElement).find('.panel-counter').text(unreadCount + ' New Event' + (unreadCount !== 1 ? 's' : ''));
+          if (unreadCount === 0) {
+            $panel.find('.drawer-pf-action [data-toggle="mark-all-read"]').remove();
+            if ($('.drawer-pf .panel-collapse .unread').length === 0) {
+              // TODO: remove badge for unread indicator
+            }
+          }
+        });
       });
     });
 

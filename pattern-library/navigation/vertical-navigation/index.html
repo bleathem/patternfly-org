@@ -55,7 +55,7 @@
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/grunt-scripts/angular-bootstrap-prettify.js"></script>
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/grunt-scripts/lodash.min.js"></script>
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/grunt-scripts/angular-patternfly.js"></script>
-  <script src="/patternfly-org/components/angular-patternfly/dist/docs/grunt-scripts/patternfly.js"></script>
+  <script src="/patternfly-org/components/patternfly/dist/js/patternfly.js"></script>
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/js/angular-bootstrap.js"></script>
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/js/docs-setup.js"></script>
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/js/docs.js"></script>
@@ -225,7 +225,13 @@
       <a href="/patternfly-org/pattern-library/communication/about-modal">About Modal</a>
     </li>
     <li >
+      <a href="/patternfly-org/pattern-library/communication/comments">Comments</a>
+    </li>
+    <li >
       <a href="/patternfly-org/pattern-library/communication/empty-state">Empty State</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/pattern-library/communication/experimental-features">Experimental Features</a>
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/communication/inline-notifications">Inline Notifications</a>
@@ -265,6 +271,9 @@
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/content-views/table-view">Table View</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/pattern-library/content-views/tree-list-view">Tree List View</a>
     </li>
   </ul>
 </li>
@@ -366,16 +375,13 @@
       <a href="/patternfly-org/pattern-library/forms-and-controls/find">Find</a>
     </li>
     <li >
-      <a href="/patternfly-org/pattern-library/forms-and-controls/forms">Forms</a>
-    </li>
-    <li >
       <a href="/patternfly-org/pattern-library/forms-and-controls/inline-edit">Inline Edit</a>
     </li>
     <li >
-      <a href="/patternfly-org/pattern-library/forms-and-controls/input-controls">Input Controls</a>
+      <a href="/patternfly-org/pattern-library/forms-and-controls/language-selector">Language Selector</a>
     </li>
     <li >
-      <a href="/patternfly-org/pattern-library/forms-and-controls/language-selector">Language Selector</a>
+      <a href="/patternfly-org/pattern-library/forms-and-controls/modal-overlay">Modal Overlay</a>
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/forms-and-controls/progressive-disclosure">Progressive Disclosure</a>
@@ -403,6 +409,9 @@
       id="navigation-secondary">
     <li >
       <a href="/patternfly-org/pattern-library/navigation/breadcrumbs">Breadcrumbs</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/pattern-library/navigation/context-selector">Context Selector</a>
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/navigation/guidelines">Guidelines</a>
@@ -807,9 +816,12 @@ This is how the notification drawer looks on small screens. Once a user selects 
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
-    &lt;div class=&quot;drawer-pf hide drawer-pf-notifications-non-clickable&quot;&gt;
+  &lt;/nav&gt;
+  
+  &lt;div class=&quot;drawer-pf hide drawer-pf-notifications-non-clickable&quot;&gt;
   &lt;div class=&quot;drawer-pf-title&quot;&gt;
-    &lt;a class=&quot;drawer-pf-toggle-expand&quot;&gt;&lt;/a&gt;
+    &lt;a class=&quot;drawer-pf-toggle-expand fa fa-angle-double-left hidden-xs&quot;&gt;&lt;/a&gt;
+    &lt;a  class=&quot;drawer-pf-close pficon pficon-close&quot;&gt;&lt;/a&gt;
     &lt;h3 class=&quot;text-center&quot;&gt;Notifications Drawer&lt;/h3&gt;
   &lt;/div&gt;
   &lt;div class=&quot;panel-group&quot; id=&quot;notification-drawer-accordion&quot;&gt;
@@ -832,10 +844,10 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight11&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -856,10 +868,10 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight21&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -880,16 +892,16 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight31&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
   &lt;span class=&quot;pficon pficon-warning-triangle-o pull-left&quot;&gt;&lt;/span&gt;
   &lt;div class=&quot;drawer-pf-notification-content&quot;&gt;
-    &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification&lt;/span&gt;
+    &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification that is really long to see how it reacts on smaller screens sizes.&lt;/span&gt;
     &lt;div class=&quot;drawer-pf-notification-info&quot;&gt;
       &lt;span class=&quot;date&quot;&gt;3/31/16&lt;/span&gt;
       &lt;span class=&quot;time&quot;&gt;12:12:44 PM&lt;/span&gt;
@@ -904,15 +916,15 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight41&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
+  &lt;span class=&quot;pficon pficon-error-circle-o pull-left&quot;&gt;&lt;/span&gt;
   &lt;div class=&quot;drawer-pf-notification-content&quot;&gt;
-    &lt;span class=&quot;pficon pficon-error-circle-o pull-left&quot;&gt;&lt;/span&gt;
     &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification&lt;/span&gt;
     &lt;div class=&quot;drawer-pf-notification-info&quot;&gt;
       &lt;span class=&quot;date&quot;&gt;3/31/16&lt;/span&gt;
@@ -922,8 +934,22 @@ This is how the notification drawer looks on small screens. Once a user selects 
 &lt;/div&gt;
 
         &lt;/div&gt;
+        &lt;div class=&quot;blank-slate-pf hidden&quot;&gt;
+          &lt;div class=&quot;blank-slate-pf-icon&quot;&gt;
+            &lt;span class=&quot;pficon-info&quot;&gt;&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;h1&gt;There are no notifications to display.&lt;/h1&gt;
+        &lt;/div&gt;
         &lt;div class=&quot;drawer-pf-action&quot;&gt;
-          &lt;button class=&quot;btn btn-link btn-block&quot;&gt;Mark All Read&lt;/button&gt;
+          &lt;div class=&quot;drawer-pf-action-link&quot; data-toggle=&quot;mark-all-read&quot;&gt;
+            &lt;button class=&quot;btn btn-link&quot;&gt;Mark All Read&lt;/button&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;drawer-pf-action-link&quot; data-toggle=&quot;clear-all&quot;&gt;
+            &lt;button class=&quot;btn btn-link&quot;&gt;
+              &lt;span class=&quot;pficon pficon-close&quot;&gt;&lt;/span&gt;
+              Clear All
+            &lt;/button&gt;
+          &lt;/div&gt;
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -946,10 +972,10 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight12&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -970,10 +996,10 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight22&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -994,16 +1020,16 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight32&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
   &lt;span class=&quot;pficon pficon-warning-triangle-o pull-left&quot;&gt;&lt;/span&gt;
   &lt;div class=&quot;drawer-pf-notification-content&quot;&gt;
-    &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification&lt;/span&gt;
+    &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification that is really long to see how it reacts on smaller screens sizes.&lt;/span&gt;
     &lt;div class=&quot;drawer-pf-notification-info&quot;&gt;
       &lt;span class=&quot;date&quot;&gt;3/31/16&lt;/span&gt;
       &lt;span class=&quot;time&quot;&gt;12:12:44 PM&lt;/span&gt;
@@ -1018,15 +1044,15 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight42&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
+  &lt;span class=&quot;pficon pficon-error-circle-o pull-left&quot;&gt;&lt;/span&gt;
   &lt;div class=&quot;drawer-pf-notification-content&quot;&gt;
-    &lt;span class=&quot;pficon pficon-error-circle-o pull-left&quot;&gt;&lt;/span&gt;
     &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification&lt;/span&gt;
     &lt;div class=&quot;drawer-pf-notification-info&quot;&gt;
       &lt;span class=&quot;date&quot;&gt;3/31/16&lt;/span&gt;
@@ -1043,10 +1069,10 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight13&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -1067,10 +1093,10 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight23&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -1091,16 +1117,16 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight33&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
   &lt;span class=&quot;pficon pficon-warning-triangle-o pull-left&quot;&gt;&lt;/span&gt;
   &lt;div class=&quot;drawer-pf-notification-content&quot;&gt;
-    &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification&lt;/span&gt;
+    &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification that is really long to see how it reacts on smaller screens sizes.&lt;/span&gt;
     &lt;div class=&quot;drawer-pf-notification-info&quot;&gt;
       &lt;span class=&quot;date&quot;&gt;3/31/16&lt;/span&gt;
       &lt;span class=&quot;time&quot;&gt;12:12:44 PM&lt;/span&gt;
@@ -1115,15 +1141,15 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight43&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
+  &lt;span class=&quot;pficon pficon-error-circle-o pull-left&quot;&gt;&lt;/span&gt;
   &lt;div class=&quot;drawer-pf-notification-content&quot;&gt;
-    &lt;span class=&quot;pficon pficon-error-circle-o pull-left&quot;&gt;&lt;/span&gt;
     &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification&lt;/span&gt;
     &lt;div class=&quot;drawer-pf-notification-info&quot;&gt;
       &lt;span class=&quot;date&quot;&gt;3/31/16&lt;/span&gt;
@@ -1140,10 +1166,10 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight14&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -1164,10 +1190,10 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight24&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -1188,16 +1214,16 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight34&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
   &lt;span class=&quot;pficon pficon-warning-triangle-o pull-left&quot;&gt;&lt;/span&gt;
   &lt;div class=&quot;drawer-pf-notification-content&quot;&gt;
-    &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification&lt;/span&gt;
+    &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification that is really long to see how it reacts on smaller screens sizes.&lt;/span&gt;
     &lt;div class=&quot;drawer-pf-notification-info&quot;&gt;
       &lt;span class=&quot;date&quot;&gt;3/31/16&lt;/span&gt;
       &lt;span class=&quot;time&quot;&gt;12:12:44 PM&lt;/span&gt;
@@ -1212,15 +1238,15 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight44&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
+  &lt;span class=&quot;pficon pficon-error-circle-o pull-left&quot;&gt;&lt;/span&gt;
   &lt;div class=&quot;drawer-pf-notification-content&quot;&gt;
-    &lt;span class=&quot;pficon pficon-error-circle-o pull-left&quot;&gt;&lt;/span&gt;
     &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification&lt;/span&gt;
     &lt;div class=&quot;drawer-pf-notification-info&quot;&gt;
       &lt;span class=&quot;date&quot;&gt;3/31/16&lt;/span&gt;
@@ -1233,8 +1259,22 @@ This is how the notification drawer looks on small screens. Once a user selects 
             &lt;span class=&quot;spinner spinner-xs spinner-inline&quot;&gt;&lt;/span&gt; Loading More
           &lt;/div&gt;
         &lt;/div&gt;
+        &lt;div class=&quot;blank-slate-pf hidden&quot;&gt;
+          &lt;div class=&quot;blank-slate-pf-icon&quot;&gt;
+            &lt;span class=&quot;pficon-info&quot;&gt;&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;h1&gt;There are no notifications to display.&lt;/h1&gt;
+        &lt;/div&gt;
         &lt;div class=&quot;drawer-pf-action&quot;&gt;
-          &lt;button class=&quot;btn btn-link btn-block&quot;&gt;Mark All Read&lt;/button&gt;
+          &lt;div class=&quot;drawer-pf-action-link&quot; data-toggle=&quot;mark-all-read&quot;&gt;
+            &lt;button class=&quot;btn btn-link&quot;&gt;Mark All Read&lt;/button&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;drawer-pf-action-link&quot; data-toggle=&quot;clear-all&quot;&gt;
+            &lt;button class=&quot;btn btn-link&quot;&gt;
+              &lt;span class=&quot;pficon pficon-close&quot;&gt;&lt;/span&gt;
+              Clear All
+            &lt;/button&gt;
+          &lt;/div&gt;
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -1257,10 +1297,10 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight15&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -1281,10 +1321,10 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight25&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -1305,16 +1345,16 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight35&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
   &lt;span class=&quot;pficon pficon-warning-triangle-o pull-left&quot;&gt;&lt;/span&gt;
   &lt;div class=&quot;drawer-pf-notification-content&quot;&gt;
-    &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification&lt;/span&gt;
+    &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification that is really long to see how it reacts on smaller screens sizes.&lt;/span&gt;
     &lt;div class=&quot;drawer-pf-notification-info&quot;&gt;
       &lt;span class=&quot;date&quot;&gt;3/31/16&lt;/span&gt;
       &lt;span class=&quot;time&quot;&gt;12:12:44 PM&lt;/span&gt;
@@ -1329,15 +1369,15 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight45&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
+  &lt;span class=&quot;pficon pficon-error-circle-o pull-left&quot;&gt;&lt;/span&gt;
   &lt;div class=&quot;drawer-pf-notification-content&quot;&gt;
-    &lt;span class=&quot;pficon pficon-error-circle-o pull-left&quot;&gt;&lt;/span&gt;
     &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification&lt;/span&gt;
     &lt;div class=&quot;drawer-pf-notification-info&quot;&gt;
       &lt;span class=&quot;date&quot;&gt;3/31/16&lt;/span&gt;
@@ -1354,10 +1394,10 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight16&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -1378,10 +1418,10 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight26&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -1402,16 +1442,16 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight36&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
   &lt;span class=&quot;pficon pficon-warning-triangle-o pull-left&quot;&gt;&lt;/span&gt;
   &lt;div class=&quot;drawer-pf-notification-content&quot;&gt;
-    &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification&lt;/span&gt;
+    &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification that is really long to see how it reacts on smaller screens sizes.&lt;/span&gt;
     &lt;div class=&quot;drawer-pf-notification-info&quot;&gt;
       &lt;span class=&quot;date&quot;&gt;3/31/16&lt;/span&gt;
       &lt;span class=&quot;time&quot;&gt;12:12:44 PM&lt;/span&gt;
@@ -1426,15 +1466,15 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight46&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
+  &lt;span class=&quot;pficon pficon-error-circle-o pull-left&quot;&gt;&lt;/span&gt;
   &lt;div class=&quot;drawer-pf-notification-content&quot;&gt;
-    &lt;span class=&quot;pficon pficon-error-circle-o pull-left&quot;&gt;&lt;/span&gt;
     &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification&lt;/span&gt;
     &lt;div class=&quot;drawer-pf-notification-info&quot;&gt;
       &lt;span class=&quot;date&quot;&gt;3/31/16&lt;/span&gt;
@@ -1451,10 +1491,10 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight17&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -1475,10 +1515,10 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight27&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -1499,16 +1539,16 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight37&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
   &lt;span class=&quot;pficon pficon-warning-triangle-o pull-left&quot;&gt;&lt;/span&gt;
   &lt;div class=&quot;drawer-pf-notification-content&quot;&gt;
-    &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification&lt;/span&gt;
+    &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification that is really long to see how it reacts on smaller screens sizes.&lt;/span&gt;
     &lt;div class=&quot;drawer-pf-notification-info&quot;&gt;
       &lt;span class=&quot;date&quot;&gt;3/31/16&lt;/span&gt;
       &lt;span class=&quot;time&quot;&gt;12:12:44 PM&lt;/span&gt;
@@ -1523,15 +1563,15 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight47&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
+  &lt;span class=&quot;pficon pficon-error-circle-o pull-left&quot;&gt;&lt;/span&gt;
   &lt;div class=&quot;drawer-pf-notification-content&quot;&gt;
-    &lt;span class=&quot;pficon pficon-error-circle-o pull-left&quot;&gt;&lt;/span&gt;
     &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification&lt;/span&gt;
     &lt;div class=&quot;drawer-pf-notification-info&quot;&gt;
       &lt;span class=&quot;date&quot;&gt;3/31/16&lt;/span&gt;
@@ -1541,8 +1581,22 @@ This is how the notification drawer looks on small screens. Once a user selects 
 &lt;/div&gt;
 
         &lt;/div&gt;
+        &lt;div class=&quot;blank-slate-pf hidden&quot;&gt;
+          &lt;div class=&quot;blank-slate-pf-icon&quot;&gt;
+            &lt;span class=&quot;pficon-info&quot;&gt;&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;h1&gt;There are no notifications to display.&lt;/h1&gt;
+        &lt;/div&gt;
         &lt;div class=&quot;drawer-pf-action&quot;&gt;
-          &lt;button class=&quot;btn btn-link btn-block&quot;&gt;Mark All Read&lt;/button&gt;
+          &lt;div class=&quot;drawer-pf-action-link&quot; data-toggle=&quot;mark-all-read&quot;&gt;
+            &lt;button class=&quot;btn btn-link&quot;&gt;Mark All Read&lt;/button&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;drawer-pf-action-link&quot; data-toggle=&quot;clear-all&quot;&gt;
+            &lt;button class=&quot;btn btn-link&quot;&gt;
+              &lt;span class=&quot;pficon pficon-close&quot;&gt;&lt;/span&gt;
+              Clear All
+            &lt;/button&gt;
+          &lt;/div&gt;
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -1550,6 +1604,9 @@ This is how the notification drawer looks on small screens. Once a user selects 
 &lt;/div&gt;
 &lt;script&gt;
   $(document).ready(function() {
+    // Initialize to unread notifications
+    // TODO: add badge for unread notifications
+
     // Show/Hide Notifications Drawer
     $('.drawer-pf-trigger').click(function() {
       var $drawer = $('.drawer-pf');
@@ -1569,6 +1626,16 @@ This is how the notification drawer looks on small screens. Once a user selects 
       } else {
         $drawer.addClass('hide');
       }
+      // Special case, close navigation menu in mobile mode
+     if ($('.container-pf-nav-pf-vertical').hasClass('hidden-nav')) {
+       $('.nav-pf-vertical').removeClass('show-mobile-nav');
+     }
+    });
+    $('.drawer-pf-close').click(function() {
+      var $drawer = $('.drawer-pf');
+
+      $('.drawer-pf-trigger').removeClass('open');
+      $drawer.addClass('hide');
     });
     $('.drawer-pf-toggle-expand').click(function() {
       var $drawer = $('.drawer-pf');
@@ -1583,12 +1650,48 @@ This is how the notification drawer looks on small screens. Once a user selects 
       }
     });
 
-    // Mark All Read
+    // Mark All Read / Clear All
     $('.panel-collapse').each(function (index, panel) {
       var $panel = $(panel);
-      $panel.on('click', '.drawer-pf-action .btn', function() {
+      var unreadCount = $panel.find('.drawer-pf-notification.unread').length;
+      $(panel.parentElement).find('.panel-counter').text(unreadCount + ' New Event' + (unreadCount !== 1 ? 's' : ''));
+
+      if ($('.drawer-pf .panel-collapse .unread').length === 0) {
+        // TODO: remove badge for unread indicator
+      }
+
+      $panel.on('click', '.drawer-pf-action [data-toggle=&quot;mark-all-read&quot;] .btn', function() {
         $panel.find('.unread').removeClass('unread');
+        $panel.find('.drawer-pf-action [data-toggle=&quot;mark-all-read&quot;]').remove();
         $(panel.parentElement).find('.panel-counter').text('0 New Events');
+        if ($('.drawer-pf .panel-collapse .unread').length === 0) {
+          $('.drawer-pf-trigger').removeClass('unread');
+        }
+      });
+      $panel.on('click', '.drawer-pf-action [data-toggle=&quot;clear-all&quot;] .btn', function() {
+        $panel.find('.panel-body .drawer-pf-notification').remove();
+        $panel.find('.drawer-pf-action').remove();
+        $panel.find('.blank-slate-pf').removeClass('hidden');
+        $panel.find('.drawer-pf-loading').addClass('hidden');
+        $(panel.parentElement).find('.panel-counter').text('0 New Events');
+        if ($('.drawer-pf .panel-collapse .unread').length === 0) {
+          // TODO: remove badge for unread indicator
+        }
+      });
+
+      $panel.find('.drawer-pf-notification').each(function (index, notification) {
+        var $notification = $(notification);
+        $notification.on('click', '.drawer-pf-notification-content', function() {
+          $notification.removeClass('unread');
+          var unreadCount = $panel.find('.drawer-pf-notification.unread').length;
+          $(panel.parentElement).find('.panel-counter').text(unreadCount + ' New Event' + (unreadCount !== 1 ? 's' : ''));
+          if (unreadCount === 0) {
+            $panel.find('.drawer-pf-action [data-toggle=&quot;mark-all-read&quot;]').remove();
+            if ($('.drawer-pf .panel-collapse .unread').length === 0) {
+              // TODO: remove badge for unread indicator
+            }
+          }
+        });
       });
     });
 
@@ -1596,7 +1699,7 @@ This is how the notification drawer looks on small screens. Once a user selects 
   });
 &lt;/script&gt;
 
-  &lt;/nav&gt;
+  
 &lt;/nav&gt; &lt;!--/.navbar--&gt;
 
 
@@ -1607,90 +1710,89 @@ This is how the notification drawer looks on small screens. Once a user selects 
      &quot;&gt;
   &lt;ul class=&quot;list-group&quot;&gt;
     &lt;li class=&quot;list-group-item&quot;&gt;
-      &lt;a&gt;
+      &lt;a href=&quot;#0&quot;&gt;
         &lt;span class=&quot;fa fa-dashboard&quot; data-toggle=&quot;tooltip&quot; title=&quot;Dashboard&quot;&gt;&lt;/span&gt;
         &lt;span class=&quot;list-group-item-value&quot;&gt;Dashboard&lt;/span&gt;
       &lt;/a&gt;
     &lt;/li&gt;
     &lt;li class=&quot;list-group-item&quot;&gt;
-      &lt;a&gt;
+      &lt;a href=&quot;#0&quot;&gt;
         &lt;span class=&quot;fa fa-shield&quot; data-toggle=&quot;tooltip&quot; title=&quot;Dolor&quot;&gt;&lt;/span&gt;
         &lt;span class=&quot;list-group-item-value&quot;&gt;Dolor&lt;/span&gt;
         
       &lt;/a&gt;
     &lt;/li&gt;
     &lt;li class=&quot;list-group-item active &quot; data-target=&quot;#ipsum-secondary&quot;&gt;
-      &lt;a&gt;
+      &lt;a href=&quot;#0&quot;&gt;
         &lt;span class=&quot;fa fa-space-shuttle&quot; data-toggle=&quot;tooltip&quot; title=&quot;Ipsum&quot;&gt;&lt;/span&gt;
         &lt;span class=&quot;list-group-item-value&quot;&gt;Ipsum&lt;/span&gt;
       &lt;/a&gt;
       
     &lt;/li&gt;
     &lt;li class=&quot;list-group-item &quot; data-target=&quot;#amet-secondary&quot;&gt;
-      &lt;a&gt;
+      &lt;a href=&quot;#0&quot;&gt;
         &lt;span class=&quot;fa fa-paper-plane&quot; data-toggle=&quot;tooltip&quot; title=&quot;Amet&quot;&gt;&lt;/span&gt;
         &lt;span class=&quot;list-group-item-value&quot;&gt;Amet&lt;/span&gt;
       &lt;/a&gt;
       
     &lt;/li&gt;
     &lt;li class=&quot;list-group-item&quot;&gt;
-      &lt;a&gt;
+      &lt;a href=&quot;#0&quot;&gt;
         &lt;span class=&quot;fa fa-graduation-cap&quot; data-toggle=&quot;tooltip&quot; title=&quot;Adipscing&quot;&gt;&lt;/span&gt;
         &lt;span class=&quot;list-group-item-value&quot;&gt;Adipscing&lt;/span&gt;
       &lt;/a&gt;
     &lt;/li&gt;
     &lt;li class=&quot;list-group-item&quot;&gt;
-      &lt;a&gt;
+      &lt;a href=&quot;#0&quot;&gt;
         &lt;span class=&quot;fa fa-gamepad&quot; data-toggle=&quot;tooltip&quot; title=&quot;Lorem&quot;&gt;&lt;/span&gt;
         &lt;span class=&quot;list-group-item-value&quot;&gt;Lorem&lt;/span&gt;
       &lt;/a&gt;
     &lt;/li&gt;
-
-    &lt;li class=&quot;list-group-item secondary-nav-item-pf mobile-nav-item-pf visible-xs-block&quot; data-target=&quot;#amet-secondary&quot;&gt;
-      &lt;a&gt;
+    
+    &lt;li class=&quot;list-group-item secondary-nav-item-pf mobile-nav-item-pf visible-xs-block&quot;&gt;
+      &lt;a href=&quot;#0&quot;&gt;
         &lt;span class=&quot;pficon pficon-user&quot; data-toggle=&quot;tooltip&quot; title=&quot;&quot; data-original-title=&quot;User&quot;&gt;&lt;/span&gt;
         &lt;span class=&quot;list-group-item-value&quot;&gt;User&lt;/span&gt;
       &lt;/a&gt;
       &lt;div id=&quot;user-secondary&quot; class=&quot;nav-pf-secondary-nav&quot;&gt;
         &lt;div class=&quot;nav-item-pf-header&quot;&gt;
-          &lt;a class=&quot;secondary-collapse-toggle-pf&quot; data-toggle=&quot;collapse-secondary-nav&quot;&gt;&lt;/a&gt;
+          &lt;a href=&quot;#0&quot; class=&quot;secondary-collapse-toggle-pf&quot; data-toggle=&quot;collapse-secondary-nav&quot;&gt;&lt;/a&gt;
           &lt;span&gt;User&lt;/span&gt;
         &lt;/div&gt;
 
         &lt;ul class=&quot;list-group&quot;&gt;
           &lt;li class=&quot;list-group-item&quot;&gt;
-            &lt;a&gt;
+            &lt;a href=&quot;#0&quot;&gt;
               &lt;span class=&quot;list-group-item-value&quot;&gt;Preferences&lt;/span&gt;
             &lt;/a&gt;
           &lt;/li&gt;
 
           &lt;li class=&quot;list-group-item&quot;&gt;
-            &lt;a&gt;
+            &lt;a href=&quot;#0&quot;&gt;
               &lt;span class=&quot;list-group-item-value&quot;&gt;Logout&lt;/span&gt;
             &lt;/a&gt;
           &lt;/li&gt;
         &lt;/ul&gt;
       &lt;/div&gt;
     &lt;/li&gt;
-
     &lt;li class=&quot;list-group-item secondary-nav-item-pf mobile-nav-item-pf visible-xs-block&quot; data-target=&quot;#amet-secondary&quot;&gt;
-      &lt;a&gt;
-        &lt;span class=&quot;pficon pficon-help&quot; data-toggle=&quot;tooltip&quot; title=&quot;&quot; data-original-title=&quot;Amet&quot;&gt;&lt;/span&gt;
+      &lt;a href=&quot;#0&quot;&gt;
+        &lt;span class=&quot;pficon pficon-help&quot; data-toggle=&quot;tooltip&quot; title=&quot;&quot; data-original-title=&quot;Help&quot;&gt;&lt;/span&gt;
         &lt;span class=&quot;list-group-item-value&quot;&gt;Help&lt;/span&gt;
       &lt;/a&gt;
       &lt;div id=&quot;help-secondary&quot; class=&quot;nav-pf-secondary-nav&quot;&gt;
         &lt;div class=&quot;nav-item-pf-header&quot;&gt;
-          &lt;a class=&quot;secondary-collapse-toggle-pf&quot; data-toggle=&quot;collapse-secondary-nav&quot;&gt;&lt;/a&gt;
+          &lt;a href=&quot;#0&quot; class=&quot;secondary-collapse-toggle-pf&quot; data-toggle=&quot;collapse-secondary-nav&quot;&gt;&lt;/a&gt;
           &lt;span&gt;Help&lt;/span&gt;
         &lt;/div&gt;
         &lt;ul class=&quot;list-group&quot;&gt;
           &lt;li class=&quot;list-group-item&quot;&gt;
-            &lt;a&gt;
+            &lt;a href=&quot;#0&quot;&gt;
               &lt;span class=&quot;list-group-item-value&quot;&gt;Help&lt;/span&gt;
             &lt;/a&gt;
           &lt;/li&gt;
           &lt;li class=&quot;list-group-item&quot;&gt;
-            &lt;a&gt;
+            &lt;a href=&quot;#0&quot;&gt;
               &lt;span class=&quot;list-group-item-value&quot;&gt;About&lt;/span&gt;
             &lt;/a&gt;
           &lt;/li&gt;
@@ -2393,9 +2495,12 @@ This is how the notification drawer looks on small screens. Once a user selects 
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
-    &lt;div class=&quot;drawer-pf hide drawer-pf-notifications-non-clickable&quot;&gt;
+  &lt;/nav&gt;
+  
+  &lt;div class=&quot;drawer-pf hide drawer-pf-notifications-non-clickable&quot;&gt;
   &lt;div class=&quot;drawer-pf-title&quot;&gt;
-    &lt;a class=&quot;drawer-pf-toggle-expand&quot;&gt;&lt;/a&gt;
+    &lt;a class=&quot;drawer-pf-toggle-expand fa fa-angle-double-left hidden-xs&quot;&gt;&lt;/a&gt;
+    &lt;a  class=&quot;drawer-pf-close pficon pficon-close&quot;&gt;&lt;/a&gt;
     &lt;h3 class=&quot;text-center&quot;&gt;Notifications Drawer&lt;/h3&gt;
   &lt;/div&gt;
   &lt;div class=&quot;panel-group&quot; id=&quot;notification-drawer-accordion&quot;&gt;
@@ -2418,10 +2523,10 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight11&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -2442,10 +2547,10 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight21&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -2466,16 +2571,16 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight31&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
   &lt;span class=&quot;pficon pficon-warning-triangle-o pull-left&quot;&gt;&lt;/span&gt;
   &lt;div class=&quot;drawer-pf-notification-content&quot;&gt;
-    &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification&lt;/span&gt;
+    &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification that is really long to see how it reacts on smaller screens sizes.&lt;/span&gt;
     &lt;div class=&quot;drawer-pf-notification-info&quot;&gt;
       &lt;span class=&quot;date&quot;&gt;3/31/16&lt;/span&gt;
       &lt;span class=&quot;time&quot;&gt;12:12:44 PM&lt;/span&gt;
@@ -2490,15 +2595,15 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight41&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
+  &lt;span class=&quot;pficon pficon-error-circle-o pull-left&quot;&gt;&lt;/span&gt;
   &lt;div class=&quot;drawer-pf-notification-content&quot;&gt;
-    &lt;span class=&quot;pficon pficon-error-circle-o pull-left&quot;&gt;&lt;/span&gt;
     &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification&lt;/span&gt;
     &lt;div class=&quot;drawer-pf-notification-info&quot;&gt;
       &lt;span class=&quot;date&quot;&gt;3/31/16&lt;/span&gt;
@@ -2508,8 +2613,22 @@ This is how the notification drawer looks on small screens. Once a user selects 
 &lt;/div&gt;
 
         &lt;/div&gt;
+        &lt;div class=&quot;blank-slate-pf hidden&quot;&gt;
+          &lt;div class=&quot;blank-slate-pf-icon&quot;&gt;
+            &lt;span class=&quot;pficon-info&quot;&gt;&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;h1&gt;There are no notifications to display.&lt;/h1&gt;
+        &lt;/div&gt;
         &lt;div class=&quot;drawer-pf-action&quot;&gt;
-          &lt;button class=&quot;btn btn-link btn-block&quot;&gt;Mark All Read&lt;/button&gt;
+          &lt;div class=&quot;drawer-pf-action-link&quot; data-toggle=&quot;mark-all-read&quot;&gt;
+            &lt;button class=&quot;btn btn-link&quot;&gt;Mark All Read&lt;/button&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;drawer-pf-action-link&quot; data-toggle=&quot;clear-all&quot;&gt;
+            &lt;button class=&quot;btn btn-link&quot;&gt;
+              &lt;span class=&quot;pficon pficon-close&quot;&gt;&lt;/span&gt;
+              Clear All
+            &lt;/button&gt;
+          &lt;/div&gt;
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -2532,10 +2651,10 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight12&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -2556,10 +2675,10 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight22&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -2580,16 +2699,16 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight32&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
   &lt;span class=&quot;pficon pficon-warning-triangle-o pull-left&quot;&gt;&lt;/span&gt;
   &lt;div class=&quot;drawer-pf-notification-content&quot;&gt;
-    &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification&lt;/span&gt;
+    &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification that is really long to see how it reacts on smaller screens sizes.&lt;/span&gt;
     &lt;div class=&quot;drawer-pf-notification-info&quot;&gt;
       &lt;span class=&quot;date&quot;&gt;3/31/16&lt;/span&gt;
       &lt;span class=&quot;time&quot;&gt;12:12:44 PM&lt;/span&gt;
@@ -2604,15 +2723,15 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight42&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
+  &lt;span class=&quot;pficon pficon-error-circle-o pull-left&quot;&gt;&lt;/span&gt;
   &lt;div class=&quot;drawer-pf-notification-content&quot;&gt;
-    &lt;span class=&quot;pficon pficon-error-circle-o pull-left&quot;&gt;&lt;/span&gt;
     &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification&lt;/span&gt;
     &lt;div class=&quot;drawer-pf-notification-info&quot;&gt;
       &lt;span class=&quot;date&quot;&gt;3/31/16&lt;/span&gt;
@@ -2629,10 +2748,10 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight13&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -2653,10 +2772,10 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight23&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -2677,16 +2796,16 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight33&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
   &lt;span class=&quot;pficon pficon-warning-triangle-o pull-left&quot;&gt;&lt;/span&gt;
   &lt;div class=&quot;drawer-pf-notification-content&quot;&gt;
-    &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification&lt;/span&gt;
+    &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification that is really long to see how it reacts on smaller screens sizes.&lt;/span&gt;
     &lt;div class=&quot;drawer-pf-notification-info&quot;&gt;
       &lt;span class=&quot;date&quot;&gt;3/31/16&lt;/span&gt;
       &lt;span class=&quot;time&quot;&gt;12:12:44 PM&lt;/span&gt;
@@ -2701,15 +2820,15 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight43&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
+  &lt;span class=&quot;pficon pficon-error-circle-o pull-left&quot;&gt;&lt;/span&gt;
   &lt;div class=&quot;drawer-pf-notification-content&quot;&gt;
-    &lt;span class=&quot;pficon pficon-error-circle-o pull-left&quot;&gt;&lt;/span&gt;
     &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification&lt;/span&gt;
     &lt;div class=&quot;drawer-pf-notification-info&quot;&gt;
       &lt;span class=&quot;date&quot;&gt;3/31/16&lt;/span&gt;
@@ -2726,10 +2845,10 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight14&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -2750,10 +2869,10 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight24&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -2774,16 +2893,16 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight34&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
   &lt;span class=&quot;pficon pficon-warning-triangle-o pull-left&quot;&gt;&lt;/span&gt;
   &lt;div class=&quot;drawer-pf-notification-content&quot;&gt;
-    &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification&lt;/span&gt;
+    &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification that is really long to see how it reacts on smaller screens sizes.&lt;/span&gt;
     &lt;div class=&quot;drawer-pf-notification-info&quot;&gt;
       &lt;span class=&quot;date&quot;&gt;3/31/16&lt;/span&gt;
       &lt;span class=&quot;time&quot;&gt;12:12:44 PM&lt;/span&gt;
@@ -2798,15 +2917,15 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight44&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
+  &lt;span class=&quot;pficon pficon-error-circle-o pull-left&quot;&gt;&lt;/span&gt;
   &lt;div class=&quot;drawer-pf-notification-content&quot;&gt;
-    &lt;span class=&quot;pficon pficon-error-circle-o pull-left&quot;&gt;&lt;/span&gt;
     &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification&lt;/span&gt;
     &lt;div class=&quot;drawer-pf-notification-info&quot;&gt;
       &lt;span class=&quot;date&quot;&gt;3/31/16&lt;/span&gt;
@@ -2819,8 +2938,22 @@ This is how the notification drawer looks on small screens. Once a user selects 
             &lt;span class=&quot;spinner spinner-xs spinner-inline&quot;&gt;&lt;/span&gt; Loading More
           &lt;/div&gt;
         &lt;/div&gt;
+        &lt;div class=&quot;blank-slate-pf hidden&quot;&gt;
+          &lt;div class=&quot;blank-slate-pf-icon&quot;&gt;
+            &lt;span class=&quot;pficon-info&quot;&gt;&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;h1&gt;There are no notifications to display.&lt;/h1&gt;
+        &lt;/div&gt;
         &lt;div class=&quot;drawer-pf-action&quot;&gt;
-          &lt;button class=&quot;btn btn-link btn-block&quot;&gt;Mark All Read&lt;/button&gt;
+          &lt;div class=&quot;drawer-pf-action-link&quot; data-toggle=&quot;mark-all-read&quot;&gt;
+            &lt;button class=&quot;btn btn-link&quot;&gt;Mark All Read&lt;/button&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;drawer-pf-action-link&quot; data-toggle=&quot;clear-all&quot;&gt;
+            &lt;button class=&quot;btn btn-link&quot;&gt;
+              &lt;span class=&quot;pficon pficon-close&quot;&gt;&lt;/span&gt;
+              Clear All
+            &lt;/button&gt;
+          &lt;/div&gt;
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -2843,10 +2976,10 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight15&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -2867,10 +3000,10 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight25&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -2891,16 +3024,16 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight35&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
   &lt;span class=&quot;pficon pficon-warning-triangle-o pull-left&quot;&gt;&lt;/span&gt;
   &lt;div class=&quot;drawer-pf-notification-content&quot;&gt;
-    &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification&lt;/span&gt;
+    &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification that is really long to see how it reacts on smaller screens sizes.&lt;/span&gt;
     &lt;div class=&quot;drawer-pf-notification-info&quot;&gt;
       &lt;span class=&quot;date&quot;&gt;3/31/16&lt;/span&gt;
       &lt;span class=&quot;time&quot;&gt;12:12:44 PM&lt;/span&gt;
@@ -2915,15 +3048,15 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight45&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
+  &lt;span class=&quot;pficon pficon-error-circle-o pull-left&quot;&gt;&lt;/span&gt;
   &lt;div class=&quot;drawer-pf-notification-content&quot;&gt;
-    &lt;span class=&quot;pficon pficon-error-circle-o pull-left&quot;&gt;&lt;/span&gt;
     &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification&lt;/span&gt;
     &lt;div class=&quot;drawer-pf-notification-info&quot;&gt;
       &lt;span class=&quot;date&quot;&gt;3/31/16&lt;/span&gt;
@@ -2940,10 +3073,10 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight16&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -2964,10 +3097,10 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight26&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -2988,16 +3121,16 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight36&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
   &lt;span class=&quot;pficon pficon-warning-triangle-o pull-left&quot;&gt;&lt;/span&gt;
   &lt;div class=&quot;drawer-pf-notification-content&quot;&gt;
-    &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification&lt;/span&gt;
+    &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification that is really long to see how it reacts on smaller screens sizes.&lt;/span&gt;
     &lt;div class=&quot;drawer-pf-notification-info&quot;&gt;
       &lt;span class=&quot;date&quot;&gt;3/31/16&lt;/span&gt;
       &lt;span class=&quot;time&quot;&gt;12:12:44 PM&lt;/span&gt;
@@ -3012,15 +3145,15 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight46&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
+  &lt;span class=&quot;pficon pficon-error-circle-o pull-left&quot;&gt;&lt;/span&gt;
   &lt;div class=&quot;drawer-pf-notification-content&quot;&gt;
-    &lt;span class=&quot;pficon pficon-error-circle-o pull-left&quot;&gt;&lt;/span&gt;
     &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification&lt;/span&gt;
     &lt;div class=&quot;drawer-pf-notification-info&quot;&gt;
       &lt;span class=&quot;date&quot;&gt;3/31/16&lt;/span&gt;
@@ -3037,10 +3170,10 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight17&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -3061,10 +3194,10 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight27&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -3085,16 +3218,16 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight37&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
   &lt;span class=&quot;pficon pficon-warning-triangle-o pull-left&quot;&gt;&lt;/span&gt;
   &lt;div class=&quot;drawer-pf-notification-content&quot;&gt;
-    &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification&lt;/span&gt;
+    &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification that is really long to see how it reacts on smaller screens sizes.&lt;/span&gt;
     &lt;div class=&quot;drawer-pf-notification-info&quot;&gt;
       &lt;span class=&quot;date&quot;&gt;3/31/16&lt;/span&gt;
       &lt;span class=&quot;time&quot;&gt;12:12:44 PM&lt;/span&gt;
@@ -3109,15 +3242,15 @@ This is how the notification drawer looks on small screens. Once a user selects 
   &lt;/button&gt;
   &lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot; aria-labelledby=&quot;dropdownKebabRight47&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something Else Here&lt;/a&gt;&lt;/li&gt;
     &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated Link&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 
+  &lt;span class=&quot;pficon pficon-error-circle-o pull-left&quot;&gt;&lt;/span&gt;
   &lt;div class=&quot;drawer-pf-notification-content&quot;&gt;
-    &lt;span class=&quot;pficon pficon-error-circle-o pull-left&quot;&gt;&lt;/span&gt;
     &lt;span class=&quot;drawer-pf-notification-message&quot;&gt;Another Event Notification&lt;/span&gt;
     &lt;div class=&quot;drawer-pf-notification-info&quot;&gt;
       &lt;span class=&quot;date&quot;&gt;3/31/16&lt;/span&gt;
@@ -3127,8 +3260,22 @@ This is how the notification drawer looks on small screens. Once a user selects 
 &lt;/div&gt;
 
         &lt;/div&gt;
+        &lt;div class=&quot;blank-slate-pf hidden&quot;&gt;
+          &lt;div class=&quot;blank-slate-pf-icon&quot;&gt;
+            &lt;span class=&quot;pficon-info&quot;&gt;&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;h1&gt;There are no notifications to display.&lt;/h1&gt;
+        &lt;/div&gt;
         &lt;div class=&quot;drawer-pf-action&quot;&gt;
-          &lt;button class=&quot;btn btn-link btn-block&quot;&gt;Mark All Read&lt;/button&gt;
+          &lt;div class=&quot;drawer-pf-action-link&quot; data-toggle=&quot;mark-all-read&quot;&gt;
+            &lt;button class=&quot;btn btn-link&quot;&gt;Mark All Read&lt;/button&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;drawer-pf-action-link&quot; data-toggle=&quot;clear-all&quot;&gt;
+            &lt;button class=&quot;btn btn-link&quot;&gt;
+              &lt;span class=&quot;pficon pficon-close&quot;&gt;&lt;/span&gt;
+              Clear All
+            &lt;/button&gt;
+          &lt;/div&gt;
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -3136,6 +3283,9 @@ This is how the notification drawer looks on small screens. Once a user selects 
 &lt;/div&gt;
 &lt;script&gt;
   $(document).ready(function() {
+    // Initialize to unread notifications
+    // TODO: add badge for unread notifications
+
     // Show/Hide Notifications Drawer
     $('.drawer-pf-trigger').click(function() {
       var $drawer = $('.drawer-pf');
@@ -3155,6 +3305,16 @@ This is how the notification drawer looks on small screens. Once a user selects 
       } else {
         $drawer.addClass('hide');
       }
+      // Special case, close navigation menu in mobile mode
+     if ($('.container-pf-nav-pf-vertical').hasClass('hidden-nav')) {
+       $('.nav-pf-vertical').removeClass('show-mobile-nav');
+     }
+    });
+    $('.drawer-pf-close').click(function() {
+      var $drawer = $('.drawer-pf');
+
+      $('.drawer-pf-trigger').removeClass('open');
+      $drawer.addClass('hide');
     });
     $('.drawer-pf-toggle-expand').click(function() {
       var $drawer = $('.drawer-pf');
@@ -3169,12 +3329,48 @@ This is how the notification drawer looks on small screens. Once a user selects 
       }
     });
 
-    // Mark All Read
+    // Mark All Read / Clear All
     $('.panel-collapse').each(function (index, panel) {
       var $panel = $(panel);
-      $panel.on('click', '.drawer-pf-action .btn', function() {
+      var unreadCount = $panel.find('.drawer-pf-notification.unread').length;
+      $(panel.parentElement).find('.panel-counter').text(unreadCount + ' New Event' + (unreadCount !== 1 ? 's' : ''));
+
+      if ($('.drawer-pf .panel-collapse .unread').length === 0) {
+        // TODO: remove badge for unread indicator
+      }
+
+      $panel.on('click', '.drawer-pf-action [data-toggle=&quot;mark-all-read&quot;] .btn', function() {
         $panel.find('.unread').removeClass('unread');
+        $panel.find('.drawer-pf-action [data-toggle=&quot;mark-all-read&quot;]').remove();
         $(panel.parentElement).find('.panel-counter').text('0 New Events');
+        if ($('.drawer-pf .panel-collapse .unread').length === 0) {
+          $('.drawer-pf-trigger').removeClass('unread');
+        }
+      });
+      $panel.on('click', '.drawer-pf-action [data-toggle=&quot;clear-all&quot;] .btn', function() {
+        $panel.find('.panel-body .drawer-pf-notification').remove();
+        $panel.find('.drawer-pf-action').remove();
+        $panel.find('.blank-slate-pf').removeClass('hidden');
+        $panel.find('.drawer-pf-loading').addClass('hidden');
+        $(panel.parentElement).find('.panel-counter').text('0 New Events');
+        if ($('.drawer-pf .panel-collapse .unread').length === 0) {
+          // TODO: remove badge for unread indicator
+        }
+      });
+
+      $panel.find('.drawer-pf-notification').each(function (index, notification) {
+        var $notification = $(notification);
+        $notification.on('click', '.drawer-pf-notification-content', function() {
+          $notification.removeClass('unread');
+          var unreadCount = $panel.find('.drawer-pf-notification.unread').length;
+          $(panel.parentElement).find('.panel-counter').text(unreadCount + ' New Event' + (unreadCount !== 1 ? 's' : ''));
+          if (unreadCount === 0) {
+            $panel.find('.drawer-pf-action [data-toggle=&quot;mark-all-read&quot;]').remove();
+            if ($('.drawer-pf .panel-collapse .unread').length === 0) {
+              // TODO: remove badge for unread indicator
+            }
+          }
+        });
       });
     });
 
@@ -3182,7 +3378,7 @@ This is how the notification drawer looks on small screens. Once a user selects 
   });
 &lt;/script&gt;
 
-  &lt;/nav&gt;
+  
 &lt;/nav&gt; &lt;!--/.navbar--&gt;
 
 
@@ -3193,90 +3389,89 @@ This is how the notification drawer looks on small screens. Once a user selects 
      &quot;&gt;
   &lt;ul class=&quot;list-group&quot;&gt;
     &lt;li class=&quot;list-group-item&quot;&gt;
-      &lt;a&gt;
+      &lt;a href=&quot;#0&quot;&gt;
         &lt;span class=&quot;fa fa-dashboard&quot; data-toggle=&quot;tooltip&quot; title=&quot;Dashboard&quot;&gt;&lt;/span&gt;
         &lt;span class=&quot;list-group-item-value&quot;&gt;Dashboard&lt;/span&gt;
       &lt;/a&gt;
     &lt;/li&gt;
     &lt;li class=&quot;list-group-item&quot;&gt;
-      &lt;a&gt;
+      &lt;a href=&quot;#0&quot;&gt;
         &lt;span class=&quot;fa fa-shield&quot; data-toggle=&quot;tooltip&quot; title=&quot;Dolor&quot;&gt;&lt;/span&gt;
         &lt;span class=&quot;list-group-item-value&quot;&gt;Dolor&lt;/span&gt;
         
       &lt;/a&gt;
     &lt;/li&gt;
     &lt;li class=&quot;list-group-item active &quot; data-target=&quot;#ipsum-secondary&quot;&gt;
-      &lt;a&gt;
+      &lt;a href=&quot;#0&quot;&gt;
         &lt;span class=&quot;fa fa-space-shuttle&quot; data-toggle=&quot;tooltip&quot; title=&quot;Ipsum&quot;&gt;&lt;/span&gt;
         &lt;span class=&quot;list-group-item-value&quot;&gt;Ipsum&lt;/span&gt;
       &lt;/a&gt;
       
     &lt;/li&gt;
     &lt;li class=&quot;list-group-item &quot; data-target=&quot;#amet-secondary&quot;&gt;
-      &lt;a&gt;
+      &lt;a href=&quot;#0&quot;&gt;
         &lt;span class=&quot;fa fa-paper-plane&quot; data-toggle=&quot;tooltip&quot; title=&quot;Amet&quot;&gt;&lt;/span&gt;
         &lt;span class=&quot;list-group-item-value&quot;&gt;Amet&lt;/span&gt;
       &lt;/a&gt;
       
     &lt;/li&gt;
     &lt;li class=&quot;list-group-item&quot;&gt;
-      &lt;a&gt;
+      &lt;a href=&quot;#0&quot;&gt;
         &lt;span class=&quot;fa fa-graduation-cap&quot; data-toggle=&quot;tooltip&quot; title=&quot;Adipscing&quot;&gt;&lt;/span&gt;
         &lt;span class=&quot;list-group-item-value&quot;&gt;Adipscing&lt;/span&gt;
       &lt;/a&gt;
     &lt;/li&gt;
     &lt;li class=&quot;list-group-item&quot;&gt;
-      &lt;a&gt;
+      &lt;a href=&quot;#0&quot;&gt;
         &lt;span class=&quot;fa fa-gamepad&quot; data-toggle=&quot;tooltip&quot; title=&quot;Lorem&quot;&gt;&lt;/span&gt;
         &lt;span class=&quot;list-group-item-value&quot;&gt;Lorem&lt;/span&gt;
       &lt;/a&gt;
     &lt;/li&gt;
-
-    &lt;li class=&quot;list-group-item secondary-nav-item-pf mobile-nav-item-pf visible-xs-block&quot; data-target=&quot;#amet-secondary&quot;&gt;
-      &lt;a&gt;
+    
+    &lt;li class=&quot;list-group-item secondary-nav-item-pf mobile-nav-item-pf visible-xs-block&quot;&gt;
+      &lt;a href=&quot;#0&quot;&gt;
         &lt;span class=&quot;pficon pficon-user&quot; data-toggle=&quot;tooltip&quot; title=&quot;&quot; data-original-title=&quot;User&quot;&gt;&lt;/span&gt;
         &lt;span class=&quot;list-group-item-value&quot;&gt;User&lt;/span&gt;
       &lt;/a&gt;
       &lt;div id=&quot;user-secondary&quot; class=&quot;nav-pf-secondary-nav&quot;&gt;
         &lt;div class=&quot;nav-item-pf-header&quot;&gt;
-          &lt;a class=&quot;secondary-collapse-toggle-pf&quot; data-toggle=&quot;collapse-secondary-nav&quot;&gt;&lt;/a&gt;
+          &lt;a href=&quot;#0&quot; class=&quot;secondary-collapse-toggle-pf&quot; data-toggle=&quot;collapse-secondary-nav&quot;&gt;&lt;/a&gt;
           &lt;span&gt;User&lt;/span&gt;
         &lt;/div&gt;
 
         &lt;ul class=&quot;list-group&quot;&gt;
           &lt;li class=&quot;list-group-item&quot;&gt;
-            &lt;a&gt;
+            &lt;a href=&quot;#0&quot;&gt;
               &lt;span class=&quot;list-group-item-value&quot;&gt;Preferences&lt;/span&gt;
             &lt;/a&gt;
           &lt;/li&gt;
 
           &lt;li class=&quot;list-group-item&quot;&gt;
-            &lt;a&gt;
+            &lt;a href=&quot;#0&quot;&gt;
               &lt;span class=&quot;list-group-item-value&quot;&gt;Logout&lt;/span&gt;
             &lt;/a&gt;
           &lt;/li&gt;
         &lt;/ul&gt;
       &lt;/div&gt;
     &lt;/li&gt;
-
     &lt;li class=&quot;list-group-item secondary-nav-item-pf mobile-nav-item-pf visible-xs-block&quot; data-target=&quot;#amet-secondary&quot;&gt;
-      &lt;a&gt;
-        &lt;span class=&quot;pficon pficon-help&quot; data-toggle=&quot;tooltip&quot; title=&quot;&quot; data-original-title=&quot;Amet&quot;&gt;&lt;/span&gt;
+      &lt;a href=&quot;#0&quot;&gt;
+        &lt;span class=&quot;pficon pficon-help&quot; data-toggle=&quot;tooltip&quot; title=&quot;&quot; data-original-title=&quot;Help&quot;&gt;&lt;/span&gt;
         &lt;span class=&quot;list-group-item-value&quot;&gt;Help&lt;/span&gt;
       &lt;/a&gt;
       &lt;div id=&quot;help-secondary&quot; class=&quot;nav-pf-secondary-nav&quot;&gt;
         &lt;div class=&quot;nav-item-pf-header&quot;&gt;
-          &lt;a class=&quot;secondary-collapse-toggle-pf&quot; data-toggle=&quot;collapse-secondary-nav&quot;&gt;&lt;/a&gt;
+          &lt;a href=&quot;#0&quot; class=&quot;secondary-collapse-toggle-pf&quot; data-toggle=&quot;collapse-secondary-nav&quot;&gt;&lt;/a&gt;
           &lt;span&gt;Help&lt;/span&gt;
         &lt;/div&gt;
         &lt;ul class=&quot;list-group&quot;&gt;
           &lt;li class=&quot;list-group-item&quot;&gt;
-            &lt;a&gt;
+            &lt;a href=&quot;#0&quot;&gt;
               &lt;span class=&quot;list-group-item-value&quot;&gt;Help&lt;/span&gt;
             &lt;/a&gt;
           &lt;/li&gt;
           &lt;li class=&quot;list-group-item&quot;&gt;
-            &lt;a&gt;
+            &lt;a href=&quot;#0&quot;&gt;
               &lt;span class=&quot;list-group-item-value&quot;&gt;About&lt;/span&gt;
             &lt;/a&gt;
           &lt;/li&gt;
