@@ -1,9 +1,11 @@
 .navbar-brand-txt {
   line-height: 34px;
 }
+uib-accordion > .panel-group .panel-default .panel-title > a:before,
 accordion > .panel-group .panel-default .panel-title > a:before {
   content: "\f105";
 }
+uib-accordion > .panel-group .panel-open .panel-title > a:before,
 accordion > .panel-group .panel-open .panel-title > a:before {
   content: "\f107";
 }
@@ -73,19 +75,27 @@ accordion > .panel-group .panel-open .panel-title > a:before {
 }
 .card-pf-info-status {
   display: flex;
+  margin: 0 10px;
 }
-.card-pf-info-status .info-image-container {
+.card-pf-info-status .card-pf-info-image {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-right: 10px;
+  margin-right: 15px;
 }
-.card-pf-info-status .info-image-container .info-icon {
+.card-pf-info-status .card-pf-info-image .info-icon {
   font-size: 50px;
 }
-.card-pf-info-status .info-image-container .info-img {
+.card-pf-info-status .card-pf-info-image .info-img {
   max-height: 50px;
+}
+.card-pf-info-status .card-pf-info-content {
+  margin: 10px 0;
+}
+.card-pf-info-status .card-pf-info-content .card-pf-title {
+  margin-top: 10px;
+  margin-bottom: 15px;
 }
 pf-c3-chart {
   display: block;
@@ -689,17 +699,6 @@ table.dataTable tbody td {
 }
 .table-view-pf-select {
   width: 13px;
-}
-.wizard-pf-footer .tooltip-wrapper {
-  border: none;
-  box-shadow: none;
-  display: inline-block;
-  margin-left: 5px;
-  padding: 0;
-  text-align: center;
-}
-.wizard-pf-footer .tooltip-wrapper .btn[disabled] {
-  pointer-events: none;
 }
 .wizard-pf-footer .btn-cancel.wizard-pf-cancel-no-back {
   margin-right: 0;

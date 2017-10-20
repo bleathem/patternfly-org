@@ -156,7 +156,7 @@ angular.module('patternfly.views', ['patternfly.utils', 'patternfly.filters', 'p
  *
  */
 angular.module('patternfly.wizard', ['ui.bootstrap.modal',
-  'ui.bootstrap.tpls',
+  'ui.bootstrap',
   'patternfly.form']);
 
 
@@ -224,13 +224,13 @@ angular.module('patternfly.autofocus', []).directive('pfFocused', ["$timeout", f
   angular.module('patternfly.canvas').component('pfCanvasEditor', {
 
     bindings: {
-      chartDataModel: "=",
-      chartViewModel: "=?",
-      toolboxTabs: "=",
+      chartDataModel: '=',
+      chartViewModel: '=?',
+      toolboxTabs: '=',
       readOnly: '<?'
     },
     transclude: true,
-    templateUrl: "canvas-view/canvas-editor/canvas-editor.html",
+    templateUrl: 'canvas-view/canvas-editor/canvas-editor.html',
     controller: ["$timeout", function ($timeout) {
       var ctrl = this;
       var newNodeCount = 0;
@@ -279,8 +279,8 @@ angular.module('patternfly.autofocus', []).directive('pfFocused', ["$timeout", f
         // focus to filter input box
 
         $timeout(function () {
-          angular.element(".subtabs>ul").addClass('nav-tabs-pf');
-          angular.element("#filterFld").focus();
+          angular.element('.subtabs>u').addClass('nav-tabs-pf');
+          angular.element('#filterFld').focus();
         });
       };
 
@@ -299,7 +299,7 @@ angular.module('patternfly.autofocus', []).directive('pfFocused', ["$timeout", f
       };
 
       ctrl.tabClicked = function () {
-        angular.element("#filterFld").focus();
+        angular.element('#filterFld').focus();
       };
 
       /*** Toolbox ***/
@@ -329,7 +329,7 @@ angular.module('patternfly.autofocus', []).directive('pfFocused', ["$timeout", f
       };
 
       ctrl.tabClicked = function () {
-        angular.element("#filterFld").focus();
+        angular.element('#filterFld').focus();
       };
 
       ctrl.activeTab = function () {
@@ -384,484 +384,427 @@ angular.module('patternfly.autofocus', []).directive('pfFocused', ["$timeout", f
     }] // controller
   }); // module
 })();
-;/* eslint-disable */
-(function() {
+;(function () {
   'use strict';
 
   angular.module('patternfly.canvas')
-    .directive('toolboxItems', toolboxItemsDirective);
-
-  function toolboxItemsDirective() {
-    var directive = {
-      restrict: 'E',
-      scope: {
+    .component('toolboxItems', {
+      templateUrl: 'canvas-view/canvas-editor/toolbox-items.html',
+      bindings: {
         items: '=',
-        startDragCallback: '=',
-        clickCallback: '=',
+        startDragCallback: '<',
+        clickCallback: '<',
         searchText: '='
       },
-      controller: toolboxItemsController,
-      templateUrl: 'canvas-view/canvas-editor/toolbox-items.html',
-      controllerAs: 'vm',
-      bindToController: true
-    };
+      controller: function toolboxItemsController () {
+        var ctrl = this;
 
-    return directive;
+        ctrl.itemClicked = function (item) {
+          if (angular.isFunction(ctrl.clickCallback) && !item.disableInToolbox) {
+            ctrl.clickCallback(item);
+          }
+        };
 
-    function toolboxItemsController() {
-      var vm = this;
-
-      vm.clickCallbackfmDir = function(item) {
-        if (!item.disableInToolbox) {
-          vm.clickCallback(item);
-        }
-      };
-
-      vm.startDragCallbackfmDir = function(event, ui, item) {
-        vm.startDragCallback(event, ui, item);
-      };
-    }
-  }
+        ctrl.startItemDrag = function (event, ui, item) {
+          if (angular.isFunction(ctrl.startDragCallback)) {
+            ctrl.startDragCallback(event, ui, item);
+          }
+        };
+      }
+    });
 })();
 ;(function () {
   'use strict';
 
   angular.module('patternfly.canvas')
-  .filter('trustAsResourceUrl', ['$sce', function ($sce) {
-    return function (val) {
-      return $sce.trustAsResourceUrl(val);
-    };
-  }])
+    .filter('trustAsResourceUrl', ['$sce', function ($sce) {
+      return function (val) {
+        return $sce.trustAsResourceUrl(val);
+      };
+    }])
 
-  //
-  // Directive that generates the rendered chart from the data model.
-  //
-  .directive('pfCanvas', ["$document", function ($document) {
-    return {
-      restrict: 'E',
-      templateUrl: "canvas-view/canvas/canvas.html",
-      replace: true,
-      scope: {
-        chartDataModel: "=",
-        chartViewModel: "=?",
-        readOnly: "=?",
-        hideConnectors: "=?"
+    //
+    // Component that generates the rendered chart from the data model.
+    //
+    .component('pfCanvas', {
+      templateUrl: 'canvas-view/canvas/canvas.html',
+      bindings: {
+        chartDataModel:'=',
+        chartViewModel: '=?',
+        readOnly: '<?',
+        hideConnectors: '=?'
       },
-      controller: 'CanvasController',
-      link: link
-    };
-    function link (scope) {
-      var deleteKeyCode = 46;
-      var ctrlKeyCode = 17;
-      var ctrlDown = false;
-      var aKeyCode = 65;
-      var dKeyCode = 68;
-      var escKeyCode = 27;
+      controller: ["$scope", "dragging", "$element", "$document", function CanvasController ($scope, dragging, $element, $document) {
+        var ctrl = this;
 
-      $document.find('body').keydown(function (evt) {
-        if (evt.keyCode === ctrlKeyCode) {
-          ctrlDown = true;
-          evt.stopPropagation();
-          evt.preventDefault();
-        }
-
-        if (evt.keyCode === aKeyCode && ctrlDown) {
-          //
-          // Ctrl + A
-          //
-          scope.selectAll();
-          scope.$digest();
-          evt.stopPropagation();
-          evt.preventDefault();
-        }
-      });
-
-      $document.find('body').keyup(function (evt) {
-        if (evt.keyCode === deleteKeyCode) {
-          scope.deleteSelected();
-          scope.$digest();
-        }
-
-        if (evt.keyCode === escKeyCode) {
-          scope.deselectAll();
-          scope.$digest();
-        }
-
-        if (evt.keyCode === ctrlKeyCode) {
-          ctrlDown = false;
-          evt.stopPropagation();
-          evt.preventDefault();
-        }
-      });
-    }
-  }])
-  //
-  // Controller for the canvas directive.
-  // Having a separate controller is better for unit testing, otherwise
-  // it is painful to unit test a directive without instantiating the DOM
-  // (which is possible, just not ideal).
-  //
-  .controller('CanvasController', ['$scope', 'dragging', '$element', '$document', function CanvasController ($scope, dragging, $element, $document) {
-    var controller = this;
-
-    $scope.chart = new pfCanvas.ChartViewModel($scope.chartDataModel);
-    $scope.chartViewModel = $scope.chart;
-    //
-    // Reference to the document and jQuery, can be overridden for testting.
-    //
-    this.document = document;
-
-    //
-    // Wrap jQuery so it can easily be  mocked for testing.
-    //
-    this.jQuery = function (element) {
-      return angular.element(element);
-    };
-
-    //
-    // Init data-model variables.
-    //
-    $scope.draggingConnection = false;
-    $scope.connectorSize = 6;
-    $scope.dragSelecting = false;
-
-    //
-    // Reference to the connection, connector or node that the mouse is currently over.
-    //
-    $scope.mouseOverConnector = null;
-    $scope.mouseOverConnection = null;
-    $scope.mouseOverNode = null;
-
-    //
-    // The class for connections and connectors.
-    //
-    this.connectionClass = 'connection';
-    this.connectorClass = 'connector';
-    this.nodeClass = 'node';
-
-    //
-    // Translate the coordinates so they are relative to the svg element.
-    //
-    this.translateCoordinates = function (x, y, evt) {
-      var svgElem =  $element.get(0);
-      var matrix = svgElem.getScreenCTM();
-      var point = svgElem.createSVGPoint();
-      point.x = (x - evt.view.pageXOffset) / $scope.zoomLevel();
-      point.y = (y - evt.view.pageYOffset) / $scope.zoomLevel();
-
-      return point.matrixTransform(matrix.inverse());
-    };
-
-    $scope.hideConnectors = $scope.hideConnectors ? $scope.hideConnectors : false;
-
-    $scope.isConnectorConnected = function (connector) {
-      return (connector && connector.connected());
-    };
-
-    $scope.isConnectorUnconnectedAndValid = function (connector) {
-      return (connector && !connector.connected() && !connector.invalid() &&
-              connector.parentNode() !== $scope.connectingModeSourceNode);
-    };
-
-    // determins if a dest. connector is connected to the source node
-    $scope.isConnectedTo = function (connector, node) {
-      var i,connection;
-      var connections = $scope.chart.connections;
-      for (i = 0; i < connections.length; i++) {
-        connection = connections[i];
-        if (connection.dest === connector && connection.source.parentNode() === node) {
-          return true;
-        }
-      }
-
-      return false;
-    };
-
-    $scope.availableConnections = function () {
-      return $scope.chart.validConnections;
-    };
-
-    $scope.foreignObjectSupported = function () {
-      return $document[0].implementation.hasFeature('http://www.w3.org/TR/SVG11/feature#Extensibility', '1.1');
-    };
-
-    $scope.addNodeToCanvas = function (newNode) {
-      $scope.chart.addNode(newNode);
-    };
-
-    $scope.$on('selectAll', function (evt, args) {
-      $scope.selectAll();
-    });
-
-    $scope.selectAll = function () {
-      $scope.chart.selectAll();
-    };
-
-    $scope.$on('deselectAll', function (evt, args) {
-      $scope.deselectAll();
-    });
-
-    $scope.deselectAll = function () {
-      $scope.chart.deselectAll();
-    };
-
-    $scope.$on('deleteSelected', function (evt, args) {
-      $scope.deleteSelected();
-    });
-
-    $scope.deleteSelected = function () {
-      $scope.chart.deleteSelected();
-    };
-
-    //
-    // Called on mouse down in the chart.
-    //
-    $scope.mouseDown = function (evt) {
-      if ($scope.readOnly) {
-        return;
-      }
-
-      if ($scope.chart.inConnectingMode ) {
-        // camceling out of connection mode, remove unused output connector
-        $scope.cancelConnectingMode();
-      }
-
-      $scope.chart.deselectAll();
-
-      $scope.chart.clickedOnChart = true;
-
-      dragging.startDrag(evt, {
+        ctrl.chart = new pfCanvas.ChartViewModel(ctrl.chartDataModel);
+        ctrl.chartViewModel = ctrl.chart;
 
         //
-        // Commence dragging... setup variables to display the drag selection rect.
+        // Init data-model variables.
         //
-        dragStarted: function (x, y) {
-          var startPoint;
-          $scope.dragSelecting = true;
-          startPoint = controller.translateCoordinates(x, y, evt);
-          $scope.dragSelectionStartPoint = startPoint;
-          $scope.dragSelectionRect = {
-            x: startPoint.x,
-            y: startPoint.y,
-            width: 0,
-            height: 0,
-          };
-        },
+        ctrl.draggingConnection = false;
+        ctrl.connectorSize = 6;
+        ctrl.dragSelecting = false;
 
         //
-        // Update the drag selection rect while dragging continues.
+        // Reference to the connection, connector or node that the mouse is currently over.
         //
-        dragging: function (x, y) {
-          var startPoint = $scope.dragSelectionStartPoint;
-          var curPoint = controller.translateCoordinates(x, y, evt);
+        ctrl.mouseOverConnector = null;
+        ctrl.mouseOverConnection = null;
+        ctrl.mouseOverNode = null;
 
-          $scope.dragSelectionRect = {
-            x: curPoint.x > startPoint.x ? startPoint.x : curPoint.x,
-            y: curPoint.y > startPoint.y ? startPoint.y : curPoint.y,
-            width: curPoint.x > startPoint.x ? curPoint.x - startPoint.x : startPoint.x - curPoint.x,
-            height: curPoint.y > startPoint.y ? curPoint.y - startPoint.y : startPoint.y - curPoint.y,
-          };
-        },
 
         //
-        // Dragging has ended... select all that are within the drag selection rect.
+        // Translate the coordinates so they are relative to the svg element.
         //
-        dragEnded: function () {
-          $scope.dragSelecting = false;
-          $scope.chart.applySelectionRect($scope.dragSelectionRect);
-          delete $scope.dragSelectionStartPoint;
-          delete $scope.dragSelectionRect;
-        },
-      });
-    };
+        this.translateCoordinates = function (x, y, evt) {
+          var svgElem =  $element.get(0).children[0];
+          var matrix = svgElem.getScreenCTM();
+          var point = svgElem.createSVGPoint();
+          point.x = (x - evt.view.pageXOffset) / ctrl.zoomLevel();
+          point.y = (y - evt.view.pageYOffset) / ctrl.zoomLevel();
 
-    //
-    // Handle nodeMouseOver on an node.
-    //
-    $scope.nodeMouseOver = function (evt, node) {
-      if (!$scope.readOnly) {
-        $scope.mouseOverNode = node;
-      }
-    };
+          return point.matrixTransform(matrix.inverse());
+        };
 
-    //
-    // Handle nodeMouseLeave on an node.
-    //
-    $scope.nodeMouseLeave = function (evt, node) {
-      $scope.mouseOverNode = null;
-    };
+        ctrl.hideConnectors = ctrl.hideConnectors || false;
 
-    //
-    // Handle mousedown on a node.
-    //
-    $scope.nodeMouseDown = function (evt, node) {
-      var chart = $scope.chart;
-      var lastMouseCoords;
+        ctrl.isConnectorConnected = function (connector) {
+          return (connector && connector.connected());
+        };
 
-      if ($scope.readOnly) {
-        return;
-      }
+        ctrl.isConnectorUnconnectedAndValid = function (connector) {
+          return (connector && !connector.connected() && !connector.invalid() &&
+          connector.parentNode() !== ctrl.connectingModeSourceNode);
+        };
 
-      dragging.startDrag(evt, {
-
-        //
-        // Node dragging has commenced.
-        //
-        dragStarted: function (x, y) {
-          lastMouseCoords = controller.translateCoordinates(x, y, evt);
-
-          //
-          // If nothing is selected when dragging starts,
-          // at least select the node we are dragging.
-          //
-          if (!node.selected()) {
-            chart.deselectAll();
-            node.select();
+        // determines if a dest. connector is connected to the source node
+        ctrl.isConnectedTo = function (connector, node) {
+          var i,connection;
+          var connections = ctrl.chart.connections;
+          for (i = 0; i < connections.length; i++) {
+            connection = connections[i];
+            if (connection.dest === connector && connection.source.parentNode() === node) {
+              return true;
+            }
           }
-        },
+
+          return false;
+        };
+
+        ctrl.availableConnections = function () {
+          return ctrl.chart.validConnections;
+        };
+
+        ctrl.foreignObjectSupported = function () {
+          return $document[0].implementation.hasFeature('http://www.w3.org/TR/SVG11/feature#Extensibility', '1.1');
+        };
+
+        ctrl.addNodeToCanvas = function (newNode) {
+          ctrl.chart.addNode(newNode);
+        };
+
+        $scope.$on('selectAll', function () {
+          ctrl.selectAll();
+        });
+
+        ctrl.selectAll = function () {
+          ctrl.chart.selectAll();
+        };
+
+        $scope.$on('deselectAll', function () {
+          ctrl.deselectAll();
+        });
+
+        ctrl.deselectAll = function () {
+          ctrl.chart.deselectAll();
+        };
+
+        $scope.$on('deleteSelected', function () {
+          ctrl.deleteSelected();
+        });
+
+        ctrl.deleteSelected = function () {
+          ctrl.chart.deleteSelected();
+        };
 
         //
-        // Dragging selected nodes... update their x,y coordinates.
+        // Called on mouse down in the chart.
         //
-        dragging: function (x, y) {
-          var curCoords = controller.translateCoordinates(x, y, evt);
-          var deltaX = curCoords.x - lastMouseCoords.x;
-          var deltaY = curCoords.y - lastMouseCoords.y;
+        ctrl.mouseDown = function (evt) {
+          if (ctrl.readOnly) {
+            return;
+          }
 
-          chart.updateSelectedNodesLocation(deltaX, deltaY);
+          if (ctrl.chart.inConnectingMode ) {
+            // canceling out of connection mode, remove unused output connector
+            ctrl.cancelConnectingMode();
+          }
 
-          lastMouseCoords = curCoords;
-        },
+          ctrl.chart.deselectAll();
+
+          ctrl.chart.clickedOnChart = true;
+
+          dragging.startDrag(evt, {
+
+            //
+            // Commence dragging... setup variables to display the drag selection rect.
+            //
+            dragStarted: function (x, y) {
+              var startPoint;
+              ctrl.dragSelecting = true;
+              startPoint = ctrl.translateCoordinates(x, y, evt);
+              ctrl.dragSelectionStartPoint = startPoint;
+              ctrl.dragSelectionRect = {
+                x: startPoint.x,
+                y: startPoint.y,
+                width: 0,
+                height: 0
+              };
+            },
+
+            //
+            // Update the drag selection rect while dragging continues.
+            //
+            dragging: function (x, y) {
+              var startPoint = ctrl.dragSelectionStartPoint;
+              var curPoint = ctrl.translateCoordinates(x, y, evt);
+
+              ctrl.dragSelectionRect = {
+                x: curPoint.x > startPoint.x ? startPoint.x : curPoint.x,
+                y: curPoint.y > startPoint.y ? startPoint.y : curPoint.y,
+                width: curPoint.x > startPoint.x ? curPoint.x - startPoint.x : startPoint.x - curPoint.x,
+                height: curPoint.y > startPoint.y ? curPoint.y - startPoint.y : startPoint.y - curPoint.y,
+              };
+            },
+
+            //
+            // Dragging has ended... select all that are within the drag selection rect.
+            //
+            dragEnded: function () {
+              ctrl.dragSelecting = false;
+              ctrl.chart.applySelectionRect(ctrl.dragSelectionRect);
+              delete ctrl.dragSelectionStartPoint;
+              delete ctrl.dragSelectionRect;
+            }
+          });
+        };
 
         //
-        // The node wasn't dragged... it was clicked.
+        // Handle nodeMouseOver on an node.
         //
-        clicked: function () {
-          chart.handleNodeClicked(node, evt.ctrlKey);
-        },
+        ctrl.nodeMouseOver = function (evt, node) {
+          if (!ctrl.readOnly) {
+            ctrl.mouseOverNode = node;
+          }
+        };
 
-      });
-    };
+        //
+        // Handle nodeMouseLeave on an node.
+        //
+        ctrl.nodeMouseLeave = function () {
+          ctrl.mouseOverNode = null;
+        };
 
-    //
-    // Listen for node action
-    //
-    $scope.$on('nodeActionClicked', function (evt, args) {
-      var action = args.action;
-      var node = args.node;
+        //
+        // Handle mousedown on a node.
+        //
+        ctrl.nodeMouseDown = function (evt, node) {
+          var chart = ctrl.chart;
+          var lastMouseCoords;
 
-      if (action === 'nodeActionConnect') {
-        $scope.startConnectingMode(node);
-      }
+          if (ctrl.readOnly) {
+            return;
+          }
+
+          dragging.startDrag(evt, {
+
+            //
+            // Node dragging has commenced.
+            //
+            dragStarted: function (x, y) {
+              lastMouseCoords = ctrl.translateCoordinates(x, y, evt);
+
+              //
+              // If nothing is selected when dragging starts,
+              // at least select the node we are dragging.
+              //
+              if (!node.selected()) {
+                chart.deselectAll();
+                node.select();
+              }
+            },
+
+            //
+            // Dragging selected nodes... update their x,y coordinates.
+            //
+            dragging: function (x, y) {
+              var curCoords = ctrl.translateCoordinates(x, y, evt);
+              var deltaX = curCoords.x - lastMouseCoords.x;
+              var deltaY = curCoords.y - lastMouseCoords.y;
+
+              chart.updateSelectedNodesLocation(deltaX, deltaY);
+
+              lastMouseCoords = curCoords;
+            },
+
+            //
+            // The node wasn't dragged... it was clicked.
+            //
+            clicked: function () {
+              chart.handleNodeClicked(node, evt.ctrlKey);
+            }
+
+          });
+        };
+
+        //
+        // Listen for node action
+        //
+        ctrl.nodeClickHandler = function (action, node) {
+          if (action === 'nodeActionConnect') {
+            ctrl.startConnectingMode(node);
+          }
+        };
+
+        ctrl.nodeCloseHandler = function () {
+          ctrl.mouseOverNode = null;
+        };
+
+        ctrl.connectingModeOutputConnector = null;
+        ctrl.connectingModeSourceNode = null;
+
+        ctrl.startConnectingMode = function (node) {
+          ctrl.chart.inConnectingMode = true;
+          ctrl.hideConnectors = false;
+          ctrl.connectingModeSourceNode = node;
+          ctrl.connectingModeSourceNode.select();
+          ctrl.connectingModeOutputConnector = node.getOutputConnector();
+          ctrl.chart.updateValidNodesAndConnectors(ctrl.connectingModeSourceNode);
+        };
+
+        ctrl.cancelConnectingMode = function () {
+          // if output connector not connected to something, remove it
+          if (!ctrl.connectingModeOutputConnector.connected()) {
+            ctrl.chart.removeOutputConnector(ctrl.connectingModeOutputConnector);
+          }
+          ctrl.stopConnectingMode();
+        };
+
+        ctrl.stopConnectingMode = function () {
+          ctrl.chart.inConnectingMode = false;
+          ctrl.chart.resetValidNodesAndConnectors();
+        };
+
+        //
+        // Handle connectionMouseOver on an connection.
+        //
+        ctrl.connectionMouseOver = function (evt, connection) {
+          if (!ctrl.draggingConnection && !ctrl.readOnly) {  // Only allow 'connection mouse over' when not dragging out a connection.
+            ctrl.mouseOverConnection = connection;
+          }
+        };
+
+        //
+        // Handle connectionMouseLeave on an connection.
+        //
+        ctrl.connectionMouseLeave = function () {
+          ctrl.mouseOverConnection = null;
+        };
+
+        //
+        // Handle mousedown on a connection.
+        //
+        ctrl.connectionMouseDown = function (evt, connection) {
+          var chart = ctrl.chart;
+          if (!ctrl.readOnly) {
+            chart.handleConnectionMouseDown(connection, evt.ctrlKey);
+          }
+          // Don't let the chart handle the mouse down.
+          evt.stopPropagation();
+          evt.preventDefault();
+        };
+
+        //
+        // Handle connectorMouseOver on an connector.
+        //
+        ctrl.connectorMouseOver = function (evt, node, connector) {
+          if (!ctrl.readOnly) {
+            ctrl.mouseOverConnector = connector;
+          }
+        };
+
+        //
+        // Handle connectorMouseLeave on an connector.
+        //
+        ctrl.connectorMouseLeave = function () {
+          ctrl.mouseOverConnector = null;
+        };
+
+        //
+        // Handle mousedown on an input connector.
+        //
+        ctrl.connectorMouseDown = function (evt, node) {
+          if (ctrl.chart.inConnectingMode && node !== ctrl.connectingModeSourceNode) {
+            ctrl.chart.createNewConnection(ctrl.connectingModeOutputConnector, ctrl.mouseOverConnector);
+            ctrl.stopConnectingMode();
+          }
+        };
+
+        //
+        // zoom.
+        //
+        $scope.$on('zoomIn', function () {
+          ctrl.chart.zoom.in();
+        });
+
+        $scope.$on('zoomOut', function () {
+          ctrl.chart.zoom.out();
+        });
+
+        $scope.maxZoom = function () {
+          return (ctrl.chart.chartViewModel && ctrl.chart.chartViewModel.zoom) ? ctrl.chart.chartViewModel.zoom.isMax() : false;
+        };
+        $scope.minZoom = function () {
+          return (ctrl.chart.chartViewModel && ctrl.chart.chartViewModel.zoom) ? ctrl.chart.chartViewModel.zoom.isMin() : false;
+        };
+
+        ctrl.zoomLevel = function () {
+          return ctrl.chart.zoom.getLevel();
+        };
+
+        ctrl.$onInit = function () {
+          var backspaceKeyCode = 8;
+          var deleteKeyCode = 46;
+          var aKeyCode = 65;
+          var escKeyCode = 27;
+
+          $document.find('body').keydown(function (evt) {
+
+            if (evt.keyCode === aKeyCode && evt.ctrlKey === true) {
+              //
+              // Ctrl + A
+              //
+              ctrl.selectAll();
+              $scope.$digest();
+              evt.stopPropagation();
+              evt.preventDefault();
+            }
+
+            if (evt.keyCode === deleteKeyCode || evt.keyCode === backspaceKeyCode) {
+              ctrl.deleteSelected();
+              $scope.$digest();
+            }
+
+            if (evt.keyCode === escKeyCode) {
+              ctrl.deselectAll();
+              $scope.$digest();
+            }
+          });
+        };
+      }]
     });
-
-    $scope.$on('nodeActionClosed', function () {
-      $scope.mouseOverNode = null;
-    });
-
-    $scope.connectingModeOutputConnector = null;
-    $scope.connectingModeSourceNode = null;
-
-    $scope.startConnectingMode = function (node) {
-      $scope.chart.inConnectingMode = true;
-      $scope.hideConnectors = false;
-      $scope.connectingModeSourceNode = node;
-      $scope.connectingModeSourceNode.select();
-      $scope.connectingModeOutputConnector = node.getOutputConnector();
-      $scope.chart.updateValidNodesAndConnectors($scope.connectingModeSourceNode);
-    };
-
-    $scope.cancelConnectingMode = function () {
-      // if output connector not connected to something, remove it
-      if (!$scope.connectingModeOutputConnector.connected()) {
-        $scope.chart.removeOutputConnector($scope.connectingModeOutputConnector);
-      }
-      $scope.stopConnectingMode();
-    };
-
-    $scope.stopConnectingMode = function () {
-      $scope.chart.inConnectingMode = false;
-      $scope.chart.resetValidNodesAndConnectors();
-    };
-
-    //
-    // Handle connectionMouseOver on an connection.
-    //
-    $scope.connectionMouseOver = function (evt, connection) {
-      if (!$scope.draggingConnection && !$scope.readOnly) {  // Only allow 'connection mouse over' when not dragging out a connection.
-        $scope.mouseOverConnection = connection;
-      }
-    };
-
-    //
-    // Handle connectionMouseLeave on an connection.
-    //
-    $scope.connectionMouseLeave = function (evt, connection) {
-      $scope.mouseOverConnection = null;
-    };
-
-    //
-    // Handle mousedown on a connection.
-    //
-    $scope.connectionMouseDown = function (evt, connection) {
-      var chart = $scope.chart;
-      if (!$scope.readOnly) {
-        chart.handleConnectionMouseDown(connection, evt.ctrlKey);
-      }
-      // Don't let the chart handle the mouse down.
-      evt.stopPropagation();
-      evt.preventDefault();
-    };
-
-    //
-    // Handle connectorMouseOver on an connector.
-    //
-    $scope.connectorMouseOver = function (evt, node, connector, connectorIndex, isInputConnector) {
-      if (!$scope.readOnly) {
-        $scope.mouseOverConnector = connector;
-      }
-    };
-
-    //
-    // Handle connectorMouseLeave on an connector.
-    //
-    $scope.connectorMouseLeave = function (evt, node, connector, connectorIndex, isInputConnector) {
-      $scope.mouseOverConnector = null;
-    };
-
-    //
-    // Handle mousedown on an input connector.
-    //
-    $scope.connectorMouseDown = function (evt, node, connector, connectorIndex, isInputConnector) {
-      if ($scope.chart.inConnectingMode && node !== $scope.connectingModeSourceNode) {
-        $scope.chart.createNewConnection($scope.connectingModeOutputConnector, $scope.mouseOverConnector);
-        $scope.stopConnectingMode();
-      }
-    };
-
-    //
-    // zoom.
-    //
-    $scope.$on('zoomIn', function (evt, args) {
-      $scope.chart.zoom.in();
-    });
-
-    $scope.$on('zoomOut', function (evt, args) {
-      $scope.chart.zoom.out();
-    });
-
-    $scope.maxZoom = function () {
-      return ($scope.chart.chartViewModel && $scope.chart.chartViewModel.zoom) ? $scope.chart.chartViewModel.zoom.isMax() : false;
-    };
-    $scope.minZoom = function () {
-      return ($scope.chart.chartViewModel && $scope.chart.chartViewModel.zoom) ? $scope.chart.chartViewModel.zoom.isMin() : false;
-    };
-
-    $scope.zoomLevel = function () {
-      return $scope.chart.zoom.getLevel();
-    };
-  }
-  ]);
 })();
 ;/* eslint-disable */
 //
@@ -916,7 +859,7 @@ var pfCanvas = {};
   pfCanvas.computeConnectorPos = function(node, connectorIndex, inputConnector) {
     return {
       x: node.x() + (inputConnector ? 0 : node.width ? node.width() : pfCanvas.defaultNodeWidth),
-      y: node.y() + pfCanvas.computeConnectorY(connectorIndex),
+      y: node.y() + pfCanvas.computeConnectorY(connectorIndex)
     };
   };
 
@@ -1336,7 +1279,7 @@ var pfCanvas = {};
     this.sourceCoord = function() {
       return {
         x: this.sourceCoordX(),
-        y: this.sourceCoordY(),
+        y: this.sourceCoordY()
       };
     };
 
@@ -1359,7 +1302,7 @@ var pfCanvas = {};
     this.destCoord = function() {
       return {
         x: this.destCoordX(),
-        y: this.destCoordY(),
+        y: this.destCoordY()
       };
     };
 
@@ -1443,7 +1386,7 @@ var pfCanvas = {};
   pfCanvas.computeConnectionSourceTangent = function(pt1, pt2) {
     return {
       x: pfCanvas.computeConnectionSourceTangentX(pt1, pt2),
-      y: pfCanvas.computeConnectionSourceTangentY(pt1, pt2),
+      y: pfCanvas.computeConnectionSourceTangentY(pt1, pt2)
     };
   };
 
@@ -1467,7 +1410,7 @@ var pfCanvas = {};
   pfCanvas.computeConnectionDestTangent = function(pt1, pt2) {
     return {
       x: pfCanvas.computeConnectionDestTangentX(pt1, pt2),
-      y: pfCanvas.computeConnectionDestTangentY(pt1, pt2),
+      y: pfCanvas.computeConnectionDestTangentY(pt1, pt2)
     };
   };
 
@@ -1615,17 +1558,17 @@ var pfCanvas = {};
 
       startNode = {
         nodeID: startNode.data.id,
-        connectorIndex: startConnectorIndex,
+        connectorIndex: startConnectorIndex
       };
 
       endNode = {
         nodeID: endNode.data.id,
-        connectorIndex: endConnectorIndex,
+        connectorIndex: endConnectorIndex
       };
 
       var connectionDataModel = {
         source: startConnectorType === 'output' ? startNode : endNode,
-        dest: startConnectorType === 'output' ? endNode : startNode,
+        dest: startConnectorType === 'output' ? endNode : startNode
       };
       connectionsDataModel.push(connectionDataModel);
 
@@ -2103,13 +2046,12 @@ var pfCanvas = {};
         mouseCapture.acquire(evt, {
           mouseMove: mouseMove,
           mouseUp: mouseUp,
-          released: released,
+          released: released
         });
 
         evt.stopPropagation();
         evt.preventDefault();
-      },
-
+      }
     };
   }
 })();
@@ -2205,7 +2147,7 @@ var pfCanvas = {};
 
         $element.unbind("mousemove", mouseMove);
         $element.unbind("mouseup", mouseUp);
-      },
+      }
     };
   }
 
@@ -2218,7 +2160,7 @@ var pfCanvas = {};
           // Register the directives element as the mouse capture element.
           //
           mouseCapture.registerElement($element);
-        }],
+        }]
 
     };
   }
@@ -2227,48 +2169,44 @@ var pfCanvas = {};
 ;(function () {
   'use strict';
 
-  nodeToolbarDirective.$inject = ["$document"];
   angular.module('patternfly.canvas')
-    .directive('nodeToolbar', nodeToolbarDirective);
-
-  function nodeToolbarDirective ($document) {
-    var directive = {
-      restrict: 'E',
-      scope: {
+    .component('nodeToolbar', {
+      templateUrl: 'canvas-view/canvas/node-toolbar.html',
+      bindings: {
         node: '=',
         nodeActions: '=',
+        nodeClickHandler: '<',
+        nodeCloseHandler: '<'
       },
-      controller: NodeToolbarController,
-      templateUrl: 'canvas-view/canvas/node-toolbar.html',
-      controllerAs: 'vm',
-      bindToController: true,
-    };
+      controller: ["$scope", function NodeToolbarController ($scope) {
+        var ctrl = this;
+        ctrl.selectedAction = 'none';
 
-    return directive;
+        ctrl.actionIconClicked = function (action) {
+          ctrl.selectedAction = action;
+          $scope.$emit('nodeActionClicked', {'action': action, 'node': ctrl.node});
+          if (angular.isFunction(ctrl.nodeClickHandler)) {
+            ctrl.nodeClickHandler(action, ctrl.node);
+          }
+        };
 
-    function NodeToolbarController ($scope) {
-      var vm = this;
-      vm.selectedAction = "none";
-
-      $scope.actionIconClicked = function (action) {
-        vm.selectedAction = action;
-        $scope.$emit('nodeActionClicked', {'action': action, 'node': vm.node});
-      };
-
-      $scope.close = function () {
-        vm.selectedAction = 'none';
-        $scope.$emit('nodeActionClosed');
-      };
-    }
-  }
+        ctrl.close = function () {
+          ctrl.selectedAction = 'none';
+          $scope.$emit('nodeActionClosed');
+          if (angular.isFunction(ctrl.nodeCloseHandler)) {
+            ctrl.nodeCloseHandler();
+          }
+        };
+      }]
+    });
 })();
 ;/**
  * @ngdoc directive
- * @name patternfly.canvas.directive:pfCanvas
+ * @name patternfly.canvas.component:pfCanvas
  * @restrict E
  *
  * @description
- * Directive for core operations and rendering of a canvas. Does not work in IE 11 or lower because they do not support
+ * Component for core operations and rendering of a canvas. Does not work in IE 11 or lower because they do not support
  * latest svg specification's 'foreignObject' api.  Tested in FireFox, Chrome, and MS-Edge.
  * @param {object} chartDataModel Chart data object which defines the nodes and connections on the canvas
  * <ul style='list-style-type: none'>
@@ -2301,6 +2239,12 @@ var pfCanvas = {};
  *       <li>.name      - (string) The name of the node action
  *       <li>.iconClass - (string) The icon class of the action.  Ex: "pf pficon-edit"
  *       <li>.action    - (string) The action identifier, which is passed along with the action event.
+ *     </ul>
+ *   <li>.actionIconClicked - function that listens for node actions/events when clicking the items within the node toolbar.
+ *     <ul style='list-style-type: none'>
+ *       <li>nodeClickHandler - (function) A function that starts the connection mode when clicking the items within the node toolbar. Passes the following arguments: string (action) and object (node) as parameters.
+ *       <li>$scope.$emit - (function) A function that listens to the action click event via $scope.$on to log the eventText when clicking the items within the node toolbar. Passes the following arguments: string ('nodeActionClicked') and object ({action, node}) as parameters.
+ *       Also is used to listen for when the mouse is currently over a node (or not) when an action is selected - in which it then passes the following argument: string ('nodeActionClosed') as parameters.
  *     </ul>
  *   <li>.connections  - An array of connections between nodes
  *     <ul style='list-style-type: none'>
@@ -2370,7 +2314,8 @@ var pfCanvas = {};
  </file>
 
  <file name="script.js">
- angular.module( 'patternfly.canvas.demo' ).controller( 'CanvasDemoCtrl', function( $scope ) {
+ angular.module( 'patternfly.canvas.demo' ).controller( 'CanvasDemoCtrl', function( $scope, $window ) {
+     var imagePath = $window.IMAGE_PATH || "img";
      $scope.chartDataModel = {
           "nodes": [
             {
@@ -2378,7 +2323,7 @@ var pfCanvas = {};
               "x": 345,
               "y": 67,
               "id": 1,
-              "image": "/img/OpenShift-logo.svg",
+              "image": imagePath + "/OpenShift-logo.svg",
               "width": 150,
               "bundle": true,
               "backgroundColor": "#fff",
@@ -2403,7 +2348,7 @@ var pfCanvas = {};
               "x": 100,
               "y": 290,
               "id": 2,
-              "image": "/img/kubernetes.svg",
+              "image": imagePath + "/kubernetes.svg",
               "width": 150,
               "backgroundColor": "#fff",
               "validConnectionTypes": ["storage"],
@@ -2426,7 +2371,7 @@ var pfCanvas = {};
                     "fontFamily": "PatternFlyIcons-webfont",
                     "fontContent": "\ue621"
                   }
-                ],
+                ]
             },
             {
               "name": "NetApp",
@@ -2484,20 +2429,20 @@ var pfCanvas = {};
               "id": 1,
               "name": "connect",
               "iconClass": "fa fa-share-alt",
-              "action": "nodeActionConnect",
+              "action": "nodeActionConnect"
             },
             {
               "id": 2,
               "name": "edit",
               "iconClass": "pf pficon-edit",
-              "action": "nodeActionEdit",
+              "action": "nodeActionEdit"
             },
             {
               "id": 3,
               "name": "tag",
               "iconClass": "fa fa-tag",
-              "action": "nodeActionTag",
-            },
+              "action": "nodeActionTag"
+            }
           ],
           "connections": [
             {
@@ -2547,7 +2492,6 @@ var pfCanvas = {};
       "validConnectionTypes": ["network"]
      };
 
-     $scope.chartViewModel;
      $scope.readOnly = false;
      $scope.hideConnectors = false;
      $scope.eventText = "";
@@ -2562,7 +2506,7 @@ var pfCanvas = {};
        newNode.y = 200 + (numNewNodes * 4 + 160);
 
        $scope.chartViewModel.addNode(newNode);
-     }
+     };
 
      $scope.$on('nodeActionClicked', function(evt, args) {
        var action = args.action;
@@ -2572,27 +2516,27 @@ var pfCanvas = {};
 
      $scope.zoomIn = function() {
        $scope.$broadcast('zoomIn');
-     }
+     };
      $scope.zoomOut = function() {
        $scope.$broadcast('zoomOut');
-     }
+     };
 
      $scope.selectAll = function() {
        $scope.$broadcast('selectAll');
-     }
+     };
      $scope.deselectAll = function() {
        $scope.$broadcast('deselectAll');
-     }
+     };
      $scope.deleteSelected = function() {
        $scope.$broadcast('deleteSelected');
-     }
+     };
  });
  </file>
  </example>
  */
 ;/**
  * @ngdoc directive
- * @name patternfly.canvas.directive:pfCanvasEditor
+ * @name patternfly.canvas.component:pfCanvasEditor
  * @restrict E
  *
  * @description
@@ -2600,7 +2544,7 @@ var pfCanvas = {};
  * operations such as: Zoom In, Zoom Out, Hide Connections, Remove Node, and Duplicate Node.  Does not work in IE 11 or lower because they do not support
  * latest svg specification's 'foreignObject' api.  Tested in FireFox, Chrome, and MS-Edge.
  *
- * @param {object} chartDataModel Chart data object which defines the nodes and connections on the canvas. See {@link patternfly.canvas.directive:pfCanvas} for detailed information.
+ * @param {object} chartDataModel Chart data object which defines the nodes and connections on the canvas. See {@link patternfly.canvas.component:pfCanvas} for detailed information.
  * @param {object} chartViewModel (Optional) The chartViewModel is initialized from the chartDataModel and contains additional helper methods such as <code>chartViewModel.isOnlyOneNodeSelected()</code> and
  * <code>chartViewModel.getSelectedNodes()</code>.
  * @param {boolean} toolboxTabs An array of Tab objects used in the Toolbox.  Each Tab object many contain 'subtabs' and/or 'items'.  Items may be dragged onto the canvas.
@@ -2666,7 +2610,8 @@ var pfCanvas = {};
  </file>
 
  <file name="script.js">
- angular.module( 'patternfly.canvaseditor.demo' ).controller( 'CanvasEditorDemoCtrl', function( $scope, $filter ) {
+ angular.module( 'patternfly.canvaseditor.demo' ).controller( 'CanvasEditorDemoCtrl', function( $scope, $filter, $window ) {
+     var imagePath = $window.IMAGE_PATH || "img";
      $scope.chartDataModel = {
           "nodes": [
             {
@@ -2674,7 +2619,7 @@ var pfCanvas = {};
               "x": 345,
               "y": 67,
               "id": 1,
-              "image": "/img/OpenShift-logo.svg",
+              "image": imagePath + "/OpenShift-logo.svg",
               "width": 150,
               "bundle": true,
               "backgroundColor": "#fff",
@@ -2699,7 +2644,7 @@ var pfCanvas = {};
               "x": 100,
               "y": 290,
               "id": 2,
-              "image": "/img/kubernetes.svg",
+              "image": imagePath + "/kubernetes.svg",
               "width": 150,
               "backgroundColor": "#fff",
               "validConnectionTypes": ["storage"],
@@ -2722,7 +2667,7 @@ var pfCanvas = {};
                     "fontFamily": "PatternFlyIcons-webfont",
                     "fontContent": "\ue621"
                   }
-                ],
+                ]
             },
             {
               "name": "NetApp",
@@ -2780,20 +2725,20 @@ var pfCanvas = {};
               "id": 1,
               "name": "connect",
               "iconClass": "fa fa-share-alt",
-              "action": "nodeActionConnect",
+              "action": "nodeActionConnect"
             },
             {
               "id": 2,
               "name": "edit",
               "iconClass": "pf pficon-edit",
-              "action": "nodeActionEdit",
+              "action": "nodeActionEdit"
             },
             {
               "id": 3,
               "name": "tag",
               "iconClass": "fa fa-tag",
-              "action": "nodeActionTag",
-            },
+              "action": "nodeActionTag"
+            }
           ],
           "connections": [
             {
@@ -2828,12 +2773,12 @@ var pfCanvas = {};
            {
              "name": "Nuage",
              "id": 10000000000004,
-             "image": "/img/OpenShift-logo.svg"
+             "image": imagePath + "/OpenShift-logo.svg"
            },
            {
              "name": "Vmware",
              "id": 10000000000010,
-             "image": "/img/kubernetes.svg"
+             "image": imagePath + "/kubernetes.svg"
            }
          ]
        },
@@ -2876,7 +2821,6 @@ var pfCanvas = {};
        }
      ];
 
-     $scope.chartViewModel;
      $scope.readOnly = false;
      $scope.eventText = "";
 
@@ -2915,7 +2859,7 @@ var pfCanvas = {};
        $scope.chartViewModel.addNode(duplicatedNode);
 
        angular.element("#duplicateItem").blur();
-     }
+     };
 
      function getCopyName(baseName) {
        // Test to see if we are duplicating an existing 'Copy'
@@ -3003,7 +2947,8 @@ var pfCanvas = {};
  </file>
 
  <file name="script.js">
-   angular.module( 'patternfly.card' ).controller( 'CardDemoCtrl', function( $scope ) {
+   angular.module( 'patternfly.card' ).controller( 'CardDemoCtrl', function( $scope, $window ) {
+    var imagePath = $window.IMAGE_PATH || "img";
     $scope.status = {
       "title":"Nodes",
       "count":793,
@@ -3027,12 +2972,12 @@ var pfCanvas = {};
       "count":3,
       "notifications":[
         {
-          "iconImage":"img/kubernetes.svg",
+          "iconImage": imagePath + "/kubernetes.svg",
           "count":1,
           "href":"#"
         },
         {
-          "iconImage":"img/OpenShift-logo.svg",
+          "iconImage": imagePath + "/OpenShift-logo.svg",
           "count":2,
           "href":"#"
         }
@@ -3144,21 +3089,21 @@ angular.module( 'patternfly.card' ).component('pfAggregateStatusCard', {
 
        $scope.data3 = {
          'used': '420',
-         'total': '500',
+         'total': '500'
        };
 
        $scope.title4 = 'Disk Usage';
        $scope.units4 = 'TB';
        $scope.data4 = {
          'used': '350',
-         'total': '500',
+         'total': '500'
        };
 
        $scope.title5 = 'Disk I/O';
        $scope.units5 = 'I/Ops';
        $scope.data5 = {
          'used': '450',
-         'total': '500',
+         'total': '500'
        };
 
        $scope.layoutInline = {
@@ -3276,7 +3221,7 @@ angular.module('patternfly.card').component('pfCard', {
          'callBackFn': function () {
             alert("Footer Callback Fn Called");
           }
-       }
+       };
 
        $scope.filterConfigHeader = {
          'filters' : [{label:'Last 30 Days', value:'30'},
@@ -3286,7 +3231,7 @@ angular.module('patternfly.card').component('pfCard', {
             alert("Header Filter Callback Fn Called for '" + f.label + "' value = " + f.value);
           },
         'position' : 'header'
-       }
+       };
 
        $scope.filterConfig = {
          'filters' : [{label:'Last 30 Days', value:'30'},
@@ -3296,7 +3241,7 @@ angular.module('patternfly.card').component('pfCard', {
             alert("Filter Callback Fn Called for '" + f.label + "' value = " + f.value);
           },
         'defaultFilter' : '1'
-       }
+       };
      });
  </file>
  </example>
@@ -3497,7 +3442,8 @@ angular.module('patternfly.card').component('pfCard', {
  </file>
 
  <file name="script.js">
-   angular.module( 'patternfly.card' ).controller( 'CardDemoCtrl', function( $scope ) {
+   angular.module( 'patternfly.card' ).controller( 'CardDemoCtrl', function( $scope, $window ) {
+    var imagePath = $window.IMAGE_PATH || "img";
     $scope.infoStatus = {
       "title":"TinyCore-local",
       "href":"#",
@@ -3511,7 +3457,7 @@ angular.module('patternfly.card').component('pfCard', {
     };
 
     $scope.infoStatusTitless = {
-      "iconImage":"img/OpenShift-logo.svg",
+      "iconImage": imagePath + "/OpenShift-logo.svg",
       "info":[
         "Infastructure: VMware",
         "Vmware: 1 CPU (1 socket x 1 core), 1024 MB",
@@ -3632,15 +3578,15 @@ angular.module( 'patternfly.card' ).component('pfInfoStatusCard', {
 
        $scope.getChart = function (chart) {
          $scope.chart = chart;
-       }
+       };
 
        $scope.focusUsed = function () {
          $scope.chart.focus("Used");
-       }
+       };
 
        $scope.updateAvailable = function (val) {
          $scope.available =  $scope.total - $scope.used;
-       }
+       };
 
        $scope.submitform = function (val) {
          console.log("submitform");
@@ -5675,7 +5621,7 @@ angular.module('patternfly.charts').component('pfSparklineChart', {
           "miq_id": 10000000000061,
           "status": "Unknown",
           "display_kind": "Service"
-        },
+        }
       },
       "relations": [
         {
@@ -5755,7 +5701,7 @@ angular.module('patternfly.charts').component('pfSparklineChart', {
           "icon": "",
           "fontfamily": "PatternFlyIcons-webfont"
         }
-      },
+      }
     });
 
     $rootScope.data = datasets[index];
@@ -6907,21 +6853,21 @@ angular.module('patternfly.charts').component('pfTrendsChart', {
 
     $scope.data3 = {
       'used': '420',
-      'total': '500',
+      'total': '500'
     };
 
     $scope.title4 = 'Disk Usage';
     $scope.units4 = 'TB';
     $scope.data4 = {
       'used': '350',
-      'total': '500',
+      'total': '500'
     };
 
     $scope.title5 = 'Disk I/O';
     $scope.units5 = 'I/Ops';
     $scope.data5 = {
       'used': '450',
-      'total': '500',
+      'total': '500'
     };
 
     $interval(function () {
@@ -8262,7 +8208,7 @@ angular.module('patternfly.filters').component('pfFilterResults', {
 
    <file name="script.js">
      angular.module( 'patternfly.form' ).controller( 'FormButtonCtrl', function( $scope, $timeout, $element ) {
-       $scope.status = 'Not yet Saved'
+       $scope.status = 'Not yet Saved';
        $scope.working = false;
 
        $scope.save = function (item) {
@@ -8598,7 +8544,7 @@ angular.module('patternfly.filters').component('pfFilterResults', {
 
         // creating scope vars for unit testing
         $scope.remainingChars = remainingChars;
-        $scope.remainingCharsWarning = (remainingChars <= charsWarnRemaining ? true : false);
+        $scope.remainingCharsWarning = (remainingChars <= charsWarnRemaining);
 
         countRemainingFld.text(remainingChars);
         countRemainingFld.toggleClass('chars-warn-remaining-pf', remainingChars <= charsWarnRemaining);
@@ -8672,10 +8618,10 @@ angular.module('patternfly.filters').component('pfFilterResults', {
          { name: 'User Role', value: 'Administrator' }];
        $scope.open = function () {
          $scope.isOpen = true;
-       }
+       };
        $scope.onClose = function() {
          $scope.isOpen = false;
-       }
+       };
      });
    </file>
  </example>
@@ -8826,7 +8772,7 @@ angular.module('patternfly.modals')
      <nav class="navbar navbar-default navbar-pf" role="navigation">
        <div class="navbar-header">
          <a class="navbar-brand" href="/">
-         <img src="img/brand.svg" alt="PatternFly Enterprise Application">
+         <img src="{{imagePath}}/brand.svg" alt="PatternFly Enterprise Application">
          </a>
        </div>
        <div class="collapse navbar-collapse navbar-collapse-1">
@@ -8876,8 +8822,9 @@ angular.module('patternfly.modals')
    </div>
  </file>
  <file name="script.js">
-   angular.module('patternfly.navigation').controller('applicationLauncherController', ['$scope',
-     function ($scope) {
+   angular.module('patternfly.navigation').controller('applicationLauncherController', ['$scope', '$window',
+     function ($scope, $window) {
+       $scope.imagePath = $window.IMAGE_PATH || "img";
        $scope.navigationItems = [
          {
            title: "Recteque",
@@ -8929,7 +8876,6 @@ angular.module('patternfly.navigation').component('pfApplicationLauncher', {
     ctrl.$id = $scope.$id;
   }]
 });
-
 ;/**
  * @ngdoc directive
  * @name patternfly.navigation.component:pfVerticalNavigation - Basic
@@ -10302,7 +10248,7 @@ angular.module('patternfly.navigation').component('pfApplicationLauncher', {
         routeChangeListener();
       }
     };
-  }],
+  }]
 });
 ;/**
  * @ngdoc directive
@@ -10848,7 +10794,7 @@ angular.module('patternfly.navigation').component('pfApplicationLauncher', {
          <div class="form-group">
            <label class="col-sm-2 control-label" for="type">Persistent:</label>
            <div class="col-sm-10">
-            <input type="checkbox" ng-model="notification.isPersistent"></input>
+            <input type="checkbox" ng-model="notification.isPersistent"/>
            </div>
          </div>
        </form>
@@ -13013,7 +12959,7 @@ angular.module('patternfly.pagination').component('pfPagination', {
         pageNumber: 1,
         pageSize: 10,
         pageSizeIncrements: [5, 10, 15]
-      }
+      };
 
       $scope.allItems = [
         {
@@ -13127,7 +13073,7 @@ angular.module('patternfly.pagination').component('pfPagination', {
           age: 36,
           address: "21 Jump Street, Hollywood, California",
           birthMonth: 'March'
-        },
+        }
       ];
 
       $scope.items = $scope.allItems;
@@ -13397,6 +13343,7 @@ angular.module('patternfly.pagination').component('pfPagination', {
       $scope.addNewComponentToDOM = function () {
         $scope.showComponent = false;
         $timeout(() => $scope.showComponent = true);
+
       };
     }
   ]);
@@ -13777,7 +13724,7 @@ angular.module('patternfly.pagination').component('pfPagination', {
       //        page length === 3
       //     returns ['Mary Jane', 'Fred Flinstone', 'Frank Livingston']
       //
-      var i, rowData, visibleRows = new Array();
+      var i, rowData, visibleRows = [];
 
       var anNodes = document.querySelectorAll("#" + ctrl.tableId + "  tbody tr");
 
@@ -14224,7 +14171,7 @@ angular.module('patternfly.pagination').component('pfPagination', {
 
       var viewSelected = function(viewId) {
         $scope.viewType = viewId;
-        $scope.sortConfig.show = ($scope.viewType === "tableView" ? false : true);
+        $scope.sortConfig.show = ($scope.viewType !== "tableView");
       };
 
       $scope.viewsConfig = {
@@ -14383,7 +14330,7 @@ angular.module('patternfly.pagination').component('pfPagination', {
       $scope.tableConfig = {
         onCheckBoxChange: handleCheckBoxChange,
         selectionMatchProp: "name",
-        itemsAvailable: true,
+        itemsAvailable: true
       };
 
       $scope.doAdd = function () {
@@ -14557,32 +14504,11 @@ angular.module('patternfly.pagination').component('pfPagination', {
  * @example
  <example module="patternfly.utils" deps="ui.bootstrap">
  <file name="index.html">
- <div class="row example-container">
+ <div ng-controller="AccordionCntrl" class="row example-container">
    <div class="col-md-4">
-     <uib-accordion  pf-fixed-accordion  group-height="350px" close-others="true">
-       <div uib-accordion-group is-open="false" heading="Lorem ipsum">
-         Praesent sagittis est et arcu fringilla placerat. Cras erat ante, dapibus non mauris ac, volutpat sollicitudin ligula. Morbi gravida nisl vel risus tempor, sit amet luctus erat tempus. Curabitur blandit sem non pretium bibendum. Donec eleifend non turpis vitae vestibulum. Vestibulum ut sem ac nunc posuere blandit sed porta lorem. Cras rutrum velit vel leo iaculis imperdiet.
-       </div>
-       <div uib-accordion-group is-open="false" heading="Dolor sit amet">
-         Donec consequat dignissim neque, sed suscipit quam egestas in. Fusce bibendum laoreet lectus commodo interdum. Vestibulum odio ipsum, tristique et ante vel, iaculis placerat nulla. Suspendisse iaculis urna feugiat lorem semper, ut iaculis risus tempus.
-       </div>
-       <div uib-accordion-group is-open="false" heading="Consectetur">
-         Curabitur nisl quam, interdum a venenatis a, consequat a ligula. Nunc nec lorem in erat rhoncus lacinia at ac orci. Sed nec augue congue, vehicula justo quis, venenatis turpis. Nunc quis consectetur purus. Nam vitae viverra lacus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eu augue felis. Maecenas in dignissim purus, quis pulvinar lectus. Vivamus euismod ultrices diam, in mattis nibh.
-       </div>
-       <div uib-accordion-group is-open="false" heading="Adipisicing elit">
-         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-       </div>
-       <div uib-accordion-group is-open="false" heading="Suspendisse lectus tortor">
-         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit.
-       </div>
-       <div uib-accordion-group is-open="false" heading="Velit mauris">
-         Ut velit mauris, egestas sed, gravida nec, ornare ut, mi. Aenean ut orci vel massa suscipit pulvinar. Nulla sollicitudin. Fusce varius, ligula non tempus aliquam, nunc turpis ullamcorper nibh, in tempus sapien eros vitae ligula. Pellentesque rhoncus nunc et augue. Integer id felis. Curabitur aliquet pellentesque diam. Integer quis metus vitae elit lobortis egestas. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi vel erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna.
-       </div>
-       <div uib-accordion-group is-open="false" heading="Aliquam convallis">
-         Aliquam convallis sollicitudin purus. Praesent aliquam, enim at fermentum mollis, ligula massa adipiscing nisl, ac euismod nibh nisl eu lectus. Fusce vulputate sem at sapien. Vivamus leo. Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. Curabitur eu amet.
-       </div>
-       <div uib-accordion-group is-open="false" heading="Vulputate dictum">
-         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at ante. Mauris eleifend, quam a vulputate dictum, massa quam dapibus leo, eget vulputate orci purus ut lorem. In fringilla mi in ligula. Pellentesque aliquam quam vel dolor. Nunc adipiscing. Sed quam odio, tempus ac, aliquam molestie, varius ac, tellus. Vestibulum ut nulla aliquam risus rutrum interdum. Pellentesque lorem. Curabitur sit amet erat quis risus feugiat viverra. Pellentesque augue justo, sagittis et, lacinia at, venenatis non, arcu. Nunc nec libero. In cursus dictum risus. Etiam tristique nisl a nulla. Ut a orci. Curabitur dolor nunc, egestas at, accumsan at, malesuada nec, magna.
+     <uib-accordion  pf-fixed-accordion group-height="350px" close-others="true">
+       <div uib-accordion-group ng-repeat="item in items" class="panel-default" is-open="item.isOpen" ng-attr-heading="{{item.heading}}">
+         {{item.content}}
        </div>
      </uib-accordion>
    </div>
@@ -14590,7 +14516,17 @@ angular.module('patternfly.pagination').component('pfPagination', {
  </file>
 
  <file name="script.js">
- angular.module('patternfly.utils').controller( 'AccordionCntrl', function($scope) {
+ angular.module('patternfly.utils').controller( 'AccordionCntrl', function ($scope) {
+  $scope.items = [
+    { heading: 'Lorem ipsum', isOpen: false, content: 'Praesent sagittis est et arcu fringilla placerat. Cras erat ante, dapibus non mauris ac, volutpat sollicitudin ligula. Morbi gravida nisl vel risus tempor, sit amet luctus erat tempus. Curabitur blandit sem non pretium bibendum. Donec eleifend non turpis vitae vestibulum. Vestibulum ut sem ac nunc posuere blandit sed porta lorem. Cras rutrum velit vel leo iaculis imperdiet.' },
+    { heading: 'Dolor sit amet', isOpen: false, content: 'Donec consequat dignissim neque, sed suscipit quam egestas in. Fusce bibendum laoreet lectus commodo interdum. Vestibulum odio ipsum, tristique et ante vel, iaculis placerat nulla. Suspendisse iaculis urna feugiat lorem semper, ut iaculis risus tempus.' },
+    { heading: 'Consectetur', isOpen: false, content: 'Curabitur nisl quam, interdum a venenatis a, consequat a ligula. Nunc nec lorem in erat rhoncus lacinia at ac orci. Sed nec augue congue, vehicula justo quis, venenatis turpis. Nunc quis consectetur purus. Nam vitae viverra lacus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eu augue felis. Maecenas in dignissim purus, quis pulvinar lectus. Vivamus euismod ultrices diam, in mattis nibh.' },
+    { heading: 'Adipisicing elit', isOpen: false, content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' },
+    { heading: 'Suspendisse lectus tortor', isOpen: false, content: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit.' },
+    { heading: 'Velit mauris', isOpen: false, content: 'Ut velit mauris, egestas sed, gravida nec, ornare ut, mi. Aenean ut orci vel massa suscipit pulvinar. Nulla sollicitudin. Fusce varius, ligula non tempus aliquam, nunc turpis ullamcorper nibh, in tempus sapien eros vitae ligula. Pellentesque rhoncus nunc et augue. Integer id felis. Curabitur aliquet pellentesque diam. Integer quis metus vitae elit lobortis egestas. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi vel erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna.' },
+    { heading: 'Aliquam convallis', isOpen: false, content: 'Aliquam convallis sollicitudin purus. Praesent aliquam, enim at fermentum mollis, ligula massa adipiscing nisl, ac euismod nibh nisl eu lectus. Fusce vulputate sem at sapien. Vivamus leo. Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. Curabitur eu amet.' },
+    { heading: 'Vulputate dictum', isOpen: false, content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at ante. Mauris eleifend, quam a vulputate dictum, massa quam dapibus leo, eget vulputate orci purus ut lorem. In fringilla mi in ligula. Pellentesque aliquam quam vel dolor. Nunc adipiscing. Sed quam odio, tempus ac, aliquam molestie, varius ac, tellus. Vestibulum ut nulla aliquam risus rutrum interdum. Pellentesque lorem. Curabitur sit amet erat quis risus feugiat viverra. Pellentesque augue justo, sagittis et, lacinia at, venenatis non, arcu. Nunc nec libero. In cursus dictum risus. Etiam tristique nisl a nulla. Ut a orci. Curabitur dolor nunc, egestas at, accumsan at, malesuada nec, magna.' }
+  ];
  });
  </file>
  </example>
@@ -14688,11 +14624,13 @@ angular.module('patternfly.utils').directive('pfFixedAccordion', ["$window", "$t
 
         // Update body scroll element's height after allowing these changes to set in
         $timeout(function () {
-          setBodyScrollHeight (parentElement, bodyHeight);
+          setBodyScrollHeight(parentElement, bodyHeight);
         });
       };
 
-      var debounceResize = _.debounce(setCollapseHeights, 150, { maxWait: 250 });
+      var debounceResize = _.debounce(setCollapseHeights, 150, {
+        maxWait: 250
+      });
 
       if ($scope.groupHeight) {
         angular.element($element[0].querySelector('.panel-group')).css('height', $scope.groupHeight);
@@ -15249,19 +15187,19 @@ angular.module('patternfly.validation', []).directive('pfValidation', ["$timeout
         $scope.showDisabled = false;
 
         $scope.config = {
-         selectItems: false,
-         itemsAvailable: true,
-         multiSelect: false,
-         dblClick: false,
-         selectionMatchProp: 'name',
-         selectedItems: [],
-         checkDisabled: checkDisabledItem,
-         showSelectBox: true,
-         onSelect: handleSelect,
-         onSelectionChange: handleSelectionChange,
-         onCheckBoxChange: handleCheckBoxChange,
-         onClick: handleClick,
-         onDblClick: handleDblClick
+          selectItems: false,
+          itemsAvailable: true,
+          multiSelect: false,
+          dblClick: false,
+          selectionMatchProp: 'name',
+          selectedItems: [],
+          checkDisabled: checkDisabledItem,
+          showSelectBox: true,
+          onSelect: handleSelect,
+          onSelectionChange: handleSelectionChange,
+          onCheckBoxChange: handleCheckBoxChange,
+          onClick: handleClick,
+          onDblClick: handleDblClick
         };
 
         $scope.items = [
@@ -15354,9 +15292,9 @@ angular.module('patternfly.validation', []).directive('pfValidation', ["$timeout
           title: 'No Items Available',
           info: "This is the Empty State component. The goal of a empty state pattern is to provide a good first impression that helps users to achieve their goals. It should be used when a view is empty because no objects exists and you want to guide the user to perform specific actions.",
           helpLink: {
-             label: 'For more information please see',
-             urlLabel: 'pfExample',
-             url : '#/api/patternfly.views.component:pfEmptyState'
+            label: 'For more information please see',
+            urlLabel: 'pfExample',
+            url : '#/api/patternfly.views.component:pfEmptyState'
           }
         };
 
@@ -15577,6 +15515,14 @@ angular.module('patternfly.views').component('pfCardView', {
  *   <li>.icon   - (string) class for main icon. Ex. 'pficon pficon-add-circle-o'
  *   <li>.title  - (string) Text for the main title
  *   <li>.info  - (string) Text for the main informational paragraph
+ *   <li>.helpLink - (object) Contains url specific properties and actions
+ *   <ul style='list-style-type: none'>
+ *     <li>.label - (string) Optional text label which appears before the urlLabel
+ *     <li>.urlLabel - (string) Optional text for the clickable portion of the link
+ *     <li>.url - (string) Optional text for url path
+ *     <li>.urlAction - (function) Optional function to invoke a url action when a callback method is specified.
+ *     When both urlAction and url are specified the component will first execute urlAction then nagivate to the url.
+ *   </ul>
  * </ul>
  * @param {array} actionButtons Buttons to display under the icon, title, and informational paragraph.
  *   <ul style='list-style-type: none'>
@@ -15606,16 +15552,22 @@ angular.module('patternfly.views').component('pfCardView', {
  <file name="script.js">
  angular.module('patternfly.views').controller('ViewCtrl', ['$scope',
    function ($scope) {
+
      $scope.eventText = '';
+
+     var performEmptyStateAction = function () {
+       $scope.eventText += 'Empty State Action Executed \r\n';
+     };
 
      $scope.config = {
        icon: 'pficon-add-circle-o',
        title: 'Empty State Title',
        info: "This is the Empty State component. The goal of a empty state pattern is to provide a good first impression that helps users to achieve their goals. It should be used when a view is empty because no objects exists and you want to guide the user to perform specific actions.",
        helpLink: {
-           label: 'For more information please see',
-           urlLabel: 'pfExample',
-           url : '#/api/patternfly.views.component:pfEmptyState'
+         label: 'For more information please see',
+         urlLabel: 'pfExample',
+         url: '#/api/patternfly.views.component:pfEmptyState',
+         urlAction: performEmptyStateAction
        }
      };
 
@@ -15624,27 +15576,27 @@ angular.module('patternfly.views').component('pfCardView', {
      };
 
      $scope.actionButtons = [
-        {
-          name: 'Main Action',
-          title: 'Perform an action',
-          actionFn: performAction,
-          type: 'main'
-        },
-        {
-          name: 'Secondary Action 1',
-          title: 'Perform an action',
-          actionFn: performAction
-        },
-        {
-          name: 'Secondary Action 2',
-          title: 'Perform an action',
-          actionFn: performAction
-        },
-        {
-          name: 'Secondary Action 3',
-          title: 'Perform an action',
-          actionFn: performAction
-        }
+       {
+         name: 'Main Action',
+         title: 'Perform an action',
+         actionFn: performAction,
+         type: 'main'
+       },
+       {
+         name: 'Secondary Action 1',
+         title: 'Perform an action',
+         actionFn: performAction
+       },
+       {
+         name: 'Secondary Action 2',
+         title: 'Perform an action',
+         actionFn: performAction
+       },
+       {
+         name: 'Secondary Action 3',
+         title: 'Perform an action',
+         actionFn: performAction
+       }
      ];
    }
  ]);
@@ -16334,13 +16286,13 @@ angular.module('patternfly.views').component('pfEmptyState', {
         $scope.showDisabled = false;
 
         $scope.config = {
-         selectionMatchProp: 'name',
-         selectedItems: [],
-         itemsAvailable: true,
-         showSelectBox: true,
-         useExpandingRows: true,
-         compoundExpansionOnly: true,
-         onCheckBoxChange: handleCheckBoxChange
+          selectionMatchProp: 'name',
+          selectedItems: [],
+          itemsAvailable: true,
+          showSelectBox: true,
+          useExpandingRows: true,
+          compoundExpansionOnly: true,
+          onCheckBoxChange: handleCheckBoxChange
         };
 
         $scope.items = [
@@ -16590,7 +16542,7 @@ angular.module('patternfly.views').component('pfEmptyState', {
             name: "Martha Smith",
             address: "415 East Main Street",
             city: "Norfolk",
-            state: "Virginia",
+            state: "Virginia"
           },
           {
             name: "Liz Livingston",
@@ -17081,6 +17033,322 @@ angular.module('patternfly.views').component('pfEmptyState', {
     }
   });
 })();
+;/**
+  * @ngdoc directive
+  * @name patternfly.wizard.component:pfWizard
+  * @restrict E
+  *
+  * @description
+  * Component for rendering a Wizard modal.  Each wizard dynamically creates the step navigation both in the header and the left-hand side based on nested steps.
+  * Use pf-wizard-step to define individual steps within a wizard and pf-wizard-substep to define portions of pf-wizard-steps if so desired.  For instance, Step one can have two substeps - 1A and 1B when it is logical to group those together.
+  * <br /><br />
+  * The basic structure should be:
+  * <pre>
+  * <pf-wizard>
+  *   <pf-wizard-step>
+  *     <pf-wizard-substep><!-- content here --></pf-wizard-substep>
+  *     <pf-wizard-substep><!-- content here --></pf-wizard-substep>
+  *   </pf-wizard-step>
+  *   <pf-wizard-step><!-- additional configuration can be added here with substeps if desired --></pf-wizard-step>
+  *   <pf-wizard-step><!-- review steps and final command here --></pf-wizard-step>
+  * </pf-wizard>
+  * </pre>
+  *
+  * @param {string} wizardTitle The wizard title displayed in the header
+  * @param {boolean=} hideIndicators  Hides the step indicators in the header of the wizard
+  * @param {boolean=} activeStepTitleOnly  Shows the title only for the active step in the step indicators, optional, default is false.
+  * @param {boolean=} hideSidebar  Hides page navigation sidebar on the wizard pages
+  * @param {boolean=} hideHeader Optional value to hide the title bar. Default is false.
+  * @param {boolean=} hideBackButton Optional value to hide the back button, useful in 2 step wizards. Default is false.
+  * @param {string=} stepClass Optional CSS class to be given to the steps page container. Used for the sidebar panel as well unless a sidebarClass is provided.
+  * @param {string=} sidebarClass Optional CSS class to be give to the sidebar panel. Only used if the stepClass is also provided.
+  * @param {string=} contentHeight The height the wizard content should be set to. This is used ONLY if the stepClass is not given. This defaults to 300px if the property is not supplied.
+  * @param {boolean=} hideIndicators  Hides the step indicators in the header of the wizard
+  * @param {string=} currentStep The current step can be changed externally - this is the title of the step to switch the wizard to
+  * @param {string=} cancelTitle The text to display on the cancel button
+  * @param {string=} backTitle The text to display on the back button
+  * @param {string=} nextTitle The text to display on the next button
+  * @param {function(step)=} backCallback Called to notify when the back button is clicked
+  * @param {function(step)=} nextCallback Called to notify when the next button is clicked
+  * @param {function()=} onFinish Called to notify when when the wizard is complete.  Returns a boolean value to indicate if the finish operation is complete
+  * @param {function()=} onCancel Called when the wizard is canceled, returns a boolean value to indicate if cancel is successful
+  * @param {boolean} wizardReady Value that is set when the wizard is ready
+  * @param {boolean=} wizardDone  Value that is set when the wizard is done
+  * @param {string} loadingWizardTitle The text displayed when the wizard is loading
+  * @param {string=} loadingSecondaryInformation Secondary descriptive information to display when the wizard is loading
+  * @param {boolean=} embedInPage Value that indicates wizard is embedded in a page (not a modal).  This moves the navigation buttons to the left hand side of the footer and removes the close button.
+  * @param {function(step, index)=} onStepChanged Called when the wizard step is changed, passes in the step and the step index of the step changed to
+  * @deprecated {string} title The wizard title displayed in the head (use wizardTitle instead)
+  * @example
+  <example module="patternfly.wizard" deps="patternfly.form">
+  <file name="index.html">
+    <div ng-controller="WizardModalController">
+      <button ng-click="openWizardModel()" class="btn btn-default">Launch Wizard</button>
+    </div>
+  </file>
+  <file name="wizard-container.html">
+  <pf-wizard wizard-title="Wizard Title"
+    wizard-ready="deployProviderReady"
+    on-finish="finishedWizard()"
+    on-cancel="cancelDeploymentWizard()"
+    next-title="nextButtonTitle"
+    next-callback="nextCallback"
+    back-callback="backCallback"
+    wizard-done="deployComplete || deployInProgress"
+    sidebar-class="example-wizard-sidebar"
+    step-class="example-wizard-step"
+    loading-secondary-information="secondaryLoadInformation"
+    on-step-changed="stepChanged(step, index)">
+      <pf-wizard-step step-title="First Step" next-tooltip="firstStepNextTooltip" prev-tooltip="firstStepPrevTooltip" substeps="true" step-id="details" step-priority="0" show-review="true" show-review-details="true">
+        <div ng-include="'detail-page.html'">
+        </div>
+        <pf-wizard-substep step-title="Details - Extra" next-enabled="true" step-id="details-extra" step-priority="1" show-review="true" show-review-details="true" review-template="review-second-template.html">
+          <form class="form-horizontal">
+            <pf-form-group pf-label="Lorem" pf-label-class="col-sm-3 col-md-2" pf-input-class="col-sm-9 col-md-10" required>
+              <input id="new-lorem" name="lorem" ng-model="data.lorem" type="text" required/>
+            </pf-form-group>
+            <pf-form-group pf-label="Ipsum" pf-label-class="col-sm-3 col-md-2" pf-input-class="col-sm-9 col-md-10" >
+              <input id="new-ipsum" name="ipsum" ng-model="data.ipsum" type="text" />
+            </pf-form-group>
+          </form>
+        </pf-wizard-substep>
+      </pf-wizard-step>
+      <pf-wizard-step step-title="Second Step" next-tooltip="secondStepNextTooltip" prev-tooltip="secondStepPrevTooltip" substeps="false" step-id="configuration" step-priority="1" show-review="true" review-template="review-second-template.html" >
+        <form class="form-horizontal">
+          <h3>Wizards should make use of substeps consistently throughout (either using them or not using them).  This is an example only.</h3>
+          <pf-form-group pf-label="Lorem" pf-label-class="col-sm-3 col-md-2" pf-input-class="col-sm-9 col-md-10" >
+            <input id="new-lorem" name="lorem" ng-model="data.lorem" type="text"/>
+          </pf-form-group>
+          <pf-form-group pf-label="Ipsum" pf-label-class="col-sm-3 col-md-2" pf-input-class="col-sm-9 col-md-10" >
+            <input id="new-ipsum" name="ipsum" ng-model="data.ipsum" type="text" />
+          </pf-form-group>
+        </form>
+      </pf-wizard-step>
+      <pf-wizard-step step-title="Review" next-tooltip="reviewStepNextTooltip" prev-tooltip="reviewStepPrevTooltip" substeps="true" step-id="review" step-priority="2">
+        <div ng-include="'summary.html'"></div>
+        <div ng-include="'deployment.html'"></div>
+      </pf-wizard-step>
+   </pf-wizard>
+  </file>
+  <file name="detail-page.html">
+    <div ng-controller="DetailsGeneralController">
+       <pf-wizard-substep step-title="General" next-enabled="detailsGeneralComplete" step-id="details-general" step-priority="0" on-show="onShow" review-template="{{reviewTemplate}}" show-review-details="true">
+         <form class="form-horizontal">
+           <pf-form-group pf-label="Name" pf-label-class="col-sm-3 col-md-2" pf-input-class="col-sm-9 col-md-10" required>
+              <input id="new-name" name="name" ng-model="data.name" type="text" ng-change="updateName()" required/>
+           </pf-form-group>
+           <pf-form-group pf-label="Description" pf-label-class="col-sm-3 col-md-2" pf-input-class="col-sm-9 col-md-10" >
+             <input id="new-description" name="description" ng-model="data.description" type="text" />
+           </pf-form-group>
+         </form>
+      </pf-wizard-substep>
+    </div>
+  </file>
+  <file name="review-template.html">
+  <div ng-controller="DetailsReviewController">
+    <form class="form">
+      <div class="wizard-pf-review-item">
+        <span class="wizard-pf-review-item-label">Name:</span>
+        <span class="wizard-pf-review-item-value">{{data.name}}</span>
+      </div>
+      <div class="wizard-pf-review-item">
+        <span class="wizard-pf-review-item-label">Description:</span>
+        <span class="wizard-pf-review-item-value">{{data.description}}</span>
+      </div>
+    </form>
+  </div>
+  </file>
+  <file name="review-second-template.html">
+  <div ng-controller="DetailsReviewController">
+    <form class="form">
+      <div class="wizard-pf-review-item">
+        <span class="wizard-pf-review-item-label">Lorem:</span>
+        <span class="wizard-pf-review-item-value">{{data.lorem}}</span>
+      </div>
+      <div class="wizard-pf-review-item">
+        <span class="wizard-pf-review-item-label">Ipsum:</span>
+        <span class="wizard-pf-review-item-value">{{data.ipsum}}</span>
+      </div>
+    </form>
+  </div>
+  </file>
+  <file name="summary.html">
+  <div ng-controller="SummaryController">
+    <pf-wizard-substep step-title="Summary" step-id="review-summary" step-priority="0" next-enabled="true" prev-enabled="true" ok-to-nav-away="true" wz-disabled="false" on-show="onShow">
+      <pf-wizard-review-page shown="pageShown" wizard-data="data"></pf-wizard-review-page>
+    </pf-wizard-substep>
+  </div>
+  </file>
+  <file name="deployment.html">
+  <div ng-controller="DeploymentController">
+    <pf-wizard-substep step-title="Deploy" step-id="review-progress" step-priority="1" next-enabled="true" prev-enabled="false" ok-to-nav-away="true" wz-disabled="false" on-show="onShow">
+      <div class="wizard-pf-contents" ng-controller="DeploymentController">
+        <div class="wizard-pf-process blank-slate-pf" ng-if="!deploymentComplete">
+          <div class="spinner spinner-lg blank-slate-pf-icon"></div>
+          <h3 class="blank-slate-pf-main-action">Deployment in progress</h3>
+          <p class="blank-slate-pf-secondary-action">Lorem ipsum dolor sit amet, porta at suspendisse ac, ut wisi vivamus, lorem sociosqu eget nunc amet. </p>
+        </div>
+        <div class="wizard-pf-complete blank-slate-pf" ng-if="deploymentComplete">
+          <div class="wizard-pf-success-icon"><span class="glyphicon glyphicon-ok-circle"></span></div>
+          <h3 class="blank-slate-pf-main-action">Deployment was successful</h3>
+          <p class="blank-slate-pf-secondary-action">Lorem ipsum dolor sit amet, porta at suspendisse ac, ut wisi vivamus, lorem sociosqu eget nunc amet. </p>
+          <button type="button" class="btn btn-lg btn-primary">View Deployment</button>
+        </div>
+     </div>
+   </pf-wizard-substep>
+  </div>
+  </file>
+  <file name="script.js">
+  angular.module('patternfly.wizard').controller('WizardModalController', ['$scope', '$timeout', '$uibModal', '$rootScope',
+    function ($scope, $timeout, $uibModal, $rootScope) {
+      $scope.openWizardModel = function () {
+        var wizardDoneListener,
+            modalInstance = $uibModal.open({
+              animation: true,
+              backdrop: 'static',
+              templateUrl: 'wizard-container.html',
+              controller: 'WizardController',
+              size: 'lg'
+            });
+
+        var closeWizard = function (e, reason) {
+          modalInstance.dismiss(reason);
+          wizardDoneListener();
+        };
+
+        modalInstance.result.then(function () { }, function () { });
+
+        wizardDoneListener = $rootScope.$on('wizard.done', closeWizard);
+      };
+    }
+  ]);
+  angular.module('patternfly.wizard').controller('WizardController', ['$scope', '$timeout', '$rootScope',
+    function ($scope, $timeout, $rootScope) {
+
+
+      var initializeWizard = function () {
+        $scope.data = {
+          name: '',
+          description: '',
+          lorem: 'default setting',
+          ipsum: ''
+        };
+        $scope.secondaryLoadInformation = 'ipsum dolor sit amet, porta at suspendisse ac, ut wisi vivamus, lorem sociosqu eget nunc amet.';
+        $timeout(function () {
+          $scope.deployReady = true;
+        }, 1000);
+        $scope.nextButtonTitle = "Next >";
+      };
+
+      var startDeploy = function () {
+        $timeout(function() { }, 10000);
+        $scope.deployInProgress = true;
+      };
+
+      $scope.data = {};
+
+      $scope.firstStepNextTooltip = "First step next";
+      $scope.firstStepPrevTooltip = "First step back";
+      $scope.secondStepNextTooltip = "Second step next";
+      $scope.secondStepPrevTooltip = "Second step back";
+      $scope.reviewStepNextTooltip = "Review step next";
+      $scope.reviewStepPrevTooltip = "Review step back";
+
+      $scope.nextCallback = function (step) {
+        // call startdeploy after deploy button is clicked on review-summary tab
+        if (step.stepId === 'review-summary') {
+          startDeploy();
+        }
+        return true;
+      };
+      $scope.backCallback = function (step) {
+        return true;
+      };
+
+      $scope.stepChanged = function (step, index) {
+        if (step.stepId === 'review-summary') {
+          $scope.nextButtonTitle = "Deploy";
+        } else if (step.stepId === 'review-progress') {
+          $scope.nextButtonTitle = "Close";
+        } else {
+          $scope.nextButtonTitle = "Next >";
+        }
+      };
+
+      $scope.cancelDeploymentWizard = function () {
+        $rootScope.$emit('wizard.done', 'cancel');
+      };
+
+      $scope.finishedWizard = function () {
+        $rootScope.$emit('wizard.done', 'done');
+        return true;
+      };
+
+      initializeWizard();
+     }
+  ]);
+
+  angular.module('patternfly.wizard').controller('DetailsGeneralController', ['$rootScope', '$scope',
+    function ($rootScope, $scope) {
+      'use strict';
+
+      $scope.reviewTemplate = "review-template.html";
+      $scope.detailsGeneralComplete = false;
+
+      $scope.onShow = function() { };
+
+      $scope.updateName = function() {
+        $scope.detailsGeneralComplete = angular.isDefined($scope.data.name) && $scope.data.name.length > 0;
+      };
+    }
+  ]);
+
+  angular.module('patternfly.wizard').controller('DetailsReviewController', ['$rootScope', '$scope',
+    function ($rootScope, $scope) {
+      'use strict';
+
+      // Find the data!
+      var next = $scope;
+      while (angular.isUndefined($scope.data)) {
+        next = next.$parent;
+        if (angular.isUndefined(next)) {
+          $scope.data = {};
+        } else {
+          $scope.data = next.$ctrl.wizardData;
+        }
+      }
+    }
+  ]);
+
+  angular.module('patternfly.wizard').controller('SummaryController', ['$rootScope', '$scope', '$timeout',
+    function ($rootScope, $scope, $timeout) {
+      'use strict';
+      $scope.pageShown = false;
+
+      $scope.onShow = function () {
+        $scope.pageShown = true;
+        $timeout(function () {
+          $scope.pageShown = false;  // done so the next time the page is shown it updates
+        });
+      }
+    }
+  ]);
+
+  angular.module('patternfly.wizard').controller('DeploymentController', ['$rootScope', '$scope', '$timeout',
+    function ($rootScope, $scope, $timeout) {
+      'use strict';
+
+      $scope.onShow = function() {
+        $scope.deploymentComplete = false;
+        $timeout(function() {
+          $scope.deploymentComplete = true;
+        }, 2500);
+      };
+    }
+  ]);
+</file>
+</example>
+*/
 ;(function () {
   'use strict';
 
@@ -17411,11 +17679,15 @@ angular.module('patternfly.wizard').component('pfWizardStep', {
 
     ctrl.$onChanges = function (changesObj) {
       if (changesObj.nextTooltip) {
-        ctrl.wizard.nextTooltip = changesObj.nextTooltip.currentValue;
+        if (_.get(ctrl.wizard, 'selectedStep') === ctrl) {
+          ctrl.wizard.nextTooltip = changesObj.nextTooltip.currentValue;
+        }
       }
 
       if (changesObj.prevTooltip) {
-        ctrl.wizard.prevTooltip = changesObj.prevTooltip.currentValue;
+        if (_.get(ctrl.wizard, 'selectedStep') === ctrl) {
+          ctrl.wizard.prevTooltip = changesObj.prevTooltip.currentValue;
+        }
       }
     };
 
@@ -17447,20 +17719,16 @@ angular.module('patternfly.wizard').component('pfWizardStep', {
 
     ctrl.isNextEnabled = function () {
       var enabled = angular.isUndefined(ctrl.nextEnabled) || ctrl.nextEnabled;
-      if (ctrl.substeps) {
-        angular.forEach(ctrl.getEnabledSteps(), function (step) {
-          enabled = enabled && step.nextEnabled;
-        });
+      if (ctrl.substeps && ctrl.selectedStep) {
+        enabled = enabled && ctrl.selectedStep.isNextEnabled();
       }
       return enabled;
     };
 
     ctrl.isPrevEnabled = function () {
       var enabled = angular.isUndefined(ctrl.prevEnabled) || ctrl.prevEnabled;
-      if (ctrl.substeps) {
-        angular.forEach(ctrl.getEnabledSteps(), function (step) {
-          enabled = enabled && step.prevEnabled;
-        });
+      if (ctrl.substeps && ctrl.selectedStep) {
+        enabled = enabled && ctrl.selectedStep.isPrevEnabled();
       }
       return enabled;
     };
@@ -17666,9 +17934,6 @@ angular.module('patternfly.wizard').component('pfWizardSubstep', {
         ctrl.allowClickNav = true;
       }
 
-
-      ctrl.step.nextEnabled = ctrl.nextEnabled;
-      ctrl.step.prevEnabled = ctrl.prevEnabled;
       ctrl.step.okToNavAway = ctrl.okToNavAway;
       ctrl.step.allowClickNav = ctrl.allowClickNav;
 
@@ -17681,14 +17946,6 @@ angular.module('patternfly.wizard').component('pfWizardSubstep', {
         return;
       }
 
-      if (changesObj.nextEnabled) {
-        ctrl.step.nextEnabled = changesObj.nextEnabled.currentValue;
-      }
-
-      if (changesObj.prevEnabled) {
-        ctrl.step.prevEnabled = changesObj.prevEnabled.currentValue;
-      }
-
       if (changesObj.okToNavAway) {
         ctrl.step.okToNavAway = changesObj.okToNavAway.currentValue;
       }
@@ -17698,331 +17955,20 @@ angular.module('patternfly.wizard').component('pfWizardSubstep', {
       }
     };
 
+    ctrl.isNextEnabled = function () {
+      return angular.isUndefined(ctrl.nextEnabled) || ctrl.nextEnabled;
+    };
+
     ctrl.isPrevEnabled = function () {
-      var enabled = angular.isUndefined(ctrl.prevEnabled) || ctrl.prevEnabled;
-      if (ctrl.substeps) {
-        angular.forEach(ctrl.getEnabledSteps(), function (step) {
-          enabled = enabled && step.prevEnabled;
-        });
-      }
-      return enabled;
+      return angular.isUndefined(ctrl.prevEnabled) || ctrl.prevEnabled;
     };
   }]
 });
-;/**
-  * @ngdoc directive
-  * @name patternfly.wizard.component:pfWizard
-  * @restrict E
-  *
-  * @description
-  * Component for rendering a Wizard modal.  Each wizard dynamically creates the step navigation both in the header and the left-hand side based on nested steps.
-  * Use pf-wizard-step to define individual steps within a wizard and pf-wizard-substep to define portions of pf-wizard-steps if so desired.  For instance, Step one can have two substeps - 1A and 1B when it is logical to group those together.
-  * <br /><br />
-  * The basic structure should be:
-  * <pre>
-  * <pf-wizard>
-  *   <pf-wizard-step>
-  *     <pf-wizard-substep><!-- content here --></pf-wizard-substep>
-  *     <pf-wizard-substep><!-- content here --></pf-wizard-substep>
-  *   </pf-wizard-step>
-  *   <pf-wizard-step><!-- additional configuration can be added here with substeps if desired --></pf-wizard-step>
-  *   <pf-wizard-step><!-- review steps and final command here --></pf-wizard-step>
-  * </pf-wizard>
-  * </pre>
-  *
-  * @param {string} title The wizard title displayed in the header
-  * @param {boolean=} hideIndicators  Hides the step indicators in the header of the wizard
-  * @param {boolean=} activeStepTitleOnly  Shows the title only for the active step in the step indicators, optional, default is false.
-  * @param {boolean=} hideSidebar  Hides page navigation sidebar on the wizard pages
-  * @param {boolean=} hideHeader Optional value to hide the title bar. Default is false.
-  * @param {boolean=} hideBackButton Optional value to hide the back button, useful in 2 step wizards. Default is false.
-  * @param {string=} stepClass Optional CSS class to be given to the steps page container. Used for the sidebar panel as well unless a sidebarClass is provided.
-  * @param {string=} sidebarClass Optional CSS class to be give to the sidebar panel. Only used if the stepClass is also provided.
-  * @param {string=} contentHeight The height the wizard content should be set to. This is used ONLY if the stepClass is not given. This defaults to 300px if the property is not supplied.
-  * @param {boolean=} hideIndicators  Hides the step indicators in the header of the wizard
-  * @param {string=} currentStep The current step can be changed externally - this is the title of the step to switch the wizard to
-  * @param {string=} cancelTitle The text to display on the cancel button
-  * @param {string=} backTitle The text to display on the back button
-  * @param {string=} nextTitle The text to display on the next button
-  * @param {function(step)=} backCallback Called to notify when the back button is clicked
-  * @param {function(step)=} nextCallback Called to notify when the next button is clicked
-  * @param {function()=} onFinish Called to notify when when the wizard is complete.  Returns a boolean value to indicate if the finish operation is complete
-  * @param {function()=} onCancel Called when the wizard is canceled, returns a boolean value to indicate if cancel is successful
-  * @param {boolean} wizardReady Value that is set when the wizard is ready
-  * @param {boolean=} wizardDone  Value that is set when the wizard is done
-  * @param {string} loadingWizardTitle The text displayed when the wizard is loading
-  * @param {string=} loadingSecondaryInformation Secondary descriptive information to display when the wizard is loading
-  * @param {boolean=} embedInPage Value that indicates wizard is embedded in a page (not a modal).  This moves the navigation buttons to the left hand side of the footer and removes the close button.
-  * @param {function(step, index)=} onStepChanged Called when the wizard step is changed, passes in the step and the step index of the step changed to
-  *
-  * @example
-  <example module="patternfly.wizard" deps="patternfly.form">
-  <file name="index.html">
-    <div ng-controller="WizardModalController">
-      <button ng-click="openWizardModel()" class="btn btn-default">Launch Wizard</button>
-    </div>
-  </file>
-  <file name="wizard-container.html">
-  <pf-wizard title="Wizard Title"
-    wizard-ready="deployProviderReady"
-    on-finish="finishedWizard()"
-    on-cancel="cancelDeploymentWizard()"
-    next-title="nextButtonTitle"
-    next-callback="nextCallback"
-    back-callback="backCallback"
-    wizard-done="deployComplete || deployInProgress"
-    sidebar-class="example-wizard-sidebar"
-    step-class="example-wizard-step"
-    loading-secondary-information="secondaryLoadInformation"
-    on-step-changed="stepChanged(step, index)">
-      <pf-wizard-step step-title="First Step" substeps="true" step-id="details" step-priority="0" show-review="true" show-review-details="true">
-        <div ng-include="'detail-page.html'">
-        </div>
-        <pf-wizard-substep step-title="Details - Extra" next-enabled="true" step-id="details-extra" step-priority="1" show-review="true" show-review-details="true" review-template="review-second-template.html">
-          <form class="form-horizontal">
-            <pf-form-group pf-label="Lorem" pf-label-class="col-sm-3 col-md-2" pf-input-class="col-sm-9 col-md-10" required>
-              <input id="new-lorem" name="lorem" ng-model="data.lorem" type="text" required/>
-            </pf-form-group>
-            <pf-form-group pf-label="Ipsum" pf-label-class="col-sm-3 col-md-2" pf-input-class="col-sm-9 col-md-10" >
-              <input id="new-ipsum" name="ipsum" ng-model="data.ipsum" type="text" />
-            </pf-form-group>
-          </form>
-        </pf-wizard-substep>
-      </pf-wizard-step>
-      <pf-wizard-step step-title="Second Step" substeps="false" step-id="configuration" step-priority="1" show-review="true" review-template="review-second-template.html" >
-        <form class="form-horizontal">
-          <h3>Wizards should make use of substeps consistently throughout (either using them or not using them).  This is an example only.</h3>
-          <pf-form-group pf-label="Lorem" pf-label-class="col-sm-3 col-md-2" pf-input-class="col-sm-9 col-md-10" >
-            <input id="new-lorem" name="lorem" ng-model="data.lorem" type="text"/>
-          </pf-form-group>
-          <pf-form-group pf-label="Ipsum" pf-label-class="col-sm-3 col-md-2" pf-input-class="col-sm-9 col-md-10" >
-            <input id="new-ipsum" name="ipsum" ng-model="data.ipsum" type="text" />
-          </pf-form-group>
-        </form>
-      </pf-wizard-step>
-      <pf-wizard-step step-title="Review" substeps="true" step-id="review" step-priority="2">
-        <div ng-include="'summary.html'"></div>
-        <div ng-include="'deployment.html'"></div>
-      </pf-wizard-step>
-   </pf-wizard>
-  </file>
-  <file name="detail-page.html">
-    <div ng-controller="DetailsGeneralController">
-       <pf-wizard-substep step-title="General" next-enabled="detailsGeneralComplete" step-id="details-general" step-priority="0" on-show="onShow" review-template="{{reviewTemplate}}" show-review-details="true">
-         <form class="form-horizontal">
-           <pf-form-group pf-label="Name" pf-label-class="col-sm-3 col-md-2" pf-input-class="col-sm-9 col-md-10" required>
-              <input id="new-name" name="name" ng-model="data.name" type="text" ng-change="updateName()" required/>
-           </pf-form-group>
-           <pf-form-group pf-label="Description" pf-label-class="col-sm-3 col-md-2" pf-input-class="col-sm-9 col-md-10" >
-             <input id="new-description" name="description" ng-model="data.description" type="text" />
-           </pf-form-group>
-         </form>
-      </pf-wizard-substep>
-    </div>
-  </file>
-  <file name="review-template.html">
-  <div ng-controller="DetailsReviewController">
-    <form class="form">
-      <div class="wizard-pf-review-item">
-        <span class="wizard-pf-review-item-label">Name:</span>
-        <span class="wizard-pf-review-item-value">{{data.name}}</span>
-      </div>
-      <div class="wizard-pf-review-item">
-        <span class="wizard-pf-review-item-label">Description:</span>
-        <span class="wizard-pf-review-item-value">{{data.description}}</span>
-      </div>
-    </form>
-  </div>
-  </file>
-  <file name="review-second-template.html">
-  <div ng-controller="DetailsReviewController">
-    <form class="form">
-      <div class="wizard-pf-review-item">
-        <span class="wizard-pf-review-item-label">Lorem:</span>
-        <span class="wizard-pf-review-item-value">{{data.lorem}}</span>
-      </div>
-      <div class="wizard-pf-review-item">
-        <span class="wizard-pf-review-item-label">Ipsum:</span>
-        <span class="wizard-pf-review-item-value">{{data.ipsum}}</span>
-      </div>
-    </form>
-  </div>
-  </file>
-  <file name="summary.html">
-  <div ng-controller="SummaryController">
-    <pf-wizard-substep step-title="Summary" step-id="review-summary" step-priority="0" next-enabled="true" prev-enabled="true" ok-to-nav-away="true" wz-disabled="false" on-show="onShow">
-      <pf-wizard-review-page shown="pageShown" wizard-data="data"></pf-wizard-review-page>
-    </pf-wizard-substep>
-  </div>
-  </file>
-  <file name="deployment.html">
-  <div ng-controller="DeploymentController">
-    <pf-wizard-substep step-title="Deploy" step-id="review-progress" step-priority="1" next-enabled="true" prev-enabled="false" ok-to-nav-away="true" wz-disabled="false" on-show="onShow">
-      <div class="wizard-pf-contents" ng-controller="DeploymentController">
-        <div class="wizard-pf-process blank-slate-pf" ng-if="!deploymentComplete">
-          <div class="spinner spinner-lg blank-slate-pf-icon"></div>
-          <h3 class="blank-slate-pf-main-action">Deployment in progress</h3>
-          <p class="blank-slate-pf-secondary-action">Lorem ipsum dolor sit amet, porta at suspendisse ac, ut wisi vivamus, lorem sociosqu eget nunc amet. </p>
-        </div>
-        <div class="wizard-pf-complete blank-slate-pf" ng-if="deploymentComplete">
-          <div class="wizard-pf-success-icon"><span class="glyphicon glyphicon-ok-circle"></span></div>
-          <h3 class="blank-slate-pf-main-action">Deployment was successful</h3>
-          <p class="blank-slate-pf-secondary-action">Lorem ipsum dolor sit amet, porta at suspendisse ac, ut wisi vivamus, lorem sociosqu eget nunc amet. </p>
-          <button type="button" class="btn btn-lg btn-primary">View Deployment</button>
-        </div>
-     </div>
-   </pf-wizard-substep>
-  </div>
-  </file>
-  <file name="script.js">
-  angular.module('patternfly.wizard').controller('WizardModalController', ['$scope', '$timeout', '$uibModal', '$rootScope',
-    function ($scope, $timeout, $uibModal, $rootScope) {
-      $scope.openWizardModel = function () {
-        var wizardDoneListener,
-            modalInstance = $uibModal.open({
-              animation: true,
-              backdrop: 'static',
-              templateUrl: 'wizard-container.html',
-              controller: 'WizardController',
-              size: 'lg'
-            });
-
-        var closeWizard = function (e, reason) {
-          modalInstance.dismiss(reason);
-          wizardDoneListener();
-        };
-
-        modalInstance.result.then(function () { }, function () { });
-
-        wizardDoneListener = $rootScope.$on('wizard.done', closeWizard);
-      };
-    }
-  ]);
-  angular.module('patternfly.wizard').controller('WizardController', ['$scope', '$timeout', '$rootScope',
-    function ($scope, $timeout, $rootScope) {
-
-
-      var initializeWizard = function () {
-        $scope.data = {
-          name: '',
-          description: '',
-          lorem: 'default setting',
-          ipsum: ''
-        };
-        $scope.secondaryLoadInformation = 'ipsum dolor sit amet, porta at suspendisse ac, ut wisi vivamus, lorem sociosqu eget nunc amet.';
-        $timeout(function () {
-          $scope.deployReady = true;
-        }, 1000);
-        $scope.nextButtonTitle = "Next >";
-      };
-
-      var startDeploy = function () {
-        $timeout(function() { }, 10000);
-        $scope.deployInProgress = true;
-      };
-
-      $scope.data = {};
-
-      $scope.nextCallback = function (step) {
-        // call startdeploy after deploy button is clicked on review-summary tab
-        if (step.stepId === 'review-summary') {
-          startDeploy();
-        }
-        return true;
-      };
-      $scope.backCallback = function (step) {
-        return true;
-      };
-
-      $scope.stepChanged = function (step, index) {
-        if (step.stepId === 'review-summary') {
-          $scope.nextButtonTitle = "Deploy";
-        } else if (step.stepId === 'review-progress') {
-          $scope.nextButtonTitle = "Close";
-        } else {
-          $scope.nextButtonTitle = "Next >";
-        }
-      };
-
-      $scope.cancelDeploymentWizard = function () {
-        $rootScope.$emit('wizard.done', 'cancel');
-      };
-
-      $scope.finishedWizard = function () {
-        $rootScope.$emit('wizard.done', 'done');
-        return true;
-      };
-
-      initializeWizard();
-     }
-  ]);
-
-  angular.module('patternfly.wizard').controller('DetailsGeneralController', ['$rootScope', '$scope',
-    function ($rootScope, $scope) {
-      'use strict';
-
-      $scope.reviewTemplate = "review-template.html";
-      $scope.detailsGeneralComplete = false;
-
-      $scope.onShow = function() { };
-
-      $scope.updateName = function() {
-        $scope.detailsGeneralComplete = angular.isDefined($scope.data.name) && $scope.data.name.length > 0;
-      };
-    }
-  ]);
-
-  angular.module('patternfly.wizard').controller('DetailsReviewController', ['$rootScope', '$scope',
-    function ($rootScope, $scope) {
-      'use strict';
-
-      // Find the data!
-      var next = $scope;
-      while (angular.isUndefined($scope.data)) {
-        next = next.$parent;
-        if (angular.isUndefined(next)) {
-          $scope.data = {};
-        } else {
-          $scope.data = next.$ctrl.wizardData;
-        }
-      }
-    }
-  ]);
-
-  angular.module('patternfly.wizard').controller('SummaryController', ['$rootScope', '$scope', '$timeout',
-    function ($rootScope, $scope, $timeout) {
-      'use strict';
-      $scope.pageShown = false;
-
-      $scope.onShow = function () {
-        $scope.pageShown = true;
-        $timeout(function () {
-          $scope.pageShown = false;  // done so the next time the page is shown it updates
-        });
-      }
-    }
-  ]);
-
-  angular.module('patternfly.wizard').controller('DeploymentController', ['$rootScope', '$scope', '$timeout',
-    function ($rootScope, $scope, $timeout) {
-      'use strict';
-
-      $scope.onShow = function() {
-        $scope.deploymentComplete = false;
-        $timeout(function() {
-          $scope.deploymentComplete = true;
-        }, 2500);
-      };
-    }
-  ]);
-</file>
-</example>
-*/
-
-angular.module('patternfly.wizard').component('pfWizard', {
+;angular.module('patternfly.wizard').component('pfWizard', {
   transclude: true,
   bindings: {
     title: '@',
+    wizardTitle: '@',
     hideIndicators: '=?',
     activeStepTitleOnly: '<?',
     hideSidebar: '@',
@@ -18091,6 +18037,9 @@ angular.module('patternfly.wizard').component('pfWizard', {
       ctrl.hideSidebar = ctrl.hideSidebar === 'true';
       ctrl.hideBackButton = ctrl.hideBackButton === 'true';
       ctrl.activeStepTitleOnly = ctrl.activeStepTitleOnly === true;
+
+      // Use the wizardTitle first, if non-existent use the deprecated title parameter
+      ctrl.wizardTitle = ctrl.wizardTitle || ctrl.title;
 
       // If a step class is given use it for all steps
       if (angular.isDefined(ctrl.stepClass)) {
@@ -18205,6 +18154,9 @@ angular.module('patternfly.wizard').component('pfWizard', {
         // Make sure current step is not undefined
         ctrl.currentStep = step.title;
 
+        ctrl.nextTooltip = step.nextTooltip;
+        ctrl.prevTooltip = step.prevTooltip;
+
         //emit event upwards with data on goTo() invocation
         if (!step.substeps) {
           ctrl.setPageSelected(step);
@@ -18228,7 +18180,11 @@ angular.module('patternfly.wizard').component('pfWizard', {
     };
 
     ctrl.stepClick = function (step) {
-      if (step.allowClickNav) {
+      if (step.allowClickNav &&
+        !ctrl.wizardDone &&
+        ctrl.selectedStep.okToNavAway &&
+        (ctrl.selectedStep.nextEnabled || (step.stepPriority < ctrl.selectedStep.stepPriority)) &&
+        (ctrl.selectedStep.prevEnabled || (step.stepPriority > ctrl.selectedStep.stepPriority))) {
         ctrl.goTo(step, true);
       }
     };
@@ -18396,31 +18352,31 @@ angular.module('patternfly.wizard').component('pfWizard', {
 
 
   $templateCache.put('canvas-view/canvas-editor/toolbox-items.html',
-    "<ul class=toolbox-items-list><li class=toolbox-item ng-repeat=\"item in vm.items | filter:vm.searchText\" data-drag={{!item.disableInToolbox}} jqyoui-draggable=\"{onStart:'vm.startDragCallbackfmDir(item)'}\" ng-class=\"{'not-draggable': item.disableInToolbox}\" data-jqyoui-options=\"{revert: 'invalid', helper: 'clone'}\" ng-click=vm.clickCallbackfmDir(item) uib-tooltip=\"{{(item.disableInToolbox ? 'Items cannot be added to the canvas more than once.' : '')}}\"><img ng-if=item.image src={{item.image}} alt=\"{{item.name}}\"> <i ng-if=\"item.icon && !item.image\" class=\"draggable-item-icon {{item.icon}}\"></i> <span>{{ item.name }}</span></li></ul>"
+    "<ul class=toolbox-items-list><li class=toolbox-item ng-repeat=\"item in $ctrl.items | filter:$ctrl.searchText\" data-drag={{!item.disableInToolbox}} jqyoui-draggable=\"{onStart:'$ctrl.startDragCallbackfmDir(item)'}\" ng-class=\"{'not-draggable': item.disableInToolbox}\" data-jqyoui-options=\"{revert: 'invalid', helper: 'clone'}\" ng-click=$ctrl.clickCallbackfmDir(item) uib-tooltip=\"{{(item.disableInToolbox ? 'Items cannot be added to the canvas more than once.' : '')}}\"><img ng-if=item.image src={{item.image}} alt=\"{{item.name}}\"> <i ng-if=\"item.icon && !item.image\" class=\"draggable-item-icon {{item.icon}}\"></i> <span>{{ item.name }}</span></li></ul>"
   );
 
 
   $templateCache.put('canvas-view/canvas/canvas.html',
-    "<svg class=\"canvas draggable-container\" xmlns=http://www.w3.org/2000/svg ng-mousedown=mouseDown($event) ng-mousemove=mouseMove($event) ng-class=\"{'read-only': readOnly, 'canvas-in-connection-mode': chart.inConnectingMode}\" ng-style=\"{'height': chart.zoom.getChartHeight() + 'px', 'width': chart.zoom.getChartWidth() + 'px', 'background-size': chart.zoom.getBackgroundSize() + 'px '+  chart.zoom.getBackgroundSize() + 'px'}\" mouse-capture><!-- Zoom --><g ng-attr-transform=scale({{zoomLevel()}})><!-- Connection Mode Notification --><g ng-if=chart.inConnectingMode><rect class=connecting-mode-rec ry=1 rx=1 x=0 y=0 width=640 height=32></rect><text class=connecting-mode-label x=12 y=22 ng-if=availableConnections()>Select a second item to complete the connection or click on the canvas to cancel</text><text class=connecting-mode-label-warning x=12 y=22 ng-if=!availableConnections()>No available connections! Click on the canvas to cancel</text></g><!-- Main Node Loop --><g ng-repeat=\"node in chart.nodes\" ng-mousedown=\"nodeMouseDown($event, node)\" ng-mouseover=\"nodeMouseOver($event, node)\" ng-mouseleave=\"nodeMouseLeave($event, node)\" ng-attr-transform=\"translate({{node.x()}}, {{node.y()}})\"><!-- Node --><rect ng-class=\"{'invalid-node-rect': node.invalid(), 'selected-node-rect': node.selected(), 'mouseover-node-rect': node == mouseOverNode, 'node-rect': node != mouseOverNode}\" ry=0 rx=0 x=0 y=0 ng-attr-width={{node.width()}} ng-attr-height={{node.height()}} fill={{node.backgroundColor()}} fill-opacity=1.0></rect><!-- Node Title: no-wrap --><text ng-if=!foreignObjectSupported() class=node-header ng-class=\"{'invalid-node-header': node.invalid()}\" ng-attr-x={{node.width()/2}} ng-attr-y=\"{{node.height() - 24}}\" text-anchor=middle alignment-baseline=middle>{{node.name()}}</text><!-- Node Title: text wrap --><foreignobject ng-if=foreignObjectSupported() x=0 ng-attr-y=\"{{node.height() - 42}}\" ng-attr-width={{node.width()}} ng-attr-height=\"{{node.height() - 42}}\"><body><div class=node-header ng-attr-width={{node.width()}} ng-attr-height=\"{{node.height() - 42}}\"><p ng-class=\"{'invalid-node-header': node.invalid()}\" ng-style=\"{width: node.width()}\">{{node.name()}}</p></div></body></foreignobject><!-- Node Image --><image ng-if=node.image() class=node-center-img ng-class=\"{'invalid-node-img': node.invalid()}\" ng-href=\"{{node.image() | trustAsResourceUrl}}\" xlink:href=\"\" ng-attr-x=\"{{(node.width()/2) - 40}}\" ng-attr-y={{20}} height=80px width=80px></image><!-- Node Icon: icon class --><foreignobject ng-if=\"node.icon() && !node.image() && foreignObjectSupported()\" ng-attr-x=\"{{(node.width()/2) - 44}}\" ng-attr-y=\"{{(node.height()/2) - 54}}\" ng-attr-height={{node.height()}}px ng-attr-width={{node.width()}}px class=node-center-img-icon ng-class=\"{'invalid-node-header': node.invalid()}\"><body><i class={{node.icon()}} ng-style=\"{'font-size': node.fontSize() ? node.fontSize() : '76px'}\"></i></body></foreignobject><!-- Node Icon: fontContent --><text ng-if=\"node.fontFamily() && !node.image()\" class=node-center-icon ng-class=\"{'invalid-node-header': node.invalid()}\" font-family={{node.fontFamily()}} ng-attr-x=\"{{(node.width()/2) - 34 + ((node.bundle()) ? 4 : 0) }}\" ng-attr-y={{90}}>{{node.fontContent()}}</text><!-- Sm. Top Left Bundle Icon --><text ng-if=node.bundle() class=bundle-icon x=6 y=22 font-family=PatternFlyIcons-webfont font-size=20>{{'\\ue918'}}</text><!-- Bottom Node Toolbar --><g id=nodeToolBar ng-if=\"node == mouseOverNode && !chart.inConnectingMode\"><g class=svg-triangle><polyline points=\"4,152 14,140 24,152\"></polyline></g><foreignobject ng-attr-x={{node.x}} ng-attr-y={{node.height()+1}} ng-mousedown=$event.stopPropagation() height=100% width=100%><body><node-toolbar node=node node-actions=chart.nodeActions></node-toolbar></body></foreignobject></g><!-- Connected Input Connectors --><g ng-if=!hideConnectors ng-repeat=\"connector in node.inputConnectors | filter: isConnectorConnected\" ng-mousedown=\"connectorMouseDown($event, node, connector, $index, true)\" ng-mouseover=\"connectorMouseOver($event, node, connector, $index, true)\" ng-mouseleave=\"connectorMouseLeave($event, node, connector, $index, true)\" class=\"connector input-connector\"><circle ng-if=\"!chart.inConnectingMode || isConnectedTo(connector, connectingModeSourceNode)\" ng-class=\"{'mouseover-connector-circle': connector == mouseOverConnector,\n" +
-    "                   'connector-circle': connector != mouseOverConnector}\" ng-attr-r={{connectorSize}} ng-attr-cx={{connector.x()}} ng-attr-cy={{connector.y()}}></circle></g><!-- Unconnected Input Connectors --><g ng-if=chart.inConnectingMode ng-repeat=\"connector in node.inputConnectors | filter: isConnectorUnconnectedAndValid\" ng-mousedown=\"connectorMouseDown($event, node, connector, $index, true)\" ng-mouseover=\"connectorMouseOver($event, node, connector, $index, true)\" ng-mouseleave=\"connectorMouseLeave($event, node, connector, $index, true)\" class=\"connector input-connector\"><text ng-if=connector.fontFamily() class=connector-icons font-family={{connector.fontFamily()}} ng-attr-x=\"{{connector.x() - 28}}\" ng-attr-y=\"{{connector.y() + 7}}\">{{connector.fontContent()}}</text><circle ng-class=\"{'unconnected-circle': connector != mouseOverConnector,\n" +
-    "                         'mouseover-unconnected-circle': connector == mouseOverConnector}\" ng-attr-r={{connectorSize}} ng-attr-cx={{connector.x()}} ng-attr-cy={{connector.y()}}></circle><g ng-if=\"connector == mouseOverConnector\"><rect class=connector-tooltip ry=1 rx=1 ng-attr-x=\"{{connector.x() - 4}}\" ng-attr-y=\"{{connector.y() + 12}}\" ng-attr-width={{80}} height=20></rect><text class=connector-tooltip-text ng-attr-x=\"{{connector.x() + 2}}\" ng-attr-y=\"{{connector.y() + 26}}\" text-anchor=start alignment-baseline=top>{{connector.name()}}</text></g></g><!-- Output Connector --><g ng-if=!hideConnectors ng-repeat=\"connector in node.outputConnectors\" ng-mousedown=\"connectorMouseDown($event, node, connector, $index, false)\" ng-mouseover=\"connectorMouseOver($event, node, connector, $index, false)\" ng-mouseleave=\"connectorMouseLeave($event, node, connector, $index, false)\" class=\"connector output-connector\"><circle ng-if=\"!chart.inConnectingMode || (connectingModeSourceNode === connector.parentNode())\" ng-class=\"{'connector-circle': connector != mouseOverConnector,\n" +
-    "                   'mouseover-connector-circle': connector == mouseOverConnector}\" ng-attr-r={{connectorSize}} ng-attr-r={{connectorSize}} ng-attr-cx={{connector.x()}} ng-attr-cy={{connector.y()}}></circle></g></g><!--  End Nodes Loop --><!-- Connections --><g ng-if=!hideConnectors ng-repeat=\"connection in chart.connections\" class=connection ng-mousedown=\"connectionMouseDown($event, connection)\" ng-mouseover=\"connectionMouseOver($event, connection)\" ng-mouseleave=\"connectionMouseLeave($event, connection)\"><g ng-if=\"!chart.inConnectingMode || connectingModeSourceNode === connection.source.parentNode()\"><path ng-class=\"{'selected-connection-line': connection.selected(),\n" +
-    "                     'mouseover-connection-line': connection == mouseOverConnection,\n" +
-    "                     'connection-line': connection != mouseOverConnection}\" ng-attr-d=\"M {{connection.sourceCoordX()}}, {{connection.sourceCoordY()}}\n" +
+    "<svg class=\"canvas draggable-container\" xmlns=http://www.w3.org/2000/svg ng-mousedown=$ctrl.mouseDown($event) ng-mousemove=mouseMove($event) ng-class=\"{'read-only': $ctrl.readOnly, 'canvas-in-connection-mode': $ctrl.chart.inConnectingMode}\" ng-style=\"{'height': $ctrl.chart.zoom.getChartHeight() + 'px', 'width': $ctrl.chart.zoom.getChartWidth() + 'px', 'background-size': $ctrl.chart.zoom.getBackgroundSize() + 'px '+  chart.zoom.getBackgroundSize() + 'px'}\" mouse-capture><!-- Zoom --><g ng-attr-transform=scale({{$ctrl.zoomLevel()}})><!-- Connection Mode Notification --><g ng-if=$ctrl.chart.inConnectingMode><rect class=connecting-mode-rec ry=1 rx=1 x=0 y=0 width=640 height=32></rect><text class=connecting-mode-label x=12 y=22 ng-if=$ctrl.availableConnections()>Select a second item to complete the connection or click on the canvas to cancel</text><text class=connecting-mode-label-warning x=12 y=22 ng-if=!$ctrl.availableConnections()>No available connections! Click on the canvas to cancel</text></g><!-- Main Node Loop --><g ng-repeat=\"node in $ctrl.chart.nodes\" ng-mousedown=\"$ctrl.nodeMouseDown($event, node)\" ng-mouseover=\"$ctrl.nodeMouseOver($event, node)\" ng-mouseleave=\"$ctrl.nodeMouseLeave($event, node)\" ng-attr-transform=\"translate({{node.x()}}, {{node.y()}})\"><!-- Node --><rect ng-class=\"{'invalid-node-rect': node.invalid(), 'selected-node-rect': node.selected(), 'mouseover-node-rect': node == $ctrl.mouseOverNode, 'node-rect': node != $ctrl.mouseOverNode}\" ry=0 rx=0 x=0 y=0 ng-attr-width={{node.width()}} ng-attr-height={{node.height()}} fill={{node.backgroundColor()}} fill-opacity=1.0></rect><!-- Node Title: no-wrap --><text ng-if=!$ctrl.foreignObjectSupported() class=node-header ng-class=\"{'invalid-node-header': node.invalid()}\" ng-attr-x={{node.width()/2}} ng-attr-y=\"{{node.height() - 24}}\" text-anchor=middle alignment-baseline=middle>{{node.name()}}</text><!-- Node Title: text wrap --><foreignobject ng-if=$ctrl.foreignObjectSupported() x=0 ng-attr-y=\"{{node.height() - 42}}\" ng-attr-width={{node.width()}} ng-attr-height=\"{{node.height() - 42}}\"><body><div class=node-header ng-attr-width={{node.width()}} ng-attr-height=\"{{node.height() - 42}}\"><p ng-class=\"{'invalid-node-header': node.invalid()}\" ng-style=\"{width: node.width()}\">{{node.name()}}</p></div></body></foreignobject><!-- Node Image --><image ng-if=node.image() class=node-center-img ng-class=\"{'invalid-node-img': node.invalid()}\" ng-href=\"{{node.image() | trustAsResourceUrl}}\" xlink:href=\"\" ng-attr-x=\"{{(node.width()/2) - 40}}\" ng-attr-y={{20}} height=80px width=80px></image><!-- Node Icon: icon class --><foreignobject ng-if=\"node.icon() && !node.image() && $ctrl.foreignObjectSupported()\" ng-attr-x=\"{{(node.width()/2) - 44}}\" ng-attr-y=\"{{(node.height()/2) - 54}}\" ng-attr-height={{node.height()}}px ng-attr-width={{node.width()}}px class=node-center-img-icon ng-class=\"{'invalid-node-header': node.invalid()}\"><body><i class={{node.icon()}} ng-style=\"{'font-size': node.fontSize() ? node.fontSize() : '76px'}\"></i></body></foreignobject><!-- Node Icon: fontContent --><text ng-if=\"node.fontFamily() && !node.image()\" class=node-center-icon ng-class=\"{'invalid-node-header': node.invalid()}\" font-family={{node.fontFamily()}} ng-attr-x=\"{{(node.width()/2) - 34 + ((node.bundle()) ? 4 : 0) }}\" ng-attr-y={{90}}>{{node.fontContent()}}</text><!-- Sm. Top Left Bundle Icon --><text ng-if=node.bundle() class=bundle-icon x=6 y=22 font-family=PatternFlyIcons-webfont font-size=20>{{'\\ue918'}}</text><!-- Bottom Node Toolbar --><g id=nodeToolBar ng-if=\"node == $ctrl.mouseOverNode && !$ctrl.chart.inConnectingMode\"><g class=svg-triangle><polyline points=\"4,152 14,140 24,152\"></polyline></g><foreignobject ng-attr-x={{node.x}} ng-attr-y={{node.height()+1}} ng-mousedown=$event.stopPropagation() height=100% width=100%><body><node-toolbar node=node node-actions=$ctrl.chart.nodeActions node-click-handler=$ctrl.nodeClickHandler node-close-handler=$ctrl.nodeCloseHandler></node-toolbar></body></foreignobject></g><!-- Connected Input Connectors --><g ng-if=!$ctrl.hideConnectors ng-repeat=\"connector in node.inputConnectors | filter: $ctrl.isConnectorConnected\" ng-mousedown=\"$ctrl.connectorMouseDown($event, node, connector, $index, true)\" ng-mouseover=\"$ctrl.connectorMouseOver($event, node, connector, $index, true)\" ng-mouseleave=\"$ctrl.connectorMouseLeave($event, node, connector, $index, true)\" class=\"connector input-connector\"><circle ng-if=\"!$ctrl.chart.inConnectingMode || $ctrl.isConnectedTo(connector, connectingModeSourceNode)\" ng-class=\"{'mouseover-connector-circle': connector == $ctrl.mouseOverConnector,\n" +
+    "                   'connector-circle': connector != $ctrl.mouseOverConnector}\" ng-attr-r={{$ctrl.connectorSize}} ng-attr-cx={{connector.x()}} ng-attr-cy={{connector.y()}}></circle></g><!-- Unconnected Input Connectors --><g ng-if=$ctrl.chart.inConnectingMode ng-repeat=\"connector in node.inputConnectors | filter: $ctrl.isConnectorUnconnectedAndValid\" ng-mousedown=\"$ctrl.connectorMouseDown($event, node, connector, $index, true)\" ng-mouseover=\"$ctrl.connectorMouseOver($event, node, connector, $index, true)\" ng-mouseleave=\"$ctrl.connectorMouseLeave($event, node, connector, $index, true)\" class=\"connector input-connector\"><text ng-if=connector.fontFamily() class=connector-icons font-family={{connector.fontFamily()}} ng-attr-x=\"{{connector.x() - 28}}\" ng-attr-y=\"{{connector.y() + 7}}\">{{connector.fontContent()}}</text><circle ng-class=\"{'unconnected-circle': connector != $ctrl.mouseOverConnector,\n" +
+    "                         'mouseover-unconnected-circle': connector == $ctrl.mouseOverConnector}\" ng-attr-r={{$ctrl.connectorSize}} ng-attr-cx={{connector.x()}} ng-attr-cy={{connector.y()}}></circle><g ng-if=\"connector == $ctrl.mouseOverConnector\"><rect class=connector-tooltip ry=1 rx=1 ng-attr-x=\"{{connector.x() - 4}}\" ng-attr-y=\"{{connector.y() + 12}}\" ng-attr-width={{80}} height=20></rect><text class=connector-tooltip-text ng-attr-x=\"{{connector.x() + 2}}\" ng-attr-y=\"{{connector.y() + 26}}\" text-anchor=start alignment-baseline=top>{{connector.name()}}</text></g></g><!-- Output Connector --><g ng-if=!$ctrl.hideConnectors ng-repeat=\"connector in node.outputConnectors\" ng-mousedown=\"$ctrl.connectorMouseDown($event, node, connector, $index, false)\" ng-mouseover=\"$ctrl.connectorMouseOver($event, node, connector, $index, false)\" ng-mouseleave=\"$ctrl.connectorMouseLeave($event, node, connector, $index, false)\" class=\"connector output-connector\"><circle ng-if=\"!$ctrl.chart.inConnectingMode || ($ctrl.connectingModeSourceNode === connector.parentNode())\" ng-class=\"{'connector-circle': connector != $ctrl.mouseOverConnector,\n" +
+    "                   'mouseover-connector-circle': connector == $ctrl.mouseOverConnector}\" ng-attr-r={{$ctrl.connectorSize}} ng-attr-r={{$ctrl.connectorSize}} ng-attr-cx={{connector.x()}} ng-attr-cy={{connector.y()}}></circle></g></g><!--  End Nodes Loop --><!-- Connections --><g ng-if=!$ctrl.hideConnectors ng-repeat=\"connection in $ctrl.chart.connections\" class=connection ng-mousedown=\"$ctrl.connectionMouseDown($event, connection)\" ng-mouseover=\"$ctrl.connectionMouseOver($event, connection)\" ng-mouseleave=\"$ctrl.connectionMouseLeave($event, connection)\"><g ng-if=\"!$ctrl.chart.inConnectingMode || connectingModeSourceNode === connection.source.parentNode()\"><path ng-class=\"{'selected-connection-line': connection.selected(),\n" +
+    "                     'mouseover-connection-line': connection == $ctrl.mouseOverConnection,\n" +
+    "                     'connection-line': connection != $ctrl.mouseOverConnection}\" ng-attr-d=\"M {{connection.sourceCoordX()}}, {{connection.sourceCoordY()}}\n" +
     "                     C {{connection.sourceTangentX()}}, {{connection.sourceTangentY()}}\n" +
     "                       {{connection.destTangentX()}}, {{connection.destTangentY()}}\n" +
-    "                       {{connection.destCoordX()}}, {{connection.destCoordY()}}\"></path><text ng-if=\"connection == mouseOverConnection\" ng-class=\"{'selected-connection-name': connection.selected(),\n" +
-    "                     'mouseover-connection-name': connection == mouseOverConnection && !connection.selected(),\n" +
-    "                     'connection-name': connection != mouseOverConnection && !connection.selected()}\" ng-attr-x={{connection.middleX()}} ng-attr-y={{connection.middleY()}} text-anchor=middle alignment-baseline=middle>{{connection.name()}}</text><circle ng-class=\"{'selected-connection-endpoint': connection.selected(),\n" +
-    "                       'mouseover-connection-endpoint': connection == mouseOverConnection && !connection.selected(),\n" +
-    "                       'connection-endpoint': connection != mouseOverConnection && !connection.selected()}\" r=5 ng-attr-cx={{connection.sourceCoordX()}} ng-attr-cy={{connection.sourceCoordY()}}></circle><circle ng-class=\"{'selected-connection-endpoint': connection.selected(),\n" +
-    "                       'mouseover-connection-endpoint': connection == mouseOverConnection && !connection.selected(),\n" +
-    "                       'connection-endpoint': connection != mouseOverConnection && !connection.selected()}\" r=5 ng-attr-cx={{connection.destCoordX()}} ng-attr-cy={{connection.destCoordY()}}></circle></g></g><rect ng-if=dragSelecting class=drag-selection-rect ng-attr-x={{dragSelectionRect.x}} ng-attr-y={{dragSelectionRect.y}} ng-attr-width={{dragSelectionRect.width}} ng-attr-height={{dragSelectionRect.height}}></rect></g></svg>"
+    "                       {{connection.destCoordX()}}, {{connection.destCoordY()}}\"></path><text ng-if=\"connection == $ctrl.mouseOverConnection\" ng-class=\"{'selected-connection-name': connection.selected(),\n" +
+    "                     'mouseover-connection-name': connection == $ctrl.mouseOverConnection && !connection.selected(),\n" +
+    "                     'connection-name': connection != $ctrl.mouseOverConnection && !connection.selected()}\" ng-attr-x={{connection.middleX()}} ng-attr-y={{connection.middleY()}} text-anchor=middle alignment-baseline=middle>{{connection.name()}}</text><circle ng-class=\"{'selected-connection-endpoint': connection.selected(),\n" +
+    "                       'mouseover-connection-endpoint': connection == $ctrl.mouseOverConnection && !connection.selected(),\n" +
+    "                       'connection-endpoint': connection != $ctrl.mouseOverConnection && !connection.selected()}\" r=5 ng-attr-cx={{connection.sourceCoordX()}} ng-attr-cy={{connection.sourceCoordY()}}></circle><circle ng-class=\"{'selected-connection-endpoint': connection.selected(),\n" +
+    "                       'mouseover-connection-endpoint': connection == $ctrl.mouseOverConnection && !connection.selected(),\n" +
+    "                       'connection-endpoint': connection != $ctrl.mouseOverConnection && !connection.selected()}\" r=5 ng-attr-cx={{connection.destCoordX()}} ng-attr-cy={{connection.destCoordY()}}></circle></g></g><rect ng-if=$ctrl.dragSelecting class=drag-selection-rect ng-attr-x={{$ctrl.dragSelectionRect.x}} ng-attr-y={{$ctrl.dragSelectionRect.y}} ng-attr-width={{$ctrl.dragSelectionRect.width}} ng-attr-height={{$ctrl.dragSelectionRect.height}}></rect></g></svg>"
   );
 
 
   $templateCache.put('canvas-view/canvas/node-toolbar.html',
-    "<div class=node-toolbar ng-style=\"{width: vm.node.width()}\"><span ng-repeat=\"nodeAction in vm.nodeActions\" class=\"{{nodeAction.iconClass()}} node-toolbar-icons\" ng-click=actionIconClicked(nodeAction.action())></span></div>"
+    "<div class=node-toolbar ng-style=\"{width: $ctrl.node.width()}\"><span ng-repeat=\"nodeAction in $ctrl.nodeActions\" class=\"{{nodeAction.iconClass()}} node-toolbar-icons\" ng-click=$ctrl.actionIconClicked(nodeAction.action())></span></div>"
   );
 
 }]);
@@ -18443,7 +18399,7 @@ angular.module('patternfly.wizard').component('pfWizard', {
 
 
   $templateCache.put('card/info-status/info-status-card.html',
-    "<div class=\"card-pf card-pf-info-status\" ng-class=\"{'card-pf-accented': $ctrl.shouldShowTopBorder}\"><div class=info-image-container><img ng-if=$ctrl.status.iconImage ng-src={{$ctrl.status.iconImage}} alt=\"\" class=\"info-img\"> <span class=\"info-icon {{$ctrl.status.iconClass}}\"></span></div><div><h2 class=card-pf-title ng-if=$ctrl.status.title><a href={{$ctrl.status.href}} ng-if=$ctrl.status.href><span>{{$ctrl.status.title}}</span></a> <span ng-if=!$ctrl.status.href><span>{{$ctrl.status.title}}</span></span></h2><p ng-if=$ctrl.shouldShowHtmlContent ng-bind-html=$ctrl.trustAsHtml(item) ng-repeat=\"item in $ctrl.status.info track by $index\"></p><p ng-if=!$ctrl.shouldShowHtmlContent ng-bind=item ng-repeat=\"item in $ctrl.status.info track by $index\"></p></div></div>"
+    "<div class=\"card-pf card-pf-info-status\" ng-class=\"{'card-pf-accented': $ctrl.shouldShowTopBorder}\"><div class=card-pf-info-image><img ng-if=$ctrl.status.iconImage ng-src={{$ctrl.status.iconImage}} alt=\"\" class=\"info-img\"> <span class=\"info-icon {{$ctrl.status.iconClass}}\"></span></div><div class=card-pf-info-content><h2 class=card-pf-title ng-if=$ctrl.status.title><a href={{$ctrl.status.href}} ng-if=$ctrl.status.href><span>{{$ctrl.status.title}}</span></a> <span ng-if=!$ctrl.status.href><span>{{$ctrl.status.title}}</span></span></h2><div ng-if=$ctrl.shouldShowHtmlContent class=card-pf-info-item ng-bind-html=$ctrl.trustAsHtml(item) ng-repeat=\"item in $ctrl.status.info track by $index\"></div><div ng-if=!$ctrl.shouldShowHtmlContent class=card-pf-info-item ng-bind=item ng-repeat=\"item in $ctrl.status.info track by $index\"></div></div></div>"
   );
 
 }]);
@@ -18613,7 +18569,7 @@ angular.module('patternfly.wizard').component('pfWizard', {
 
 
   $templateCache.put('notification/notification-drawer.html',
-    "<div class=drawer-pf ng-class=\"{'hide': $ctrl.drawerHidden, 'drawer-pf-expanded': $ctrl.drawerExpanded}\"><div ng-if=$ctrl.drawerTitle class=drawer-pf-title><a href=#0 ng-if=$ctrl.allowExpand class=\"drawer-pf-toggle-expand fa fa-angle-double-left\" ng-click=$ctrl.toggleExpandDrawer()></a> <a href=#0 ng-if=$ctrl.onClose class=\"drawer-pf-close pficon pficon-close\" ng-click=$ctrl.onClose()></a><h3 class=text-center>{{$ctrl.drawerTitle}}</h3></div><div ng-if=$ctrl.titleInclude class=drawer-pf-title ng-include src=$ctrl.titleInclude></div><div ng-if=!$ctrl.notificationGroups class=apf-blank-notification-groups><pf-empty-state config=$ctrl.emptyStateConfig></pf-empty-state></div><div ng-if=$ctrl.notificationGroups pf-fixed-accordion scroll-selector=.panel-body><div class=panel-group><div class=\"panel panel-default\" ng-repeat=\"notificationGroup in $ctrl.notificationGroups track by $index\"><div class=panel-heading><h4 class=panel-title><a ng-if=!$ctrl.singleGroup ng-click=$ctrl.toggleCollapse(notificationGroup) ng-class=\"{collapsed: !notificationGroup.open}\" ng-include src=$ctrl.headingInclude></a> <span ng-if=$ctrl.singleGroup ng-include src=$ctrl.headingInclude></span></h4><span class=panel-counter ng-include src=$ctrl.subheadingInclude></span></div><div class=\"panel-collapse collapse\" ng-class=\"{in: notificationGroup.open || $ctrl.notificationGroups.length === 1}\"><div ng-if=$ctrl.hasNotifications(notificationGroup) class=panel-body><div class=drawer-pf-notification ng-class=\"{unread: notification.unread, 'expanded-notification': $ctrl.drawerExpanded}\" ng-repeat=\"notification in notificationGroup.notifications track by $ctrl.notificationTrackField ? notification[$ctrl.notificationTrackField] || $index : $index\" ng-include src=$ctrl.notificationBodyInclude></div><div ng-if=notificationGroup.isLoading class=\"drawer-pf-loading text-center\"><span class=\"spinner spinner-xs spinner-inline\"></span> Loading More</div></div><div ng-if=\"($ctrl.showClearAll || $ctrl.showMarkAllRead) && $ctrl.hasNotifications(notificationGroup)\" class=drawer-pf-action><span class=drawer-pf-action-link ng-if=\"$ctrl.showMarkAllRead && $ctrl.hasUnread(notificationGroup)\"><button class=\"btn btn-link\" ng-click=$ctrl.onMarkAllRead(notificationGroup)>Mark All Read</button></span> <span class=drawer-pf-action-link><button class=\"btn btn-link\" ng-if=$ctrl.showClearAll ng-click=$ctrl.onClearAll(notificationGroup)><span class=\"pficon pficon-close\"></span> Clear All</button></span></div><div ng-if=\"$ctrl.actionButtonTitle && $ctrl.hasNotifications(notificationGroup)\" class=drawer-pf-action><a class=\"btn btn-link btn-block\" ng-click=$ctrl.actionButtonCallback(notificationGroup)>{{$ctrl.actionButtonTitle}}</a></div><div ng-if=!$ctrl.hasNotifications(notificationGroup)><div class=panel-body><pf-empty-state config=notificationGroup.emptyStateConfig></pf-empty-state></div></div><div ng-if=$ctrl.notificationFooterInclude ng-include src=$ctrl.notificationFooterInclude></div></div></div></div></div></div>"
+    "<div class=drawer-pf ng-class=\"{'hide': $ctrl.drawerHidden, 'drawer-pf-expanded': $ctrl.drawerExpanded}\"><div ng-if=$ctrl.drawerTitle class=drawer-pf-title><a href=#0 ng-if=$ctrl.allowExpand class=\"drawer-pf-toggle-expand fa fa-angle-double-left hidden-xs\" ng-click=$ctrl.toggleExpandDrawer()></a> <a href=#0 ng-if=$ctrl.onClose class=\"drawer-pf-close pficon pficon-close\" ng-click=$ctrl.onClose()></a><h3 class=text-center>{{$ctrl.drawerTitle}}</h3></div><div ng-if=$ctrl.titleInclude class=drawer-pf-title ng-include src=$ctrl.titleInclude></div><div ng-if=!$ctrl.notificationGroups class=apf-blank-notification-groups><pf-empty-state config=$ctrl.emptyStateConfig></pf-empty-state></div><div ng-if=$ctrl.notificationGroups pf-fixed-accordion scroll-selector=.panel-body><div class=panel-group><div class=\"panel panel-default\" ng-repeat=\"notificationGroup in $ctrl.notificationGroups track by $index\"><div class=panel-heading><h4 class=panel-title><a ng-if=!$ctrl.singleGroup ng-click=$ctrl.toggleCollapse(notificationGroup) ng-class=\"{collapsed: !notificationGroup.open}\" ng-include src=$ctrl.headingInclude></a> <span ng-if=$ctrl.singleGroup ng-include src=$ctrl.headingInclude></span></h4><span class=panel-counter ng-include src=$ctrl.subheadingInclude></span></div><div class=\"panel-collapse collapse\" ng-class=\"{in: notificationGroup.open || $ctrl.notificationGroups.length === 1}\"><div ng-if=$ctrl.hasNotifications(notificationGroup) class=panel-body><div class=drawer-pf-notification ng-class=\"{unread: notification.unread, 'expanded-notification': $ctrl.drawerExpanded}\" ng-repeat=\"notification in notificationGroup.notifications track by $ctrl.notificationTrackField ? notification[$ctrl.notificationTrackField] || $index : $index\" ng-include src=$ctrl.notificationBodyInclude></div><div ng-if=notificationGroup.isLoading class=\"drawer-pf-loading text-center\"><span class=\"spinner spinner-xs spinner-inline\"></span> Loading More</div></div><div ng-if=\"($ctrl.showClearAll || $ctrl.showMarkAllRead) && $ctrl.hasNotifications(notificationGroup)\" class=drawer-pf-action><span class=drawer-pf-action-link ng-if=\"$ctrl.showMarkAllRead && $ctrl.hasUnread(notificationGroup)\"><button class=\"btn btn-link\" ng-click=$ctrl.onMarkAllRead(notificationGroup)>Mark All Read</button></span> <span class=drawer-pf-action-link><button class=\"btn btn-link\" ng-if=$ctrl.showClearAll ng-click=$ctrl.onClearAll(notificationGroup)><span class=\"pficon pficon-close\"></span> Clear All</button></span></div><div ng-if=\"$ctrl.actionButtonTitle && $ctrl.hasNotifications(notificationGroup)\" class=drawer-pf-action><a class=\"btn btn-link btn-block\" ng-click=$ctrl.actionButtonCallback(notificationGroup)>{{$ctrl.actionButtonTitle}}</a></div><div ng-if=!$ctrl.hasNotifications(notificationGroup)><div class=panel-body><pf-empty-state config=notificationGroup.emptyStateConfig></pf-empty-state></div></div><div ng-if=$ctrl.notificationFooterInclude ng-include src=$ctrl.notificationFooterInclude></div></div></div></div></div></div>"
   );
 
 
@@ -18684,7 +18640,7 @@ angular.module('patternfly.wizard').component('pfWizard', {
 
 
   $templateCache.put('views/empty-state.html',
-    "<div class=blank-slate-pf><div ng-if=$ctrl.config.icon class=blank-slate-pf-icon><span class={{$ctrl.config.icon}}></span></div><h4 id=blank-state-pf-title-{{$id}} class=\"h1 blank-state-pf-title\">{{$ctrl.config.title}}</h4><p id=blank-state-pf-info-{{$id}} class=blank-state-pf-info ng-if=$ctrl.config.info>{{$ctrl.config.info}}</p><p id=blank-state-pf-helpLink-{{$id}} class=blank-state-pf-helpLink ng-if=$ctrl.config.helpLink>{{$ctrl.config.helpLink.label}} <a href={{$ctrl.config.helpLink.url}}>{{$ctrl.config.helpLink.urlLabel}}</a>.</p><div ng-if=$ctrl.hasMainActions() class=blank-slate-pf-main-action><button class=\"btn btn-primary btn-lg\" ng-repeat=\"actionButton in $ctrl.actionButtons | filter:$ctrl.filterMainActions\" title={{actionButton.title}} ng-click=$ctrl.handleButtonAction(actionButton)>{{actionButton.name}}</button></div><div ng-if=$ctrl.hasSecondaryActions() class=blank-slate-pf-secondary-action><button class=\"btn btn-default\" ng-repeat=\"actionButton in $ctrl.actionButtons | filter:$ctrl.filterSecondaryActions\" title={{actionButton.title}} ng-click=$ctrl.handleButtonAction(actionButton)>{{actionButton.name}}</button></div></div>"
+    "<div class=blank-slate-pf><div ng-if=$ctrl.config.icon class=blank-slate-pf-icon><span class={{$ctrl.config.icon}}></span></div><h4 id=blank-state-pf-title-{{$id}} class=\"h1 blank-state-pf-title\">{{$ctrl.config.title}}</h4><p id=blank-state-pf-info-{{$id}} class=blank-state-pf-info ng-if=$ctrl.config.info>{{$ctrl.config.info}}</p><p id=blank-state-pf-helpLink-{{$id}} class=blank-state-pf-helpLink ng-if=$ctrl.config.helpLink ng-click=$ctrl.config.helpLink.urlAction()>{{$ctrl.config.helpLink.label}} <a href={{$ctrl.config.helpLink.url}}>{{$ctrl.config.helpLink.urlLabel}}</a>.</p><div ng-if=$ctrl.hasMainActions() class=blank-slate-pf-main-action><button class=\"btn btn-primary btn-lg\" ng-repeat=\"actionButton in $ctrl.actionButtons | filter:$ctrl.filterMainActions\" title={{actionButton.title}} ng-click=$ctrl.handleButtonAction(actionButton)>{{actionButton.name}}</button></div><div ng-if=$ctrl.hasSecondaryActions() class=blank-slate-pf-secondary-action><button class=\"btn btn-default\" ng-repeat=\"actionButton in $ctrl.actionButtons | filter:$ctrl.filterSecondaryActions\" title={{actionButton.title}} ng-click=$ctrl.handleButtonAction(actionButton)>{{actionButton.name}}</button></div></div>"
   );
 
 
@@ -18732,7 +18688,7 @@ angular.module('patternfly.wizard').component('pfWizard', {
 
 
   $templateCache.put('wizard/wizard.html',
-    "<div><div class=modal-header ng-if=!$ctrl.hideHeader><button type=button class=\"close wizard-pf-dismiss\" aria-label=Close ng-click=$ctrl.onCancel() ng-if=!$ctrl.embedInPage><span aria-hidden=true>&times;</span></button><dt class=modal-title>{{$ctrl.title}}</dt></div><div class=\"modal-body wizard-pf-body clearfix\"><!-- step area --><div class=wizard-pf-steps ng-class=\"{'invisible': !$ctrl.wizardReady}\"><ul class=wizard-pf-steps-indicator ng-if=!$ctrl.hideIndicators ng-class=\"{'invisible': !$ctrl.wizardReady}\"><li class=wizard-pf-step ng-class=\"{active: step.selected}\" ng-repeat=\"step in $ctrl.getEnabledSteps()\" data-tabgroup=\"{{$index }}\"><a ng-click=$ctrl.stepClick(step) ng-class=\"{'disabled': !$ctrl.allowStepIndicatorClick(step)}\"><span class=wizard-pf-step-number>{{$index + 1}}</span> <span ng-if=\"!$ctrl.activeStepTitleOnly || step.selected\" class=wizard-pf-step-title>{{step.title}}</span> <span class=wizard-pf-step-title-substep ng-repeat=\"substep in step.steps track by $index\" ng-class=\"{'active': substep.selected}\">{{substep.title}}</span></a></li></ul></div><!-- loading wizard placeholder --><div ng-if=!$ctrl.wizardReady class=wizard-pf-main style=\"margin-left: 0px\"><div class=\"wizard-pf-loading blank-slate-pf\"><div class=\"spinner spinner-lg blank-slate-pf-icon\"></div><h3 class=blank-slate-pf-main-action>{{$ctrl.loadingWizardTitle}}</h3><p class=blank-slate-pf-secondary-action>{{$ctrl.loadingSecondaryInformation}}</p></div></div><div class=wizard-pf-position-override ng-transclude></div></div><div class=\"modal-footer wizard-pf-footer wizard-pf-position-override\" ng-class=\"{'wizard-pf-footer-inline': $ctrl.embedInPage}\"><button ng-if=!$ctrl.embedInPage class=\"btn btn-default btn-cancel wizard-pf-cancel\" ng-class=\"{'wizard-pf-cancel-no-back': $ctrl.hideBackButton}\" ng-disabled=$ctrl.wizardDone ng-click=$ctrl.onCancel()>{{$ctrl.cancelTitle}}</button><div ng-if=!$ctrl.hideBackButton class=tooltip-wrapper uib-tooltip={{$ctrl.prevTooltip}} tooltip-placement=left><button id=backButton class=\"btn btn-default\" ng-disabled=\"!$ctrl.wizardReady || $ctrl.wizardDone || !$ctrl.selectedStep.prevEnabled || $ctrl.firstStep\" ng-click=$ctrl.previous()>{{$ctrl.backTitle}}</button></div><div class=tooltip-wrapper uib-tooltip={{$ctrl.nextTooltip}} tooltip-placement=left><button id=nextButton class=\"btn btn-primary wizard-pf-next\" ng-disabled=\"!$ctrl.wizardReady || !$ctrl.selectedStep.nextEnabled\" ng-click=$ctrl.next()>{{$ctrl.nextTitle}}</button></div><button ng-if=$ctrl.embedInPage class=\"btn btn-default btn-cancel wizard-pf-cancel wizard-pf-cancel-inline\" ng-disabled=$ctrl.wizardDone ng-click=$ctrl.onCancel()>{{$ctrl.cancelTitle}}</button></div></div>"
+    "<div><div class=modal-header ng-if=!$ctrl.hideHeader><button type=button class=\"close wizard-pf-dismiss\" aria-label=Close ng-click=$ctrl.onCancel() ng-if=!$ctrl.embedInPage><span aria-hidden=true>&times;</span></button><dt class=modal-title>{{$ctrl.wizardTitle}}</dt></div><div class=\"modal-body wizard-pf-body clearfix\"><!-- step area --><div class=wizard-pf-steps ng-class=\"{'invisible': !$ctrl.wizardReady}\"><ul class=wizard-pf-steps-indicator ng-if=!$ctrl.hideIndicators ng-class=\"{'invisible': !$ctrl.wizardReady}\"><li class=wizard-pf-step ng-class=\"{active: step.selected}\" ng-repeat=\"step in $ctrl.getEnabledSteps()\" data-tabgroup=\"{{$index }}\"><a ng-click=$ctrl.stepClick(step) ng-class=\"{'disabled': !$ctrl.allowStepIndicatorClick(step)}\"><span class=wizard-pf-step-number>{{$index + 1}}</span> <span ng-if=\"!$ctrl.activeStepTitleOnly || step.selected\" class=wizard-pf-step-title>{{step.title}}</span> <span class=wizard-pf-step-title-substep ng-repeat=\"substep in step.steps track by $index\" ng-class=\"{'active': substep.selected}\">{{substep.title}}</span></a></li></ul></div><!-- loading wizard placeholder --><div ng-if=!$ctrl.wizardReady class=wizard-pf-main style=\"margin-left: 0px\"><div class=\"wizard-pf-loading blank-slate-pf\"><div class=\"spinner spinner-lg blank-slate-pf-icon\"></div><h3 class=blank-slate-pf-main-action>{{$ctrl.loadingWizardTitle}}</h3><p class=blank-slate-pf-secondary-action>{{$ctrl.loadingSecondaryInformation}}</p></div></div><div class=wizard-pf-position-override ng-transclude></div></div><div class=\"modal-footer wizard-pf-footer wizard-pf-position-override\" ng-class=\"{'wizard-pf-footer-inline': $ctrl.embedInPage}\"><button ng-if=!$ctrl.embedInPage class=\"btn btn-default btn-cancel wizard-pf-cancel\" ng-class=\"{'wizard-pf-cancel-no-back': $ctrl.hideBackButton}\" ng-disabled=$ctrl.wizardDone ng-click=$ctrl.onCancel()>{{$ctrl.cancelTitle}}</button> <button id=backButton class=\"btn btn-default\" ng-if=!$ctrl.hideBackButton tooltip-append-to-body=true uib-tooltip={{$ctrl.prevTooltip}} tooltip-placement=left ng-disabled=\"!$ctrl.wizardReady || $ctrl.wizardDone || !$ctrl.selectedStep.isPrevEnabled() || $ctrl.firstStep\" ng-click=$ctrl.previous()>{{$ctrl.backTitle}}</button> <button id=nextButton class=\"btn btn-primary wizard-pf-next\" uib-tooltip={{$ctrl.nextTooltip}} tooltip-append-to-body=true tooltip-placement=left ng-disabled=\"!$ctrl.wizardReady || !$ctrl.selectedStep.isNextEnabled()\" ng-click=$ctrl.next()>{{$ctrl.nextTitle}}</button> <button ng-if=$ctrl.embedInPage class=\"btn btn-default btn-cancel wizard-pf-cancel wizard-pf-cancel-inline\" ng-disabled=$ctrl.wizardDone ng-click=$ctrl.onCancel()>{{$ctrl.cancelTitle}}</button></div></div>"
   );
 
 }]);

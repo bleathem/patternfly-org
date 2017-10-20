@@ -33,6 +33,9 @@
   <link rel="stylesheet" href="/patternfly-org/components/angular-patternfly/dist/docs/css/ng-docs.css">
   <link rel="stylesheet" href="/patternfly-org/components/angular-patternfly/dist/docs/css/examples.css">
   
+  <script type="text/javascript">
+    window.IMAGE_PATH = "/patternfly-org/assets/img"
+  </script>
   <script src="/patternfly-org/components/jquery/dist/jquery.min.js"></script>
   <script src="/patternfly-org/components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="/patternfly-org/components/patternfly-bootstrap-combobox/js/bootstrap-combobox.js"></script>
@@ -60,18 +63,6 @@
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/js/docs-setup.js"></script>
   <script src="/patternfly-org/components/angular-patternfly/dist/docs/js/docs.js"></script>
   <script src="/patternfly-org/ngdocs/formatForPFsite.js"></script>
-  
-    
-      
-      
-        <script src="/patternfly-org/components/moment/min/moment.min.js"></script>
-      
-    
-      
-      
-        <script src="/patternfly-org/components/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js"></script>
-      
-    
   
   <script src="/patternfly-org/assets/js/patternfly-site.min.js"></script>
   
@@ -378,13 +369,13 @@
       <a href="/patternfly-org/pattern-library/forms-and-controls/field-labeling">Field Labeling</a>
     </li>
     <li >
-      <a href="/patternfly-org/pattern-library/forms-and-controls/field-level-help">Field Level Help</a>
-    </li>
-    <li >
       <a href="/patternfly-org/pattern-library/forms-and-controls/filter">Filter</a>
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/forms-and-controls/find">Find</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/pattern-library/forms-and-controls/help-on-forms">Help On Forms</a>
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/forms-and-controls/inline-edit">Inline Edit</a>
@@ -395,14 +386,17 @@
     <li >
       <a href="/patternfly-org/pattern-library/forms-and-controls/modal-overlay">Modal Overlay</a>
     </li>
+    <li  class="active">
+      <a href="/patternfly-org/pattern-library/forms-and-controls/modeless-overlay">Modeless Overlay</a>
+    </li>
     <li >
       <a href="/patternfly-org/pattern-library/forms-and-controls/progressive-disclosure">Progressive Disclosure</a>
     </li>
     <li >
-      <a href="/patternfly-org/pattern-library/forms-and-controls/sort">Sort</a>
+      <a href="/patternfly-org/pattern-library/forms-and-controls/slider">Slider</a>
     </li>
-    <li  class="active">
-      <a href="/patternfly-org/pattern-library/forms-and-controls/timepicker">Timepicker</a>
+    <li >
+      <a href="/patternfly-org/pattern-library/forms-and-controls/sort">Sort</a>
     </li>
     <li >
       <a href="/patternfly-org/pattern-library/forms-and-controls/toolbar">Toolbar</a>
@@ -571,10 +565,10 @@
             <ul class="nav nav-tabs nav-justified nav-tabs-pattern" id="tabs-pattern" role="tablist">
   <li role="presentation" class="active"><a href="#overview" aria-controls="overview" role="tab" data-toggle="tab">Overview</a></li>
 
-    <li role="presentation" class="disabled"><a aria-controls="design" role="tab" title="Design is not available at this time">Design</a></li>
+    <li role="presentation"><a href="#design" aria-controls="design" role="tab" data-toggle="tab">Design</a></li>
 
 
-    <li role="presentation"><a href="#code" aria-controls="code" role="tab" data-toggle="tab">Code</a></li>
+    <li role="presentation" class="disabled"><a aria-controls="code" role="tab" title="Code example is not available at this time">Code</a></li>
 
 <!--
   <li role="presentation"><a href="#usability-test" aria-controls="usability-test" role="tab" data-toggle="tab">Usability Test</a></li>
@@ -601,18 +595,102 @@
       <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="overview">
           
-          <h1 id="timepicker">Timepicker</h1>
+          <h1 id="modeless-overlay">Modeless Overlay</h1>
 
-<p>The timepicker allows a user to select a time. The most common use case is selecting a time for something to run or expire. The timepicker widget is based on the Bootstrap-datetimepicker. See the <a href="http://eonasdan.github.io/bootstrap-datetimepicker/#bootstrap-3-datepicker-v4-docs">Bootstrap 3 Datepicker v4 Docs</a> for complete documentation.</p>
+<p>A modeless overlay panel displays more detailed information  about an object while still allowing the user to interact with the UI that is behind the panel.</p>
 
-<h3 id="timepicker-collapsed">Timepicker Collapsed</h3>
-<p><img src="img/timepicker.png" alt="Timepicker" /></p>
+<p>Some of the general use cases for the modeless overlay might include:</p>
+<ul>
+  <li>If the user needs to access more detailed information from a list or dashboard.</li>
+  <li>If the user needs more detailed information while still needing access to the underlying UI.</li>
+  <li>Quick access to details without leaving a main page.</li>
+  <li>A substitute for a modal overlay when the underlying UI directly affects the surfaced details.</li>
+</ul>
 
-<h3 id="timepicker-expanded">Timepicker Expanded</h3>
-<p><img src="img/timepicker-expanded.png" alt="Timepicker" /></p>
+<p>Some of the more detailed use cases for the modeless overlay might include:</p>
+<ul>
+  <li>This pattern should be used only for detailed or secondary information, primary information should not live on this panel.</li>
+  <li>The underlying information should be directly related to the detailed information that is surfaced on the panel.</li>
+  <li>This pattern could be used to add, view, edit, and remove detailed information of an individual item.</li>
+</ul>
+
+<p>Notes about the behavior of the modeless overlay panel:</p>
+<ul>
+  <li>The overlay panel can be collapsed and there’s a slight animation that goes along with it when the user closes the panel.</li>
+  <li>The text boxes and fields featured on the overlay panel allow the user to edit them inline.</li>
+  <li>The overlay panel never bleeds onto the top navigation, it rests directly underneath of it.</li>
+  <li>There is a slight shadow that appears around the edge of the overlay panel to reinforce that it is on another layer.</li>
+  <li>The user can still access the UI layer underneath of the overlay panel when the panel is extended.</li>
+</ul>
+
+<h2 id="modeless-overlay-example">Modeless Overlay Example</h2>
+<p><img src="img/modeless-overlay-panel.png" alt="Image of Modeless Overlay" /></p>
 
         </div>
         <div role="tabpanel" class="tab-pane" id="design">
+          
+            
+            <h1 id="modeless-overlay">Modeless Overlay</h1>
+
+<p><img src="img/modeless-overlay-empty-state-callout.png" alt="Image of Modeless Overlay Empty State Callout" /></p>
+
+<p><strong>Usage Scenario</strong> The modeless overlay is a pattern that can be used as a replacement for a traditional modal. The modeless overlay can be used in scenarios in which a user may have to access secondary actions or information in order to complete a task. The information and actions on the modeless overlay are directly connected to the main underlying UI and allow the user to still interact with this underlying UI even when the modeless overlay is expanded.</p>
+
+<p><strong>Animation</strong> Whenever the modeless overlay panel is expanded or collapsed, there is a subtle sliding motion that accompanies it. The panel glides in and out of the side of the underlying UI that it is anchored to.</p>
+
+<p><strong>Accessing the Overlay Panel</strong> The user can access the overlay panel by creating a new object, editing a line of text, selecting an object, or other actions from an access point featured on the main underlying UI.</p>
+
+<ol>
+  <li>
+    <p><strong>Overlay Panel:</strong> The panel itself rests right along the bottom of the top navigation but does not bleed onto the top navigation bar. There is a slight shadow around the overlay panel that helps to reinforce that it is located on top of the main page. The panel may be anchored to one side of the underlying UI (top, left, right, or bottom). The overlay panel should not cover any persistent navigational elements such as a top or side navigation bar.</p>
+  </li>
+  <li>
+    <p><strong>Close Button:</strong> The close button allows the user to dismiss the overlay pattern. When the panel is closed, there is a slight animation that shows the overlay panel sliding back into the side it was anchored on.</p>
+  </li>
+  <li>
+    <p><strong>Title Area:</strong> The primary name of the selected object helps to identify what is being shown on the panel and is featured at the top of the panel.</p>
+  </li>
+  <li>
+    <p><strong>Content Area:</strong> Object specific content such as descriptive title, date, status, product owner, collaborators, description, etc. could live here.</p>
+  </li>
+  <li>
+    <p><strong>View Full Page:</strong> If a user needs to view the details featured on the panel in a larger environment, the user can extend the panel to be a full page. Once the full page has been activated, the user can get back to the standard view of the overlay panel by clicking on a button entitled “View Standard Page”. This will return the modeless overlay back to its original state.</p>
+  </li>
+</ol>
+
+<p><img src="img/modeless-overlay-panel-callout.png" alt="Image of Modeless Overlay Panel" /></p>
+
+<ol>
+  <li><strong>Content Body:</strong> The overlay panel may be used with a variety of different views such as list, table, or card view. When using the overlay panel in different types of content views, the user still has the ability to interact with the page underneath of the panel and can adjust the content of the panel by selecting a different object from the underlying page.</li>
+</ol>
+
+<p><strong>Page Behavior:</strong></p>
+
+<p>Vertical Navigation: If the content of the panel extends past the initial frame of the window a vertical scrollbar should be enabled.</p>
+
+<p>Horizontal Scrollbar: In the case of the modeless overlay panel, a horizontal scrollbar should not be used.</p>
+
+<h1 id="modeless-overlay--mobile">Modeless Overlay- Mobile</h1>
+
+<p><img src="img/modeless-overlay-mobile-callout.png" alt="Image of Modeless Overlay Mobile" /></p>
+
+<p><strong>Overlay Panel Behavior:</strong> On mobile, the overlay panel would extend out to be full screen. The overlay panel should act as an extension of the underlying UI. It presents more detailed information about an object that was featured in the underlying UI. When the overlay panel is open, it should be the only element that the user can interact with. In order to access the underlying UI, the user must exit the overlay panel.</p>
+
+<ol>
+  <li>
+    <p><strong>Accessing the Overlay Panel:</strong> On mobile, the user can access the overlay panel by creating a new object, editing a line of text, selecting an object, or other actions from the main underlying UI.</p>
+  </li>
+  <li>
+    <p><strong>Object Specific Content:</strong> Within each object, the user can input and attach object specific content.</p>
+  </li>
+  <li>
+    <p><strong>Selecting Object Content:</strong> When the underlying UI is populated with object content, the user can select an individual object and open the overlay panel that way. The overlay panel will show information regarding the selected object.</p>
+  </li>
+  <li>
+    <p><strong>Object Content:</strong> The user can view general object information from the overlay panel.</p>
+  </li>
+</ol>
+
           
         </div>
         <div role="tabpanel" class="tab-pane" id="code">
@@ -620,78 +698,19 @@
             <ul class="nav nav-tabs nav-tabs-pf nav-tabs-code" id="tabs-code" role="tablist">
 
   <li role="presentation" class="active"><a class="nested" href="#html-css" aria-controls="html-css" role="tab" data-toggle="tab">HTML/CSS</a></li>
-  <li role="presentation" class="disabled"><a class="nested" aria-controls="angular" role="tab" disabled="disabled" title="AngularJS example is not available at this time">AngularJS</a></li>
+  <li role="presentation"><a class="nested" href="#angular" aria-controls="angular" role="tab" data-toggle="tab">AngularJS</a></li>
 
 </ul>
 
           
           <div class="tab-content">
-            <div role="tabpanel" class="tab-pane nested active" id="html-css">
-              
-                <div class="example">
-  <div class="row">
-    <div class="col-md-5">
-      <div class="example-pf">
-        <div class="input-group time-picker-pf" id="time-picker-2">
-  <input type="text" class="form-control">
-      <span class="input-group-addon btn btn-default">
-        <span class="fa fa-clock-o"></span>
-      </span>
-</div>
-<script>
-  $(function () {
-    $('#time-picker-2').datetimepicker({
-      format: 'LT',
-      keyBinds: {
-        enter: function () {
-          $('#time-picker-2').find('input').trigger('change');
-          this.hide();
-        }
-      }
-    });
-    $('#time-picker-2').data('DateTimePicker').clear();
-  });
-</script>
-
-      </div>
-    </div>
-  </div>
-</div>
-<p class="reference-markup"><a class="collapse-toggle" data-toggle="collapse" aria-expanded="true" aria-controls="markup-1" href="#markup-1">Reference Markup</a></p>
-<div class="collapse in" id="markup-1">
-  <pre class="prettyprint">
-&lt;script src=&quot;components/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;components/moment/min/moment.min.js&quot;&gt;&lt;/script&gt;
-&lt;div class=&quot;input-group time-picker-pf&quot; id=&quot;time-picker-2&quot;&gt;
-  &lt;input type=&quot;text&quot; class=&quot;form-control&quot;&gt;
-      &lt;span class=&quot;input-group-addon btn btn-default&quot;&gt;
-        &lt;span class=&quot;fa fa-clock-o&quot;&gt;&lt;/span&gt;
-      &lt;/span&gt;
-&lt;/div&gt;
-&lt;script&gt;
-  $(function () {
-    $('#time-picker-2').datetimepicker({
-      format: 'LT',
-      keyBinds: {
-        enter: function () {
-          $('#time-picker-2').find('input').trigger('change');
-          this.hide();
-        }
-      }
-    });
-    $('#time-picker-2').data('DateTimePicker').clear();
-  });
-&lt;/script&gt;
-
-  </pre>
-</div>
-
+            <div role="tabpanel" class="tab-pane nested" id="html-css">
               
             </div>
-            <div role="tabpanel" class="tab-pane nested" id="angular">
+            <div role="tabpanel" class="tab-pane nested active" id="angular">
               <div ng-app="docsApp" ng-controller="DocsController" class="content">
                 
-                <!-- % include  % -->
+                <!-- % include false % -->
               </div>
             </div>
           </div>
