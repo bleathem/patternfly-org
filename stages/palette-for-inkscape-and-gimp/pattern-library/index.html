@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html>
+  
+  
+  
+  
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pattern Library Overview | PatternFly</title>
+  <meta name="description" content="PatternFly is an open source web user interface framework promoting consistency and usability across IT applications through UX patterns and widgets">
+  <link rel="shortcut icon" href="/patternfly-org/palette-for-inkscape-and-gimp/components/patternfly/dist/img/favicon.ico">
+  <!-- iPad retina icon -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/patternfly-org/palette-for-inkscape-and-gimp/components/patternfly/dist/img/apple-touch-icon-precomposed-152.png">
+  <!-- iPad retina icon (iOS < 7) -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/patternfly-org/palette-for-inkscape-and-gimp/components/patternfly/dist/img/apple-touch-icon-precomposed-144.png">
+  <!-- iPad non-retina icon -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/patternfly-org/palette-for-inkscape-and-gimp/components/patternfly/dist/img/apple-touch-icon-precomposed-76.png">
+  <!-- iPad non-retina icon (iOS < 7) -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/patternfly-org/palette-for-inkscape-and-gimp/components/patternfly/dist/img/apple-touch-icon-precomposed-72.png">
+  <!-- iPhone 6 Plus icon -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/patternfly-org/palette-for-inkscape-and-gimp/components/patternfly/dist/img/apple-touch-icon-precomposed-180.png">
+  <!-- iPhone retina icon (iOS < 7) -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/patternfly-org/palette-for-inkscape-and-gimp/components/patternfly/dist/img/apple-touch-icon-precomposed-114.png">
+  <!-- iPhone non-retina icon (iOS < 7) -->
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/patternfly-org/palette-for-inkscape-and-gimp/components/patternfly/dist/img/apple-touch-icon-precomposed-57.png">
+  <link rel="stylesheet" href="/patternfly-org/palette-for-inkscape-and-gimp/assets/css/patternfly-adjusted.min.css">
+  <link rel="stylesheet" href="/patternfly-org/palette-for-inkscape-and-gimp/components/patternfly/dist/css/patternfly-additions.min.css">
+  <link rel="stylesheet" href="/patternfly-org/palette-for-inkscape-and-gimp/assets/css/patternfly-site.min.css">
+  <link rel="stylesheet" href="/patternfly-org/palette-for-inkscape-and-gimp/components/angular-patternfly/dist/docs/css/animations.css">
+  <link rel="stylesheet" href="/patternfly-org/palette-for-inkscape-and-gimp/components/angular-patternfly/dist/docs/css/angular-patternfly.css">
+  <link rel="stylesheet" href="/patternfly-org/palette-for-inkscape-and-gimp/components/angular-patternfly/dist/docs/css/ng-docs.css">
+  <link rel="stylesheet" href="/patternfly-org/palette-for-inkscape-and-gimp/components/angular-patternfly/dist/docs/css/examples.css">
+  
+  <script type="text/javascript">
+    window.IMAGE_PATH = "/patternfly-org/palette-for-inkscape-and-gimp/assets/img"
+  </script>
+  <script src="/patternfly-org/palette-for-inkscape-and-gimp/components/jquery/dist/jquery.min.js"></script>
+  <script src="/patternfly-org/palette-for-inkscape-and-gimp/components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/patternfly-org/palette-for-inkscape-and-gimp/components/patternfly-bootstrap-combobox/js/bootstrap-combobox.js"></script>
+  <script src="/patternfly-org/palette-for-inkscape-and-gimp/components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+  <script src="/patternfly-org/palette-for-inkscape-and-gimp/components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+  <script src="/patternfly-org/palette-for-inkscape-and-gimp/components/bootstrap-switch/dist/js/bootstrap-switch.min.js"></script>
+  <script src="/patternfly-org/palette-for-inkscape-and-gimp/components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+  <script src="/patternfly-org/palette-for-inkscape-and-gimp/components/patternfly-bootstrap-treeview/dist/bootstrap-treeview.min.js"></script>
+  <script src="/patternfly-org/palette-for-inkscape-and-gimp/components/d3/d3.min.js"></script>
+  <script src="/patternfly-org/palette-for-inkscape-and-gimp/components/c3/c3.min.js"></script>
+  <script src="/patternfly-org/palette-for-inkscape-and-gimp/components/datatables/media/js/jquery.dataTables.js"></script>
+  <script src="/patternfly-org/palette-for-inkscape-and-gimp/components/google-code-prettify/bin/prettify.min.js"></script>
+  <script src="/patternfly-org/palette-for-inkscape-and-gimp/components/clipboard/dist/clipboard.min.js"></script>
+  <script src="/patternfly-org/palette-for-inkscape-and-gimp/components/patternfly/dist/js/patternfly.min.js"></script>
+  <script src="/patternfly-org/palette-for-inkscape-and-gimp/components/angular-patternfly/dist/docs/js/marked.js"></script>
+  <script src="/patternfly-org/palette-for-inkscape-and-gimp/components/angular-patternfly/dist/docs/grunt-scripts/angular.js"></script>
+  <script src="/patternfly-org/palette-for-inkscape-and-gimp/components/angular-patternfly/dist/docs/grunt-scripts/angular-sanitize.js"></script>
+  <script src="/patternfly-org/palette-for-inkscape-and-gimp/components/angular-patternfly/dist/docs/grunt-scripts/angular-animate.js"></script>
+  <script src="/patternfly-org/palette-for-inkscape-and-gimp/components/angular-patternfly/dist/docs/grunt-scripts/ui-bootstrap-tpls.js"></script>
+  <script src="/patternfly-org/palette-for-inkscape-and-gimp/components/angular-patternfly/dist/docs/grunt-scripts/angular-bootstrap-prettify.js"></script>
+  <script src="/patternfly-org/palette-for-inkscape-and-gimp/components/angular-patternfly/dist/docs/grunt-scripts/lodash.min.js"></script>
+  <script src="/patternfly-org/palette-for-inkscape-and-gimp/components/angular-patternfly/dist/docs/grunt-scripts/angular-patternfly.js"></script>
+  <script src="/patternfly-org/palette-for-inkscape-and-gimp/components/patternfly/dist/js/patternfly.js"></script>
+  <script src="/patternfly-org/palette-for-inkscape-and-gimp/components/angular-patternfly/dist/docs/js/angular-bootstrap.js"></script>
+  <script src="/patternfly-org/palette-for-inkscape-and-gimp/components/angular-patternfly/dist/docs/js/docs-setup.js"></script>
+  <script src="/patternfly-org/palette-for-inkscape-and-gimp/components/angular-patternfly/dist/docs/js/docs.js"></script>
+  <script src="/patternfly-org/palette-for-inkscape-and-gimp/ngdocs/formatForPFsite.js"></script>
+  
+  <script src="/patternfly-org/palette-for-inkscape-and-gimp/assets/js/patternfly-site.min.js"></script>
+  
+</head>
+
+  <body class="has-sidebar">
+    <header>
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+<!--
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse-pf-site" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+-->
+            <a class="navbar-brand" id="logo" title="open interface project" href="/patternfly-org/palette-for-inkscape-and-gimp/">PatternFly | open interface project</a>
+          </div>
+          <div class="navbar-collapse navbar-collapse-pf-site collapse">
+            <form class="navbar-form navbar-right" method="get" id="searchform" action="http://www.google.com/search">
+              <div class="form-group">
+                <input name="q" id="q" type="text" class="form-control" autocomplete="off" placeholder="Search">
+                <input name="sitesearch" type="hidden" value="patternfly.org">
+                <button type="submit" class="btn btn-default">Submit</button>
+              </div>
+            </form>
+            <ul id="menu-primary" class="nav navbar-nav navbar-right">
+              <li>
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/get-started/">Get Started</a>
+              </li>
+              <li class="active">
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/">Pattern Library</a>
+              </li>
+              <li>
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/styles/">Styles</a>
+              </li>
+              <li>
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/community/">Community</a>
+              </li>
+              <li>
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/download/">Download</a>
+              </li>
+              <li>
+                <a href="http://blog.patternfly.org">Blog</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <nav class="navbar navbar-sidebar ">
+<!--
+      { % if primary == 'get-started' or primary == 'pattern-library' or primary == 'styles' % }
+      <nav class="navbar navbar-sidebar" aria-labelledby="navbar-toggle-sidebar">
+        <button class="btn btn-default navbar-toggle-sidebar" id="navbar-toggle-sidebar">
+          <span class="fa fa-angle-double-right"></span>
+          <span class="sr-only">Toggle sub navigation</span>
+        </button>
+-->
+        <ul>
+          <li class="primary-menu hidden">
+            <a href="/patternfly-org/palette-for-inkscape-and-gimp/">Menu</a>
+            <ul>
+              <li>
+              <a href="/patternfly-org/palette-for-inkscape-and-gimp/get-started/">Get Started<span class="fa fa-angle-right"></span></a>
+              </li>
+              <li class="active">
+              <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/">Pattern Library<span class="fa fa-angle-right"></span></a>
+              </li>
+              <li>
+              <a href="/patternfly-org/palette-for-inkscape-and-gimp/styles/">Styles<span class="fa fa-angle-right"></span></a>
+              </li>
+              <li>
+              <a href="/patternfly-org/palette-for-inkscape-and-gimp/community/">Community</a>
+              </li>
+              <li>
+              <a href="/patternfly-org/palette-for-inkscape-and-gimp/download/">Download</a>
+              </li>
+              <li>
+                <a href="http://blog.patternfly.org">Blog</a>
+              </li>
+              <form class="navbar-form navbar-right" method="get" id="searchform" action="http://www.google.com/search">
+                <div class="form-group">
+                  <input name="q" id="q" type="text" class="form-control" autocomplete="off" placeholder="Search">
+                  <input name="sitesearch" type="hidden" value="patternfly.org">
+                  <button type="submit" class="btn btn-default">Submit</button>
+                </div>
+              </form>
+            </ul>
+          </li>
+          <li class="secondary-menu">
+            <a class="secondary-menu-toggle"><span class="secondary-menu-toggle-icon"></span>Pattern Library</a>
+            <ul>
+              <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/">Overview</a>
+              </li>
+<li >
+  <a class="collapsed"
+     role="button" data-toggle="collapse"
+     href="#application-framework-secondary"
+     aria-expanded="false"
+     aria-controls="application-framework-secondary">
+     Application Framework
+  </a>
+  <ul class="collapse "
+      id="application-framework-secondary">
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/application-framework/launcher">Launcher</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/application-framework/login-page">Login Page</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/application-framework/masthead">Masthead</a>
+    </li>
+  </ul>
+</li>
+<li >
+  <a class="collapsed"
+     role="button" data-toggle="collapse"
+     href="#cards-secondary"
+     aria-expanded="false"
+     aria-controls="cards-secondary">
+     Cards
+  </a>
+  <ul class="collapse "
+      id="cards-secondary">
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/cards/aggregate-status-card">Aggregate Status Card</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/cards/base-card">Base Card</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/cards/trend-card">Trend Card</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/cards/utilization-bar-card">Utilization Bar Card</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/cards/utilization-trend-card">Utilization Trend Card</a>
+    </li>
+  </ul>
+</li>
+<li >
+  <a class="collapsed"
+     role="button" data-toggle="collapse"
+     href="#communication-secondary"
+     aria-expanded="false"
+     aria-controls="communication-secondary">
+     Communication
+  </a>
+  <ul class="collapse "
+      id="communication-secondary">
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/communication/about-modal">About Modal</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/communication/comments">Comments</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/communication/empty-state">Empty State</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/communication/experimental-features">Experimental Features</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/communication/inline-notifications">Inline Notifications</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/communication/notification-drawer">Notification Drawer</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/communication/toast-notifications">Toast Notifications</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/communication/tour">Tour</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/communication/wizard">Wizard</a>
+    </li>
+  </ul>
+</li>
+<li >
+  <a class="collapsed"
+     role="button" data-toggle="collapse"
+     href="#content-views-secondary"
+     aria-expanded="false"
+     aria-controls="content-views-secondary">
+     Content Views
+  </a>
+  <ul class="collapse "
+      id="content-views-secondary">
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/content-views/canvas-view">Canvas View</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/content-views/card-view">Card View</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/content-views/list-view">List View</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/content-views/table-view">Table View</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/content-views/tree-list-view">Tree List View</a>
+    </li>
+  </ul>
+</li>
+<li >
+  <a class="collapsed"
+     role="button" data-toggle="collapse"
+     href="#dashboard-secondary"
+     aria-expanded="false"
+     aria-controls="dashboard-secondary">
+     Dashboard
+  </a>
+  <ul class="collapse "
+      id="dashboard-secondary">
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/dashboard/dashboard-layout">Dashboard Layout</a>
+    </li>
+  </ul>
+</li>
+<li >
+  <a class="collapsed"
+     role="button" data-toggle="collapse"
+     href="#data-visualization-secondary"
+     aria-expanded="false"
+     aria-controls="data-visualization-secondary">
+     Data Visualization
+  </a>
+  <ul class="collapse "
+      id="data-visualization-secondary">
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/data-visualization/area-chart">Area Chart</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/data-visualization/bar-chart">Bar Chart</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/data-visualization/bullet-chart">Bullet Chart</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/data-visualization/donut-chart">Donut Chart</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/data-visualization/heat-map">Heat Map</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/data-visualization/line-chart">Line Chart</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/data-visualization/pie-chart">Pie Chart</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/data-visualization/sparkline">Sparkline</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/data-visualization/timeline">Timeline</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/data-visualization/utilization-bar-chart">Utilization Bar Chart</a>
+    </li>
+  </ul>
+</li>
+<li >
+  <a class="collapsed"
+     role="button" data-toggle="collapse"
+     href="#forms-and-controls-secondary"
+     aria-expanded="false"
+     aria-controls="forms-and-controls-secondary">
+     Forms and Controls
+  </a>
+  <ul class="collapse "
+      id="forms-and-controls-secondary">
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/buttons-on-forms">Buttons On Forms</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/data-input">Data Input</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/datepicker">Datepicker</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/drag-and-drop">Drag and Drop</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/errors-and-validation">Errors and Validation</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/expand-collapse-section">Expand Collapse Section</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/field-labeling">Field Labeling</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/filter">Filter</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/find">Find</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/help-on-forms">Help On Forms</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/inline-edit">Inline Edit</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/language-selector">Language Selector</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/modal-overlay">Modal Overlay</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/modeless-overlay">Modeless Overlay</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/progressive-disclosure">Progressive Disclosure</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/slider">Slider</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/sort">Sort</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/toolbar">Toolbar</a>
+    </li>
+  </ul>
+</li>
+<li >
+  <a class="collapsed"
+     role="button" data-toggle="collapse"
+     href="#navigation-secondary"
+     aria-expanded="false"
+     aria-controls="navigation-secondary">
+     Navigation
+  </a>
+  <ul class="collapse "
+      id="navigation-secondary">
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/navigation/breadcrumbs">Breadcrumbs</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/navigation/context-selector">Context Selector</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/navigation/guidelines">Guidelines</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/navigation/horizontal-navigation">Horizontal Navigation</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/navigation/pagination">Pagination</a>
+    </li>
+    <li >
+      <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/navigation/vertical-navigation">Vertical Navigation</a>
+    </li>
+  </ul>
+</li>
+              <li >
+              <a class="collapsed" role="button" data-toggle="collapse" href="#widgets-secondary" aria-expanded="false" aria-controls="widgets-secondary">Widgets</a>
+              <ul class="collapse " id="widgets-secondary">
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/">Overview</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#accordion">Accordion</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#alerts">Alerts</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#badges">Badges</a>
+                </li>
+<!--
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#basic-charts">Basic Charts</a>
+                </li>
+-->
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#bootstrap-combobox">Bootstrap Combobox</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#bootstrap-datepicker">Bootstrap Datepicker</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#bootstrap-select">Bootstrap Select</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#bootstrap-switch">Bootstrap Switch</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#bootstrap-touchspin">Bootstrap Touchspin</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#bootstrap-tree-view">Bootstrap Tree View</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#breadcrumbs">Breadcrumbs</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#buttons">Buttons</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#button-groups">Button Groups</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#cnt-remaining-chars">Count Remaining Characters</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#data-tables">Data Tables</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#dropdowns">Dropdowns</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#fixed-height-accordion">Fixed Height Accordion</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#forms">Forms</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#google-code-prettify">Google Code Prettify</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#info-tip">Info Tip</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#kebabs">Kebabs</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#labels">Labels</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#list-group">List Group</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#modal">Modal</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#pagination">Pagination</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#panels">Panels</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#popover">Popover</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#progress-bars">Progress Bars</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#search">Search</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#spinner">Spinner</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#tables">Tables</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#tabs">Tabs</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#tooltip">Tooltip</a>
+                </li>
+                <li >
+                <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/widgets/#treegrid-table">TreeGrid Table</a>
+                </li>
+              </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav><!--{ % endif % }-->
+    </header>
+
+    <div class="container-fluid">
+      <div class="clearfix row" id="content">
+        <div id="main" class="col-md-12 clearfix" role="main">
+  <article class="post">
+    <header class="page-tabs-header">
+      <h1>Pattern Library Overview</h1>
+    </header>
+    <section class="post_content">
+      <p>The PatternFly library is a collection of UI design patterns. Design patterns are recurring solutions that solve
+common design problems and provide a common language for people who create user interfaces. In general, patterns do not
+specify requirements, but rather, present recommended solutions to design problems. PatternFly patterns build on that
+approach by additionally considering the needs of complex enterprise IT software, and the habits and motivations of its
+users, in their recommendations.</p>
+<p>Each pattern within this library contains suggested usages and examples that are annotated with interaction and
+visual design specifications. Patterns that have gone through usability testing include a link to the PatternFly blog
+where relevant findings are described in more detail. Many patterns also include the code you can use to build the
+example. The library is continually being updated with new patterns or code samples for existing patterns. Stay current
+with these updates by checking out “What’s New” on the <a href="https://blog.patternfly.org" target="_blank">PatternFly blog</a></p>
+<div class="pattern-section" id="application-framework">
+  <h2>Application Framework</h2>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+       <p>Launcher</p>
+       <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/application-framework/launcher">
+         <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Launcher.jpg" alt="launcher" />
+       </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+       <p>Login Page</p>
+       <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/application-framework/login-page">
+         <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Login.png" alt="login" />
+       </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+       <p>Masthead</p>
+       <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/application-framework/masthead">
+         <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Masthead.jpg" alt="masthead" />
+       </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="pattern-section" id="cards">
+  <h2>Cards</h2>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Aggregate Status Card</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/cards/aggregate-status-card">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Agg-Card.png" alt="aggregate-status-card" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Base Card</p>
+       <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/cards/base-card">
+         <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Base-Card.png" alt="base-card" />
+       </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Trend Card</p>
+       <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/cards/trend-card">
+         <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Trend-Card.png" alt="trend-card" />
+       </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Utilization Bar Card</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/cards/utilization-bar-card">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Util-Bar-Card.png" alt="utilization-bar-card" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Utilization Trend Card</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/cards/utilization-trend-card">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Util-Trend-Card.png" alt="cards/utilization-trend-card" />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="pattern-section" id="communication">
+  <h2>Communication</h2>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>About Modal</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/communication/about-modal">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/About-Modal.png" alt="About-Modal" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+       <p>Empty State</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/communication/empty-state">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Empty-State.png" alt="empty-state" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Inline Notifications</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/communication/inline-notifications">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Inline-Notif.png" alt="inline-notifications" />
+        </a>
+      </div>
+    </div>
+     <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Notification Drawer</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/communication/notification-drawer">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Notification-Drawer.png" alt="Notification Drawer" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Toast Notifications</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/communication/toast-notifications">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Toast.png" alt="toast-notifications" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Tour</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/communication/tour">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Tour.jpg" alt="tour" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Wizard</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/communication/wizard">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Wizard.png" alt="Wizard" />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="pattern-section" id="content-views">
+  <h2>Content Views</h2>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+       <p>Canvas View</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/content-views/canvas-view">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Canvas-view.jpg" alt="canvas-view" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+       <p>Card View</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/content-views/card-view">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/card-view.png" alt="card-view" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+       <p>List View</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/content-views/list-view">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/List-View.png" alt="list-view" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Table View</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/content-views/table-view">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Table.png" alt="table-view" />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="pattern-section" id="dashboard">
+  <h2>Dashboard</h2>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Dashboard Layout</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/dashboard/dashboard-layout">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Dash-Layout.png" alt="dashboard-layout" />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="pattern-section" id="data-visualization">
+  <h2>Data Visualization</h2>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+       <p>Area Chart</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/data-visualization/area-chart">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Area-Chart.png" alt="area-chart" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Bar Chart</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/data-visualization/bar-chart">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Bar-Chart.png" alt="bar-chart" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Bullet Chart</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/data-visualization/bullet-chart">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Bullet-Chart.jpg" alt="bullet-chart" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Donut Chart</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/data-visualization/donut-chart">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Donut-Chart.png" alt="donut-chart" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Heat Map</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/data-visualization/heat-map">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Heat-Chart.png" alt="heat-map" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Line Chart</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/data-visualization/line-chart">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Line-Chart.png" alt="line-chart" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Pie Chart</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/data-visualization/pie-chart">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Pie-Chart.png" alt="pie-chart" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Sparkline Chart</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/data-visualization/sparkline">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Sparkline.png" alt="sparkline" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Timeline</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/data-visualization/timeline">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Timeline.jpg" alt="timeline" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Utilization Bar Chart</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/data-visualization/utilization-bar-chart">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Util-Bar-Chart.png" alt="utilization-bar-chart " />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="pattern-section" id="forms-and-controls">
+  <h2>Forms and Controls</h2>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Buttons On Forms</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/buttons-on-forms">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Buttons-on-Forms.jpg" alt="buttons-on-forms" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Data Input</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/data-input">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Data-Input.png" alt="data-input" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Datepicker</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/datepicker">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Datepicker.png" alt="datepicker" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Drag and Drop</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/drag-and-drop">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Drag-and-Drop.jpg" alt="drag-and-drop" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Errors and Validation</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/errors-and-validation">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Errors-and-Validation.png" alt="errors-and-validation" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Expand Collapse Section</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/expand-collapse-section">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Expand-Collapse-Section.png" alt="expand-collapse-section" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Field Labeling</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/field-labeling">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Field-Labeling.png" alt="field-labeling" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Field Level Help</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/field-level-help">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Inline-Help.png" alt="field-level-help" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Filter</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/filter">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Filter.png" alt="filter" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Find</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/find">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Search.png" alt="find" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Forms</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/forms">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Forms.png" alt="forms" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Inline Edit</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/inline-edit">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/In-Line-Edit.png" alt="inline-edit" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Input Controls</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/input-controls">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Input-Control.png" alt="input-controls" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Language Selector</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/language-selector">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Language-Selector.png" alt="language-selector" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Progressive Disclosure</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/progressive-disclosure">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Progressive-Disclosure.png" alt="progressive-disclosure" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Sort</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/sort">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Sort.png" alt="sort" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Timepicker</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/timepicker">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Timepicker.png" alt="timepicker" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Toolbar</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/forms-and-controls/toolbar">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Toolbar.png" alt="toolbar" />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="pattern-section" id="navigation">
+  <h2>Navigation</h2>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Breadcrumbs</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/navigation/breadcrumbs">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Breadcrumbs.png" alt="breadcrumbs" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Horizontal Navigation</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/navigation/horizontal-navigation">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Horizontal-Navigation.png" alt="horizontal-navigation" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Pagination</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/navigation/pagination">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Pagination.png" alt="pagination" />
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <div class="pattern-thumbnail">
+        <p>Vertical Navigation</p>
+        <a href="/patternfly-org/palette-for-inkscape-and-gimp/pattern-library/navigation/vertical-navigation">
+          <img src="/patternfly-org/palette-for-inkscape-and-gimp/assets/img/thumbnails/Vert-Nav.png" alt="vertical-navigation" />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </section>
+  </article>
+</div>
+
+      </div>
+    </div>
+    <footer>
+  <div class="row">
+    <div class="col-md-9">
+      <p>
+        <a href="http://www.redhat.com" id="logo-redhat" target="_blank">Red Hat</a>
+        PatternFly is a <a href="http://www.redhat.com" target="_blank">Red Hat</a> sponsored project. <br> Except where otherwise noted, content on this site is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank"> Creative Commons Attribution 4.0 International license.</a>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <ul class="social">
+<!--
+        <li>
+          <a href="http://blog.patternfly.org"><span class="fa fa-rss-square"></span></a>
+        </li>
+-->
+        <li>
+          <a href="https://github.com/patternfly/patternfly" target="_blank"><span class="fa fa-github-square"></span></a>
+        </li>
+        <li>
+          <a href="https://twitter.com/patternfly_des" target="_blank"><span class="fa fa-twitter-square"></span></a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/groups/PatternFlyCommunity/" target="_blank"><span class="fa fa-facebook-square"></span></a>
+        </li>
+        <li>
+          <a href="https://plus.google.com/communities/117224483835467139511" target="_blank"><span class="fa fa-google-plus-square"></span></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-47523816-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>
