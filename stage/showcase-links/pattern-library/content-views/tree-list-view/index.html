@@ -744,19 +744,32 @@ Selecting a checkbox will highlight the row in blue.</p>
             <h2 class="pforg-code__core-example-title">PatternFly Core Example</h2>
             <ul class="pforg-code__showcase-link-list">
               
-                <li class="pforg-code__showcase-link-item pforg-code__showcase-link-item__disabled"><button><i class="fa fa-external-link" aria-hidden="true"></i> Angular PatternFly</button></a></li>
+                <li class="pforg-code__showcase-link-item pforg-code__showcase-link-item__disabled">
+                  <button type="button" class="btn disabled" data-toggle="tooltip" data-placement="top" title="Pattern implementation not available for angular-patternfly">
+                    <i class="fa fa-external-link" aria-hidden="true"></i>
+                    Angular PatternFly
+                  </button>
+                </li>
               
 
               
                 <li class="pforg-code__showcase-link-item">
                   <a href="https://rawgit.com/patternfly/patternfly-ng/master-dist/dist-demo/index.html#/treelist" target="patternfly_showcase">
-                    <button><i class="fa fa-external-link" aria-hidden="true"></i> PatternFly Ng</button>
+                    <button type="button" class="btn" data-toggle="tooltip" data-placement="top" title="Pattern implementation in patternfly-ng">
+                      <i class="fa fa-external-link" aria-hidden="true"></i>
+                      PatternFly Ng
+                    </button>
                   </a>
                 </li>
               
 
               
-                <li class="pforg-code__showcase-link-item pforg-code__showcase-link-item__disabled"><button><i class="fa fa-external-link" aria-hidden="true"></i> PatternFly React</button></a></li>
+                <li class="pforg-code__showcase-link-item pforg-code__showcase-link-item__disabled disabled">
+                  <button type="button" class="btn disabled" data-toggle="tooltip" data-placement="top" title="Pattern implementation not available for patternfly-react">
+                    <i class="fa fa-external-link" aria-hidden="true"></i>
+                    PatternFly React
+                  </button>
+                </li>
               
             </ul>
           </div>
@@ -779,6 +792,13 @@ Selecting a checkbox will highlight the row in blue.</p>
       h1.style.display = 'none';
     });
   }
+  // Initialize Tooltip
+  $(document).ready(function() {
+    $('#code').tooltip({
+      selector: "[data-toggle=tooltip]",
+      container: "body"
+    });
+  });
 </script>
 
       </div>

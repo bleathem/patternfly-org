@@ -750,7 +750,10 @@
               
                 <li class="pforg-code__showcase-link-item">
                   <a href="https://www.patternfly.org/angular-patternfly/#/api/patternfly.views.component:pfListView" target="patternfly_showcase">
-                    <button><i class="fa fa-external-link" aria-hidden="true"></i> Angular PatternFly</button>
+                    <button type="button" class="btn" data-toggle="tooltip" data-placement="top" title="Pattern implementation in angular-patternfly">
+                      <i class="fa fa-external-link" aria-hidden="true"></i>
+                      Angular PatternFly
+                    </button>
                   </a>
                 </li>
               
@@ -758,7 +761,10 @@
               
                 <li class="pforg-code__showcase-link-item">
                   <a href="https://rawgit.com/patternfly/patternfly-ng/master-dist/dist-demo/#/list" target="patternfly_showcase">
-                    <button><i class="fa fa-external-link" aria-hidden="true"></i> PatternFly Ng</button>
+                    <button type="button" class="btn" data-toggle="tooltip" data-placement="top" title="Pattern implementation in patternfly-ng">
+                      <i class="fa fa-external-link" aria-hidden="true"></i>
+                      PatternFly Ng
+                    </button>
                   </a>
                 </li>
               
@@ -766,7 +772,10 @@
               
                 <li class="pforg-code__showcase-link-item">
                   <a href="https://rawgit.com/patternfly/patternfly-react/gh-pages/index.html?selectedKind=ListView&selectedStory=List%20of%20expandable%20items" target="patternfly_showcase">
-                    <button><i class="fa fa-external-link" aria-hidden="true"></i> PatternFly React</button>
+                    <button type="button" class="btn" data-toggle="tooltip" data-placement="top" title="Pattern implementation in patternfly-react">
+                      <i class="fa fa-external-link" aria-hidden="true"></i>
+                      PatternFly React
+                    </button>
                   </a>
                 </li>
               
@@ -8403,6 +8412,13 @@
       h1.style.display = 'none';
     });
   }
+  // Initialize Tooltip
+  $(document).ready(function() {
+    $('#code').tooltip({
+      selector: "[data-toggle=tooltip]",
+      container: "body"
+    });
+  });
 </script>
 
       </div>
